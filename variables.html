@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variables</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="lesson1.js"></script>
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+    <script src="https://q5js.org/q5.js"></script>
+    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="p5play.js"></script>
+    <script src = 'overlapVariableActivity.js'></script>
+
+
+</head>
+<body id="lessonPage">
+    <div class="lesson">
+    <div class= "lessonTop">
+        <h1 class="lessonTitle">Level 2: Variables</h1>
+        <div class="toolButton">
+        <button class="takeNote" onclick="toggleNoteIframe()">
+            <i class="fa-solid fa-note-sticky"></i>
+            Take Note</button>
+            <a href="stage1.html">
+                <button class="nextLesson">
+                <i class="fa-solid fa-caret-right"></i>
+                Next: Variables Game
+            </button>
+            </a>
+    </div>
+    <iframe id="noteIframe" src="note.html"></iframe>
+    </div>
+    <div class = "lessonMiddle lessonpage1">
+        <h1>Variables:</h1>
+        <p>Variables are used to make the computer remember information to display or change. It is like a storing game. You can organize your storage box by adding a label for where the T-shirt belongs to the ‘clothing’ box. In this case, the variable is clothing, and the content inside is value. And it look like this:
+        </p>
+        <code>let clothing = “T-shirt”</code>
+    </div>
+    <div class = "lessonMiddle lessonpage2">
+        <p>To create a variable, we use let or const.</p>
+        <code>let ball;</code>
+        <p>We use the assignment operator = to put some data into the variable we just made.</p>
+        <code>ball = ‘basketball’;</code>
+        <p class = "additionInformation">(We use semicolons (;) to end a statement. Without it, the computer doesn't know when your statement ends and makes an error. Remember to add a semicolon when you end a statement!)
+        </p>
+        <p>The string is now saved into the memory area associated with the variable. We can assess it by the variable name:</p>
+        <code>alert(ball);</code>
+        <!--<div class = 'choices'>
+            <button class = "choicesButton" onclick = "checkAnswer('answer1')">answer 1</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer2')">answer 2</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer3')">answer 3</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer4')">answer 4</button>
+            <p id="answer"></p>
+        </div>   
+    --> 
+</div>
+    <div class = "lessonMiddle lessonpage3 boxActivity">
+        <div id = "box">
+            <script src="boxActivity.js"></script>
+            <style>
+                Canvas{
+                    position: relative;
+                    z-index: 2;
+                }
+            </style>
+            <p>Make a variable call box!</p>
+            <input type="text" id="inputBox" placeholder="Enter code">
+            <button id = 'submitBoxName'>Submit</button>
+            <p>Choose a value name and put it into box!</p>
+            <ul>
+                <li>&bull; wood_white</li>
+                <li>&bull; wood_brown</li>
+                <li>&bull; wood_green</li>
+            </ul>
+            <input type="text" id="inputVariable" placeholder="Enter code">
+            <button id = 'submitVariableName'>Submit</button>
+            <p id = callBox></p>
+            <p id = callValue></p>
+        </div>
+        </div>
+
+        <div class = "lessonMiddle lessonpage4">
+            <h1>Different ways to declare variables:</h1>
+            <h2>Const vs. let</h2>
+            <p>There are multiple ways to declare variables. Other than the let we talked about, there is also const and var.</p>
+            <h4>Const:</h4>
+            <p>By using const, you can't change the value of a variable in the same way you can with let. You need to find the line where you declared the variable to change its value directly. If you do this:
+            </p>
+            <code>const arrow = “Go to right”;</code>
+            <br>
+            <code>arrow = “Go to left”;</code>
+            <code>//You will get an error.</code>
+        </div>
+        <div class = "lessonMiddle lessonpage5">
+            <p>You can think of let as a "snap-on battery box" because you can easily open the battery box and change the battery (the value of the variable). On the other hand, const is like a "screw-down battery box," which requires a tool (finding the line where the constant is declared and substituting the old value with the new value) to open and replace the battery inside. The process of finding the right tool refers to needing to find the line where the variable is declared, unlike let, where the value can be reassigned easily.
+            </p>
+
+        </div>
+        <div class = "lessonMiddle lessonpage6">
+            <div id = "overlapVariableDeclaration"></div>
+            <script src = 'overlapVariableActivity.js'></script>
+            <style>
+                Canvas{
+                    position: relative;
+                    z-index: 2;
+                }
+            </style>
+                        <p>Declear a let variable call ufo</p>
+                        <input type="text" id="inputUFO" placeholder="Enter code">
+                        <button id = 'submitUFOName'>Submit</button>
+                        <p>Choose an alien and put it into ufo!</p>
+                        <ul>
+                            <li>&bull; alien_Yellow</li>
+                            <li>&bull; alien_Beige</li>
+                            <li>&bull; alien_Green</li>
+                        </ul>
+                        <input type="text" id="inputAlien" placeholder="Enter code">
+                        <button id = 'submitAlien'>Submit</button>
+                        <p id = callUFO></p>
+                        <p id = callAlien></p>
+                        
+                        <div id = "overlapVariableDeclaration2"></div>
+                        <p>Declear a const variable call ufo</p>
+                        <input type="text" id="inputUFO2" placeholder="Enter code">
+                        <button id = 'submitUFOName2'>Submit</button>
+                        <p>Choose an alien and put it into ufo!</p>
+                        <ul>
+                            <li>&bull; alien_Yellow</li>
+                            <li>&bull; alien_Beige</li>
+                            <li>&bull; alien_Green</li>
+                        </ul>
+                        <input type="text" id="inputAlien2" placeholder="Enter code">
+                        <button id = 'submitAlien2'>Submit</button>
+                        <p id = callUFO2></p>
+                        <p id = callAlien2></p>
+
+                        <div id = "overlapVariableDeclaration3"></div>
+                        <p>Declear a var variable call ufo</p>
+                        <input type="text" id="inputUFO3" placeholder="Enter code">
+                        <button id = 'submitUFOName3'>Submit</button>
+                        <p>Choose an alien and put it into ufo!</p>
+                        <ul>
+                            <li>&bull; alien_Yellow</li>
+                            <li>&bull; alien_Biege</li>
+                            <li>&bull; alien_Green</li>
+                        </ul>
+                        <input type="text" id="inputAlien3" placeholder="Enter code">
+                        <button id = 'submitAlien3'>Submit</button>
+                        <p id = callUFO3></p>
+                        <p id = callAlien3></p>
+        </div>
+    <div class="lessonButton">
+    <button class="lessonPageButton1" onclick="changePage(1)">1</button>
+    <button class="lessonPageButton2" onclick="changePage(2)">2</button>
+    <button class="lessonPageButton3" onclick="changePage(3)">3</button>
+    <button class="lessonPageButton1" onclick="changePage(4)">4</button>
+    <button class="lessonPageButton2" onclick="changePage(5)">5</button>
+    <button class="lessonPageButton3" onclick="changePage(6)">6</button>
+</div>
+    </div>
+    
+</body>
+</html>
