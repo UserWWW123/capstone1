@@ -8740,13 +8740,6 @@ p5.prototype.registerMethod('init', function p5playInit() {
 		});
 	};
 
-	p5play.playIntro = async function() {
-		console.log("p5play intro animation disabled");
-		p5play._hasPlayedIntro = true;
-		return Promise.resolve();
-	};
-	
-
 	let userDisabledP5Errors = p5.disableFriendlyErrors;
 	p5.disableFriendlyErrors = true;
 
