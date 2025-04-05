@@ -10,34 +10,81 @@
 
 </head>
 <body>
-     <style>
-     body{
-        overflow-x: hidden;
-        overflow-y: hidden;}
-        </style>
      <div class="levelBox">
-        <div class = "level">
-     <h1 id="level1Title" class = "levelTitles">Level 1: Introduction of JavaScript</h1>    
+        <div class = "levelContainer">
+            <div class = "levelTitles">
+                <p id="level1Title">Level 1: Introduction of JavaScript</p>    
+            </div>
+            <p class = "levelReminder levelReminder1">Click images to explore lessons and games!</p>
+            <i class="fa-solid fa-down-long levelReminderPointDown levelReminderPointDown1"></i>
+                <div class = "level">
+                <a href="lesson1.html">
+                <button class="levelButtons">
+                    <img class="levelImages levelDoor" src="assets/doorClosed_N.png"></img>
+                    <p class = "stageName">What is javascript (JS)?</p>
+                </button>
+                </a>
+                <a href = "lesson1.html">
+                <button class="levelButtons">
+                    <img class="levelImages levelArrow" src="assets/arrow_S.png"></img>
+                    <p class = "stageName">What is HTML and CSS?</p>
+                </button>
+                </a>
+                <a href = "lesson1.html">
+                <button class="levelButtons">
+                    <img class="levelImages levelDoor" src="assets/doorClosed_N.png"></img>
+                    <p class = "stageName">Summary:</p>
+                </button>
+                </a>
+            </div>
+                </div>
+                <p class="levelReminder levelReminder2"> Scroll to right or click the arrow to see next level!</p>
+                <i class="fa-solid fa-down-long levelReminderPointDown levelReminderPointDown2"></i>
 
-        <a href="lesson1.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/brb2yvDM/door-Closed-N.png"></img>
-            <p class = "stageName">What is javascript (JS)?</p>
-        </button>
-        </a>
-        <a href = "lesson1.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/HLcMZ3Wd/arrow-S.png"></img>
-            <p class = "stageName">What is HTML and CSS?</p>
-        </button>
-        </a>
-        <a href = "lesson1.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/brb2yvDM/door-Closed-N.png"></img>
-            <p class = "stageName">Summary:</p>
-        </button>
-        </a>
-        <button onclick = "goRight()" class = "levelMoveRight">
+                <button onclick = "goRight()" class = "levelMoveRight" class = "levelMoveRight1">
+                    <i class="fa-solid fa-caret-right levelGoToRightArrow"></i>
+                    <p>Go to Next Level!</p>
+                </button>
+                <script>
+                    function goRight(){
+                        let box = document.querySelector('.levelBox');
+                        box.scrollBy({ left: 1100, behavior: "smooth"});
+                    }
+                </script>
+
+        <div class = "levelContainer">
+            <div class = "levelTitles">
+                <p id="level1Title">Level 2: Variables</p>    
+            </div>
+                <div class = "level">
+                    <a href="variables.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelDoor" src="assets/doorClosed_N.png"></img>
+                        <p class = "stageName">Variables Introduction</p>
+                    </button>
+                    </a>
+                    <a href = "variables.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelArrow" src="assets/arrow_S.png"></img>
+                        <p class = "stageName">Create a variable & Add a value to the variable</p>
+                    </button>
+                    </a>
+                    <a href = "variables.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelDoor" src="assets/doorClosed_N.png"></img>
+                        <p class = "stageName">Small Game</p>
+                    </button>
+                    </a>
+                    <a href="stage1.html">
+                        <button class="levelButtons">
+                            <img class="levelImages levelArrow" src="assets/arrow_S.png"></img>
+                            <p class = "stageName">Variable Game</p>
+                        </button>
+                        </a>
+                    </div>
+           </div>
+
+           <button onclick = "goRight()" class = "levelMoveRight" class = "levelMoveRight1">
             <i class="fa-solid fa-caret-right levelGoToRightArrow"></i>
             <p>Go to Next Level!</p>
         </button>
@@ -47,35 +94,24 @@
                 box.scrollBy({ left: 1100, behavior: "smooth"});
             }
         </script>
-        </div>
-        <div class = "level">
-        <h1 id="level2Title" class="levelTitles">Level 2: Variables</h1>    
-         <a href="variables.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/brb2yvDM/door-Closed-N.png"></img>
-            <p class = "stageName">Variables Introduction</p>
-        </button>
-        </a>
-        <a href = "variables.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/HLcMZ3Wd/arrow-S.png"></img>
-            <p class = "stageName">Create a variable & Add a value to the variable</p>
-        </button>
-        </a>
-        <a href = "variables.html">
-        <button class="levelButtons">
-            <img class="levelImages" src="https://i.postimg.cc/brb2yvDM/door-Closed-N.png"></img>
-            <p class = "stageName">Small Game</p>
-        </button>
-        </a>
-        </div>
-            <a href="stage1.html">
-           <button class="levelButtons">
-               <img class="levelImages" src="https://i.postimg.cc/HLcMZ3Wd/arrow-S.png"></img>
-               <p class = "stageName">Variable Game</p>
-           </button>
-           </a>
-           </div>
 
+           <div class = "main-nav">
+            <i class="fa-solid fa-bars" id = "menu-icon"></i>
+            <div class = "nav-dropdown" id = "nav-menu">
+                <a href = "index.html" >Home</a>
+                <a href = "note.html">Note</a>
+                <a class = "active" href = "levelsPage.html">Learn</a>
+                <a href = "stage1.html">Game</a>
+        </div>
+        <script>
+            document.getElementById("menu-icon").addEventListener("click", function(){
+                document.getElementById("nav-menu").classList.toggle("show");
+            });
+            window.addEventListener("click", function(){
+                if (!event.target.matches("#menu-icon")){
+                    document.getElementById("nav-menu").classList.remove("show");
+                }
+            });
+        </script>
 </body>
 </html>

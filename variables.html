@@ -12,12 +12,11 @@
     <script src="p5play (1).js"></script>
     <script src = 'overlapVariableActivity.js'></script>
 
-
 </head>
-<body id="lessonPage">
+<body class="lessonPage">
     <div class="lesson">
     <div class= "lessonTop">
-        <h1 class="lessonTitle">Level 2: Variables</h1>
+        <p class="lessonTitle">Level 2: Variables</p>
         <div class="toolButton">
         <button class="takeNote" onclick="toggleNoteIframe()">
             <i class="fa-solid fa-note-sticky"></i>
@@ -32,7 +31,7 @@
     <iframe id="noteIframe" src="note.html"></iframe>
     </div>
     <div class = "lessonMiddle lessonpage1">
-        <h1>Variables:</h1>
+        <h2>Variables:</h2>
         <p>Variables are used to make the computer remember information to display or change. It is like a storing game. You can organize your storage box by adding a label for where the T-shirt belongs to the ‘clothing’ box. In this case, the variable is clothing, and the content inside is value. And it look like this:
         </p>
         <code>let clothing = “T-shirt”</code>
@@ -57,26 +56,27 @@
 </div>
     <div class = "lessonMiddle lessonpage3 boxActivity">
         <div id = "box">
-            <script src="boxActivity.js"></script>
+            <p id = callBox></p>
+            <p id = callValue></p>
             <style>
                 Canvas{
                     position: relative;
                     z-index: 2;
                 }
             </style>
+            <div id="variableText" >
             <p>Make a variable call box!</p>
-            <input type="text" id="inputBox" placeholder="Enter code">
-            <button id = 'submitBoxName'>Submit</button>
+            <input class ='inputBoxes' type="text" id="inputBox" placeholder="Enter code">
+            <button class ='submitBoxes' id = 'submitBoxName'>Submit</button>
             <p>Choose a value name and put it into box!</p>
             <ul>
                 <li>&bull; wood_white</li>
                 <li>&bull; wood_brown</li>
                 <li>&bull; wood_green</li>
             </ul>
-            <input type="text" id="inputVariable" placeholder="Enter code">
-            <button id = 'submitVariableName'>Submit</button>
-            <p id = callBox></p>
-            <p id = callValue></p>
+            <input class ='inputBoxes' type="text" id="inputVariable" placeholder="Enter code">
+            <button class ='submitBoxes' id = 'submitVariableName'>Submit</button>
+        </div>
         </div>
         </div>
 
@@ -98,6 +98,9 @@
 
         </div>
         <div class = "lessonMiddle lessonpage6">
+            <div id="declearActivity">
+            <p style="font-weight: bold; background-color: #e4d7bf; padding: 10px;">Declare a ufo variable using different methods! And choose an alien to put into the ufo!</p>
+            <div id="letBox">
             <div id = "overlapVariableDeclaration"></div>
             <script src = 'overlapVariableActivity.js'></script>
             <style>
@@ -106,50 +109,61 @@
                     z-index: 2;
                 }
             </style>
+            <div class="BoxText">
                         <p>Declear a let variable call ufo</p>
-                        <input type="text" id="inputUFO" placeholder="Enter code">
-                        <button id = 'submitUFOName'>Submit</button>
+                        <br>
+                        <input class ='inputBoxes' type="text" id="inputUFO" placeholder="Enter code">
+                        <button class ='submitBoxes' id = 'submitUFOName'>Submit</button>
+                        <br>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
                             <li>&bull; alien_Yellow</li>
                             <li>&bull; alien_Beige</li>
                             <li>&bull; alien_Green</li>
                         </ul>
-                        <input type="text" id="inputAlien" placeholder="Enter code">
-                        <button id = 'submitAlien'>Submit</button>
+                        <input class ='inputBoxes' type="text" id="inputAlien" placeholder="Enter code">
+                        <button class ='submitBoxes' id = 'submitAlien'>Submit</button>
                         <p id = callUFO></p>
                         <p id = callAlien></p>
-                        
+                    </div>
+                </div>
+
+                    <div id = 'constBox'>
                         <div id = "overlapVariableDeclaration2"></div>
+                        <div class="BoxText">
                         <p>Declear a const variable call ufo</p>
-                        <input type="text" id="inputUFO2" placeholder="Enter code">
-                        <button id = 'submitUFOName2'>Submit</button>
+                        <input class ='inputBoxes' type="text" id="inputUFO2" placeholder="Enter code">
+                        <button class ='submitBoxes' id = 'submitUFOName2'>Submit</button>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
                             <li>&bull; alien_Yellow</li>
                             <li>&bull; alien_Beige</li>
                             <li>&bull; alien_Green</li>
                         </ul>
-                        <input type="text" id="inputAlien2" placeholder="Enter code">
-                        <button id = 'submitAlien2'>Submit</button>
                         <p id = callUFO2></p>
-                        <p id = callAlien2></p>
+                    </div>
+                    </div>
 
+                    <div id="varBox">
                         <div id = "overlapVariableDeclaration3"></div>
-                        <p>Declear a var variable call ufo</p>
-                        <input type="text" id="inputUFO3" placeholder="Enter code">
-                        <button id = 'submitUFOName3'>Submit</button>
+                        <div class="BoxText">
+                        <p>Declear a var variable call ufo and put a alien into the ufo!</p>
+                        <input class ='inputBoxes' type="text" id="inputUFO3" placeholder="Enter code">
+                        <button class ='submitBoxes' id = 'submitUFOName3'>Submit</button>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
                             <li>&bull; alien_Yellow</li>
                             <li>&bull; alien_Biege</li>
                             <li>&bull; alien_Green</li>
                         </ul>
-                        <input type="text" id="inputAlien3" placeholder="Enter code">
-                        <button id = 'submitAlien3'>Submit</button>
+                        <input class ='inputBoxes' type="text" id="inputAlien3" placeholder="Enter code">
+                        <button class ='submitBoxes' id = 'submitAlien3'>Submit</button>
                         <p id = callUFO3></p>
-                        <p id = callAlien3></p>
+                    </div>
+                </div>
         </div>
+    </div>
+
     <div class="lessonButton">
     <button class="lessonPageButton1" onclick="changePage(1)">1</button>
     <button class="lessonPageButton2" onclick="changePage(2)">2</button>

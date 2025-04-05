@@ -15,19 +15,19 @@ showNotes();
 function createNoteWithContent(noteId, content = "", noteTitle=""){
     let inputBox = document.createElement("div");
     let trashIcon = document.createElement('i');
-    let inputText = document.createElement('p');
-    let inputTitle = document.createElement('h1');
+    let inputText = document.createElement('textarea');
+    let inputTitle = document.createElement('textarea');
 
     inputBox.className = "input-box";
     inputText.className = "content";
-    inputText.setAttribute("contenteditable", "true");
-    inputTitle.setAttribute("contenteditable", "true");
-    inputText.innerHTML = content;
-    inputTitle.innerHTML = noteTitle;
-    inputTitle.innerHTML = noteTitle;
-
-    trashIcon.className = "fa-solid fa-trash trash-icon";
     inputTitle.className = "noteTitle";
+    trashIcon.className = "fa-solid fa-trash trash-icon";
+    
+    inputText.placeholder = "Type something here...";
+    inputTitle.placeholder = "Add a title..."
+
+    inputText.value = content;
+    inputTitle.value = noteTitle;
 
     // Set unique ID as a data attribute
     inputBox.dataset.noteId = noteId;
@@ -45,8 +45,8 @@ function updatesStorage(){
     const notesArray = Array.from(notes).map(note => {
         return{
             id: note.dataset.noteId, 
-            content: note.querySelector(".content").innerHTML,
-            noteTitle: note.querySelector(".noteTitle").innerHTML
+            content: note.querySelector(".content").value,
+            noteTitle: note.querySelector(".noteTitle").value
 
         };
     });
@@ -70,7 +70,7 @@ createButton.addEventListener("click", () => {
 
 //update storage if anything add in the box
 notesContainer.addEventListener("input", function (e) {
-    if (e.target.classList.contains("content", "noteTitle")) {
+    if (e.target.classList.contains("content") || e.target.classList.contains("noteTitle")) {
         updatesStorage();
     }
 });

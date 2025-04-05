@@ -9,14 +9,30 @@
     </head>
 <body>
     <div class="Note">
-    <div class="notepage">
-        <div class="notes__sidebar">
+        <div id = "noteButtonContainer">
             <button class="notes__add">Add Note</button>
-            </div>
         </div>
         <div class="noteSection">
         <div class="notes__preview"></div>
         </div>
+        <div class = "main-nav">
+            <i class="fa-solid fa-bars" id = "menu-icon"></i>
+            <div class = "nav-dropdown" id = "nav-menu">
+                <a href = "index.html" >Home</a>
+                <a class = "active"href = "note.html">Note</a>
+                <a href = "levelsPage.html">Learn</a>
+                <a href = "stage1.html">Game</a>
+        </div>
+        <script>
+            document.getElementById("menu-icon").addEventListener("click", function(){
+                document.getElementById("nav-menu").classList.toggle("show");
+            });
+            window.addEventListener("click", function(){
+                if (!event.target.matches("#menu-icon")){
+                    document.getElementById("nav-menu").classList.remove("show");
+                }
+            });
+        </script>
         <!--
         <div class="notes__preview">
             <input class="notes__title" type="text" placeholder="Enter a title...">
