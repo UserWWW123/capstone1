@@ -64,14 +64,6 @@
         </p>
         <p>The string is now saved into the memory area associated with the variable. We can assess it by the variable name:</p>
         <code>alert(ball);</code>
-        <!--<div class = 'choices'>
-            <button class = "choicesButton" onclick = "checkAnswer('answer1')">answer 1</button>
-            <button class = "choicesButton" onclick = "checkAnswer('answer2')">answer 2</button>
-            <button class = "choicesButton" onclick = "checkAnswer('answer3')">answer 3</button>
-            <button class = "choicesButton" onclick = "checkAnswer('answer4')">answer 4</button>
-            <p id="answer"></p>
-        </div>   
-    --> 
 </div>
     <div class = "lessonMiddle lessonpage3 boxActivity">
         <div id = "box">
@@ -99,25 +91,106 @@
         </div>
         </div>
 
-        <div class = "lessonMiddle lessonpage4">
-            <h1>Different ways to declare variables:</h1>
-            <h2>Const vs. let</h2>
+        <div class = "lessonMiddle lessonpage4 boxActivity">
+            <p>We can also declare multiple variables in one line:</p>
+            <p><code>let ball = 'basketball'; amount = 25; color = 'orange';</code></p>
+            <p>But it is better to use the multiline variant:</p>
+            <p><code>let ball = 'basketball';</code></p>
+            <p><code>let amount = 25;</code></p>
+            <p><code>let color = 'orange';</code></p>
+            <p>It may look cumbersome, but you will thank yourself later. Because it is much easier to read when you have a lot of variables!</p>        
+            </div>
+
+        <div class = "lessonMiddle lessonpage5 boxActivity">
+            <h2>Never claim a variable twice:</h2>
+            <p>A variable can only be declared once. Make sure to make the variable name one you can remember and unique. But you can change the value inside the variable anytime by doing this:</p>
+            
+            <p><code>let ball = 'basketball'; // declare ball</code></p>
+            <p><code>ball = 'softball'; // value changed</code></p>
+        
+            <p>In the example above, the variable <code>ball</code> is declared once, and its value is changed later from 'basketball' to 'softball'. You can change the value of a variable as many times as you need, but the declaration can only happen once.</p>        
+            <h2>We can also declare two variables and copy data from one into another:</h2>
+            <p><code>
+                let StoneCount = 2; // declare StoneCount
+                </code></p>
+            <p>
+                <code>
+                    let stoneAdded = 4;  // declare stoneAdded
+                </code>
+            </p>
+            <p>
+                <code>
+                    StoneCount = StoneCount + stoneAdded; // now StoneCount holds the sum of StoneCount and stoneAdded
+                </code>
+            </p>
+        </div>
+
+        <div class = "lessonMiddle lessonpage6">
+            <h2>Different ways to declare variables:</h2>
+            <h3>Const vs. let vs. var</h3>
             <p>There are multiple ways to declare variables. Other than the let we talked about, there is also const and var.</p>
+            <h4>Var</h4>
+            <p>Var is very similar to let. You can change the value. Var is the older version of let. They have a very similar function.</p>
+
             <h4>Const:</h4>
             <p>By using const, you can't change the value of a variable in the same way you can with let. You need to find the line where you declared the variable to change its value directly. If you do this:
             </p>
             <code>const arrow = “Go to right”;</code>
             <br>
+            <br>
             <code>arrow = “Go to left”;</code>
             <code>//You will get an error.</code>
         </div>
-        <div class = "lessonMiddle lessonpage5">
+        <div class = "lessonMiddle lessonpage7">
             <p>You can think of let as a "snap-on battery box" because you can easily open the battery box and change the battery (the value of the variable). On the other hand, const is like a "screw-down battery box," which requires a tool (finding the line where the constant is declared and substituting the old value with the new value) to open and replace the battery inside. The process of finding the right tool refers to needing to find the line where the variable is declared, unlike let, where the value can be reassigned easily.
             </p>
-
         </div>
-        <div class = "lessonMiddle lessonpage6">
+        <div class = "lessonMiddle lessonpage8">
+            <h2>Variable Naming:</h2>
+            <p>There are two limitations on variable names in JavaScript:</p>
+            <ul>
+                <li>The name must contain only letters, digits, or the symbols <code>$</code> and <code>_</code>.</li>
+                <li>The first character must not be a digit.</li>
+            </ul>
+
+            <p><strong>Examples of valid names:</strong></p>
+            <ul>
+                <li><code>let day1;</code></li>
+                <br>
+                <li><code>let_;</code></li>
+            </ul>
+
+            <p><strong>Examples of invalid names:</strong></p>
+            <ul>
+                <li><code>let zoneGravity;</code></li>
+                <br>
+                <li><code>let 5C;</code></li>
+            </ul>
+            <p>Every variable needs a name. Variable names need to be on a single line and without space in between. When there are multiple words in one variable, we make the first letter of each word capitalized, like this: lessGravityArea.
+            </p>
+            </div>
+
+        <div class = "lessonMiddle lessonpage9">
+            <p><strong>Tips:</strong></p>
+            <ul>
+              <li>&#8226; The dollar sign <code>$</code> and the underscore <code>_</code> can also be used in names.</li>
+              <li>&#8226; <strong>AAA</strong> and <strong>aaa</strong> are different variables → lowercase or uppercase matters!</li>
+              <li>&#8226; There is a list of reserved words that you cannot use as variable names because they are used by the language itself.</li>
+            </ul>
+            <p>For example:</p>
+            <ul>
+              <li>&#8226; <code>let</code></li><br>
+              <li>&#8226; <code>const</code></li><br>
+              <li>&#8226; <code>class</code></li><br>
+              <li>&#8226; <code>function</code></li><br>
+              <li>&#8226; <code>return</code></li><br>
+            </ul>
+            
+            </div>
+
+        <div class = "lessonMiddle lessonpage10">
             <div id="declearActivity">
+            <h2>Let Practice!</h2>
             <p style="font-weight: bold; background-color: #e4d7bf; padding: 10px;">Declare a ufo variable using different methods! And choose an alien to put into the ufo!</p>
             <div id="letBox">
             <div id = "overlapVariableDeclaration"></div>
@@ -181,7 +254,52 @@
                     </div>
                 </div>
         </div>
-    </div>
+            </div>
+            <div class="lessonMiddle lessonpage11" id="lessonPage11">
+                <p><strong>Which answer declares a variable correctly?</strong></p>
+                <div class="choices">
+                    <button class="choicesButton" onclick="checkAnswer('answer1', 'answer3', 'lessonPage11')"><code>Let cat = 'feed'</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer2', 'answer3', 'lessonPage11')"><code>Let dog = sleeping;</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer3', 'answer3', 'lessonPage11')"><code>Let frog = 'eating flies';</code></button>
+                    <p class="answer"></p>
+                </div>
+            </div>
+            
+            <div class="lessonMiddle lessonpage12" id="lessonPage12">
+                <p><strong>What should we do if we want to change the value inside a variable?</strong></p>
+                <div class="choices">
+                    <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage12')"><code>Use const</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage12')"><code>Use let and type 'let variable = newValue'</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer3', 'answer2', 'lessonPage12')"><code>Use let and type 'let variable = newValue';</code></button>
+                    <p class="answer"></p>
+                </div>
+            </div>
+                     
+        
+            <script>
+                function checkAnswer(answer, correctAnswer, lessonId) {
+                    const response = document.querySelector(`#${lessonId} .answer`);
+                    if (response) {
+                        if (answer === correctAnswer) {
+                            response.innerHTML = "Correct!";
+                            response.classList.remove("wrongAnswer");
+                            response.classList.add("rightAnswer");
+                        } else {
+                            response.innerHTML = "Try Again!";
+                            response.classList.remove("rightAnswer");
+                            response.classList.add("wrongAnswer");
+                        }
+                    }
+                }
+            </script>
+            <!--<div class = 'choices'>
+            <button class = "choicesButton" onclick = "checkAnswer('answer1')">answer 1</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer2')">answer 2</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer3')">answer 3</button>
+            <button class = "choicesButton" onclick = "checkAnswer('answer4')">answer 4</button>
+            <p id="answer"></p>
+        </div>   
+    --> 
 
     <div class="lessonButton">
     <button class="lessonPageButton1" onclick="changePage(1)">1</button>
@@ -190,6 +308,14 @@
     <button class="lessonPageButton1" onclick="changePage(4)">4</button>
     <button class="lessonPageButton2" onclick="changePage(5)">5</button>
     <button class="lessonPageButton3" onclick="changePage(6)">6</button>
+    <button class="lessonPageButton1" onclick="changePage(7)">7</button>
+    <button class="lessonPageButton2" onclick="changePage(8)">8</button>
+    <button class="lessonPageButton3" onclick="changePage(9)">9</button>
+    <button class="lessonPageButton1" onclick="changePage(10)">10</button>
+    <button class="lessonPageButton2" onclick="changePage(11)">11</button>
+    <button class="lessonPageButton3" onclick="changePage(12)">12</button>
+
+
 </div>
     </div>
     

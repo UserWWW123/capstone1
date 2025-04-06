@@ -11,15 +11,6 @@ function changePage(pageNumber) {
     }
 }
 
-function checkAnswer(answer) {
-    const response = document.getElementById('answer');
-    if (answer === 'answer1') {
-        response.innerHTML = "Correct!";
-    } else {
-        response.innerHTML = "Wrong!";
-    }
-}
-
 function toggleNoteIframe(){
     let iframe = document.getElementById("noteIframe");
     if(iframe.style.display === "none" || iframe.style.display === ""){

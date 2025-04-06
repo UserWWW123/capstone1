@@ -51,13 +51,14 @@ button{
     font-family: 'Monaco', monospace;
 }
 
-.homePage{
-    background-image: url("https://i.postimg.cc/G2XdCmNJ/Sample.png");
+#homePage{
+    background-image: url("assets/background.png");
     background-size: cover;
     background-position:center;
-    background-repeat: no-repeat;
     height:100vh;
-    margin:0;
+    width: 100vw;
+    margin-bottom:0;
+    overflow: hidden;
 }
 #title{
     font-size:70px;
@@ -415,10 +416,12 @@ margin-bottom: 0;
   }
 
 .wrong {
-    background-color: red;
+    background-color: #D32F2F;
+    color: white;
   }
   .right {
-    background-color: green;
+    background-color: #4CAF50;
+    color: white;
   }
 
   .draggable-list {
@@ -477,9 +480,10 @@ Canvas{
 
 code {
     background-color: white;
-    padding: 1% 1%;
+    padding: 1vh 1vh;
     border-radius: 3px;
     white-space: nowrap;
+    font-size: 16px;
 }
 
 .nextLesson{
@@ -528,8 +532,6 @@ iframe body .buttons{
     width: 90%;
     height:80%;
     margin-left: 5%;
-}
-#answer{
 }
 .choicesButton{
     cursor: pointer;
@@ -616,6 +618,26 @@ iframe body .buttons{
 }
 
 /*lesson-variable*/
+.rightAnswer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #388E3C;
+    box-shadow: 0px 4px 6px rgba(0, 128, 0, 0.3);
+}
+
+.wrongAnswer {
+    background-color: #D32F2F; 
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #C62828; 
+    box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.3);
+}
+
 #box{
     position: relative;
     display: flex;
