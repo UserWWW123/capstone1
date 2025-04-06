@@ -1,19 +1,25 @@
 body{
     background-color: #dbb691ff;
     font-family: 'Monaco', monospace;
-    height:100%;
+    height:100vh;
     color:#a15e21;
 }
+#levelsPageContainer{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 #menu-icon{
     font-size: 30px;
 }
 .main-nav{
     position: fixed;
-    top: 10px;
+    top: 18px;
     right:10px;
     display: inline-block;
     background-color: rgba(255, 244, 230, 0.7);
     padding: 5px;
+    z-index: 10;
 }
 .active{
     background-color: #e4d7bf;
@@ -23,9 +29,11 @@ body{
     background-color: #f9f9f9;
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 10;
     min-width: 150px;
     right:0px;
+    margin-top: 10px;
+    z-index: 10;
 }
 .nav-dropdown a{
     display: block;
@@ -136,10 +144,12 @@ button{
     height: 98%;
     background-color: #fdb546ff;
     position: absolute;
-    z-index:-1;
     overflow-x: auto;
     display: flex;
     flex-direction: row;
+    scroll-snap-type: x mandatory;  /* Optional: add smooth snapping */
+    -webkit-overflow-scrolling: touch; /* Optional: for better scroll experience on mobile */
+
 }
 .levelContainer{
     display: flex;
@@ -244,11 +254,17 @@ button{
     outline: none;
 }
 
+/*stagePage*/
+.stagePageY{
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
 .stage1Container{
     display: grid;
-    grid-template-columns: 6fr 4fr; /*need to fix it*/
+    grid-template-columns: 6fr 4fr;
     grid-template-areas: 
-        "empty rightPanel";
+        "empty wholerightPanel";
     width: 100%;
     height: 100%;
 }
@@ -257,90 +273,86 @@ button{
     width: 100%;
     height: 100%;
 }
+.wholerightPanel{
+    grid-area: wholerightPanel;
+    z-index:10;
+}
 .rightPanel{
     grid-area: rightPanel;
     background-color: #f4eddfff;
-    z-index:1;
+    z-index:10;
     height: 100%;
+    width: 100%;
+    justify-items: center;
     display: grid;
-    grid-template-rows: 8% 30% 60%;
+    gap: 1vh;
+    grid-template-rows: 6vh 30vh 60vh;
     grid-template-areas: 
-        "rightPanelTitle"
+        "rightPaneltop"
         "rightPanelInstruction"
         "codingSection";
 }
 .empty{
     grid-area: empty;
 }
-#rightPanelTitle{
-    grid-area: rightPanelTitle;
-    margin-left: 50px;
-    font-weight: 40;
+.rightPaneltop{
+    grid-area: rightPaneltop;
+    width: 100%;
+    display: inline-block;
+    display: flex;
+    gap: 10px;    
+    align-items: center;
+    padding: 1vh 0 0 2vh;
     height: 100%;
 }
+#rightPanelTitle{
+    font-size:3vh;
+}
 .rightPanelInstruction{
+    position: relative;
     grid-area: rightPanelInstruction;
     background-color: #fdb546ff;
     width: 98%;
-    margin: 0 auto;
-    overflow-y: hidden;
     overflow-x: hidden;
+    padding: 0 10px;
     box-sizing: border-box;
-    height: 200px;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 40px;
+}
 
-}
 .stageNote{
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    margin-left: 30%;
 }
+
+
 li{
     list-style-type: none;
     background: #f4eddf;
     font-size: 100%;
     margin-bottom: 10px;
 }
-
-#previousLevel{
-    background: #f4eddf;
+.rightLeftButton{
+    background: transparent;
     color:#a15e21;
-    margin-right: 10px;
-    border-color: #dbb691ff; 
     padding: 1%;
-    position: absolute;
     border: none;
-    font-size: 40px;
-    height: 40px;
     cursor: pointer;
+    font-size: 5vh;
+    align-items: center;
 }
 
-#nextLevel{
-    background: #f4eddf;
-    color:#a15e21;
-    margin-left: 21%;
-    border-color: #dbb691ff; 
-    padding: 1%;
-    position: absolute;
-    border: none;
-    font-size: 40px;
-    height: 40px;
-    cursor: pointer;
-}
 .codingSection{
     background-color: #deab5dff;
-    height: 59%;
-    width: 38.6%;
-    font-size: 120%;
+    height: 100%;
+    width: 98%;
+    font-size: 100%;
     overflow-y: auto;
     overflow-x:hidden;
-    position: absolute;
-    top: 40%;
-    border: none;
-    min-height: 200px;
-    padding: 10px;
+    position: relative;
+    border: 3px solid #deab5dff;
+    padding-right: 0.5vh;
+    padding-left: 0.5vh;
+    padding-top: 0.5vh;
+    padding-bottom: 30vh;
+    box-sizing: border-box;
 }
 .toolBox::-webkit-scrollbar{
     display: none;
@@ -352,25 +364,24 @@ margin-bottom: 0;
 }
 
 .toolBox{
+  grid-area: toolBox;
   background-color: #a15e21ff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   position: absolute;
-  top: 10vh;
-  right: 40%;
+  right: 40vw;
+  top: 5vh;
   width: 12%;
   height: 50%;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 3;
 }
 
 .draggable-list li {
     background-color: #fdb546ff;
-    display: flex;
-    flex: 1;
-    margin-bottom: 10px;
     border: 2px solid #f4eddfff;
     width: 100%;
   }
@@ -384,17 +395,14 @@ margin-bottom: 0;
   .check-btn {
     background-color: #f4eddfff;
     border: none;
-    font-size: 16px;
-    padding: 10px 20px;
     cursor: pointer;
-    margin-bottom: 10px;
     position: absolute;
-    right: 590px;
-    bottom: 10px;
+    right: 40.5vw;
+    bottom: 1vh;
     z-index: 4;
-    width: 100px;
-    height: 80px;
-    font-size: 60px;
+    width: 6vw;
+    height: 10vh;
+    font-size: 300%;
     color: #a15e21ff;
   }
   
@@ -443,28 +451,26 @@ Canvas{
     bottom: 0%;
     z-index: 2;
 }
-#win{
-    position: absolute;
-    top: 30%;
+#winNote{
+    position:absolute;
+    top: 40%;
     right: 57%;
-    font-size: 300%;
-    text-align: center;
     z-index: 5;
-    padding-left: 7%;
-    padding-right: 7%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 1% 3%;
+    display: flex;
+    flex-direction: row;
+}
+#win{
+    font-size: 20px;
+    text-align: center;
 }
 #nextButton{
-    position: absolute;
     background-color: transparent;
     border: none;
-    font-size: 300%;
-    z-index: 6;
-    margin-top: 23.8%;
-    margin-left: 33%;
+    font-size: 50px;
     color: #bf8449ff;
     font-weight: 700;
+    cursor: pointer;
 }
 
 /*lesson1*/
@@ -495,18 +501,12 @@ code {
     overflow: hidden;
 }
 
+
 .lessonTop{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
     width: 100%;
     height: 100%;
-}
-.lessonTitle{
-    flex-grow:1;
-    text-align: center;
-    padding-left: 15%;
+    justify-items: center;
 }
 .lessonMiddle{
     display: none;
@@ -545,33 +545,33 @@ iframe body .buttons{
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 0.5%;
     margin-bottom: 0.5%;
 }
 .lessonPageButton1{
     background-color: #f4eddfff;    
     border: none;
-    padding: 10px 15px;
+    padding: 0.5% 1%;
     font-weight: bold;
-    font-size:15px;
+    font-size:100%;
     color: #a15e21ff;
     cursor: pointer;
 }
 .lessonPageButton2{
     background-color: #ed8b1cff;   
     border: none;
-    padding: 10px 15px;
+    padding: 0.5% 1%;
     font-weight: bold;
-    font-size:15px;
+    font-size:100%;
     color: #f4eddf;
     cursor: pointer;
 }
 .lessonPageButton3{
     background-color: #a15e21ff;   
     border: none; 
-    padding: 10px 15px;
+    padding: 0.5% 1%;
     font-weight: bold;
-    font-size:15px;
+    font-size:100%;
     color: #f4eddfff;
     cursor: pointer;
 }
@@ -579,12 +579,13 @@ iframe body .buttons{
 .toolButton{
     width: 220px;
     height: 40px;
-    padding:0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 1%;
     gap: 10px;
+    position: absolute;
+    right: 2.5%;
+    top: 10%;
 }
 .lessonpage1{
     display: block;
@@ -597,9 +598,9 @@ iframe body .buttons{
 #noteIframe{
     display: none;
     position: absolute;
-    right: 15px;
-    top: 13%;
-    height: 25%;
+    right: 0vh;
+    top: 8vh;
+    height: 33vh;
     resize: both;
     z-index: 5;
     direction: rtl;
@@ -682,6 +683,10 @@ iframe body .buttons{
     left: 13.5%;
 }
 
+#varBox{
+    padding-bottom: 2%;
+}
+
 /*note*/
 #noteButtonContainer{
     display: flex;
@@ -697,20 +702,22 @@ iframe body .buttons{
     border-radius: 7px;
     color: #ffffff;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 100%;
     font-weight: bold;
-    padding: 6px;
+    padding: 1vh;
 }
 
 .notes__add:hover{
     background: #00af8c;
 }
 
+.noteSection{
+    justify-items: center;
+}
 .notes__preview{
     overflow-y: auto;
     width: 98%;
     height: 100%;
-    margin: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;

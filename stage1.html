@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Levels</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-
     <script src="game.js"></script>
     <script src="lesson1.js"></script>
 
@@ -16,54 +14,76 @@
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
-
+<body class ="stagePageY">
+    
     <div class="stage1Container">
         <div class="empty" id="gameContainer">
+        <div id="winNote">
             <p id = "win"></p>
+            <a href = "index.html"> <!--change the link to next game-->
             <button id="nextButton"></button>
+        </a>
         </div>
+        </div>
+        <div class="wholerightPanel">
+            <div class="toolBox">
+                <p id="toolBoxTitle">ToolBox</p>
+                <ul class="draggable-list" id="draggable-list"></ul>
+            </div>
+            <button class="check-btn" id="check">
+                <i class="fa-solid fa-play"></i>
+              </button>    
         <div class="rightPanel">
         <div class="rightPaneltop">
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+                    <a href = "stage1.html">Game</a>
+            </div>
+            <script>
+                document.getElementById("menu-icon").addEventListener("click", function(){
+                    document.getElementById("nav-menu").classList.toggle("show");
+                });
+                window.addEventListener("click", function(){
+                    if (!event.target.matches("#menu-icon")){
+                        document.getElementById("nav-menu").classList.remove("show");
+                    }
+                });
+            </script>
+    </div>
             <a href="index.html">
-            <button id="previousLevel">
+            <button class = "rightLeftButton"id="previousLevel">
                 <i class="fa-solid fa-caret-left"></i></button>
             </a>
+            <h1 id="rightPanelTitle">Level 1 of 20</h1>
             <a href="stage2.html">
-                <button id="nextLevel">
+            <button class = "rightLeftButton" id="nextLevel">
                 <i class="fa-solid fa-caret-right"></i></button>
             </a>
             <button class="takeNote stageNote" onclick="toggleNoteIframe()">
-                <i class="fa-slessonIframeolid fa-note-sticky"></i>
+                <i class="fa-solid fa-note-sticky"></i>
                 Take Note</button>
-            <h1 id="rightPanelTitle">Level 1 of 20</h1>
-        </div>
-        <div class="toolBox">
-            <p id="toolBoxTitle">Tool Box</p>
-            <ul class="draggable-list" id="draggable-list"></ul>
-
+                <iframe id="noteIframe" src="note.html"></iframe>
         </div>
 
-        <div class="playButton"></div>
-        <div class="bluePrint"></div>
         <div class="rightPanelInstruction">
-            <iframe class = "instructionSection" src="lesson1.html"></iframe>
-        <iframe id="noteIframe" src="note.html"></iframe>
+            <p>Mission: An alien is trapped! It needs your help!
+            <p>Declare variables and assign values to them.</p>         
+            <p>Drag the code blocks from the toolbox to the space below in the correct sequence.</p>                    
+            <p>Click the checkbox to submit your code!</p>                    
+            <p>"Scroll down in the toolbox to see more code boxes!"</p>
         </div>
-            
             <div class="codingSection">
             </div>
                 
         </div>
-        <button class="check-btn" id="check">
-            <i class="fa-solid fa-play"></i>
-          </button>        
-        <button id = "correct">Some blocks are in the wrong order. Click to try again</button>
-          <button class="reset-btn" id="reset">
-              <i class="fa-solid fa-play"></i>
-              </button>
-            
     </div>
+</div>
+    
+    <button id = "correct">Some blocks are in the wrong order. Click to try again</button>
     <script src="test.js"></script>
 </body>
 </html>

@@ -11,7 +11,8 @@ function preload(){
 }
 
 function setup() {
-    createCanvas(windowWidth*0.48, windowHeight);
+    const container = document.getElementById('gameContainer');
+    createCanvas(container.offsetWidth, container.offsetHeight);
     background('#dbb691ff');
     world.gravity.y = 5;
     block = new Sprite(100,270, 50, 'pentagon');
@@ -106,8 +107,8 @@ function update(){
         }
         if(alien.x === width/2){
             const winmessage = document.getElementById('win').innerHTML = "Mission Accomplished! <br> Go to next level";
-            document.getElementById('win').style.backgroundColor = "rgba(244, 237, 223, 0.835)";
-            const nextButton = document.getElementById('nextButton').innerHTML =">";
+            document.getElementById('winNote').style.backgroundColor = "rgba(244, 237, 223, 0.835)";
+            const nextButton = document.getElementById('nextButton').innerHTML = '<i class="fa-solid fa-caret-right"></i>';
         }
     }
 }

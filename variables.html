@@ -27,8 +27,27 @@
                 Next: Variables Game
             </button>
             </a>
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+                    <a href = "stage1.html">Game</a>
+            </div>
+    </div>
     </div>
     <iframe id="noteIframe" src="note.html"></iframe>
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function(){
+            document.getElementById("nav-menu").classList.toggle("show");
+        });
+        window.addEventListener("click", function(){
+            if (!event.target.matches("#menu-icon")){
+                document.getElementById("nav-menu").classList.remove("show");
+            }
+        });
+    </script>
     </div>
     <div class = "lessonMiddle lessonpage1">
         <h2>Variables:</h2>
@@ -147,7 +166,7 @@
                     <div id="varBox">
                         <div id = "overlapVariableDeclaration3"></div>
                         <div class="BoxText">
-                        <p>Declear a var variable call ufo and put a alien into the ufo!</p>
+                        <p>Declear a var variable call ufo</p>
                         <input class ='inputBoxes' type="text" id="inputUFO3" placeholder="Enter code">
                         <button class ='submitBoxes' id = 'submitUFOName3'>Submit</button>
                         <p>Choose an alien and put it into ufo!</p>
