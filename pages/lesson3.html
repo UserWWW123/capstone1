@@ -4,99 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>variables</title>
-    <link rel="stylesheet" href="/styles.css">
-    <script src="lesson1.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="https://q5js.org/q5.js"></script>
     <script src="https://p5play.org/v3/planck.min.js"></script>
-    <script src="p5play (1).js"></script>
-    <script src = 'overlapVariableActivity.js'></script>
+    <script src="/js/p5play (1).js"></script>
+    <script src = '/js/overlapVariableActivity.js'></script>
 
 </head>
-<body>
+<body class="lessonPage">
     <div class="lesson">
-        <div class= "lessonTop">
-            <p class="lessonTitle">Level 2: Variables</p>
-            <div class="toolButton">
-            <button class="takeNote" onclick="toggleNoteIframe()">
-                <i class="fa-solid fa-note-sticky"></i>
-                Take Note</button>
-                <a href="stage1.html">
-                    <button class="nextLesson">
-                    <i class="fa-solid fa-caret-right"></i>
-                    Next: Variables Game
-                </button>
-                </a>
-                <div class = "main-nav" id="main-nav">
-                    <i class="fa-solid fa-bars" id = "menu-icon"></i>
-                    <div class = "nav-dropdown" id = "nav-menu">
-                        <a href = "index.html" >Home</a>
-                        <a class = "active"href = "note.html">Note</a>
-                        <a href = "levelsPage.html">Learn</a>
-                        <a href = "stage1.html">Game</a>
+    <div class= "lessonTop">
+        <p class="lessonTitle">Level 3: JavaScript Operators</p>
+        <div class="toolButton">
+        <button class="takeNote" onclick="toggleNoteIframe()">
+            <i class="fa-solid fa-note-sticky"></i>
+            Take Note</button>
+            <a href="stage1.html">
+                <button class="nextLesson">
+                <i class="fa-solid fa-caret-right"></i>
+                Next: Variables Game
+            </button>
+            </a>
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "/index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+                    <a href = "stage1.html">Game</a>
+            </div>
+    </div>
+    </div>
+    <iframe id="noteIframe" src="note.html"></iframe>
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function(){
+            document.getElementById("nav-menu").classList.toggle("show");
+        });
+        window.addEventListener("click", function(){
+            if (!event.target.matches("#menu-icon")){
+                document.getElementById("nav-menu").classList.remove("show");
+            }
+        });
+    </script>
+    </div>
+    <div class = "lessonMiddle lessonpage1">
+        <h2>JavaScript Operators</h2>
+        <p>We can use operators to do math and create logic for the computer to function.</p>
+    
+        <h3>For example:</h3>
+        <p>Assignment operator (=): <code>let x = 100;</code></p>
+        <p>Multiplication operator (*): <code>let gravity = 10;</code></p>
+    
+        <h3>Types of Operators:</h3>
+        <p>In this lesson, you will learn about 5 types of operators: arithmetic operators, assignment operators, comparison operators, string operators, and logical operators. These are all operators that are commonly used in programming for beginners.</p>
+    
+        <ul>
+            <li>Arithmetic operators: Used for mathematical calculations (e.g. addition, subtraction).</li>
+            <li>Assignment operators: Used to assign values to variables (e.g. =, +=, -=).</li>
+            <li>Comparison operators: Used to compare two values (e.g. ==, ===, <, >).</li>
+            <li>String operators: Used to manipulate strings (e.g. + for concatenation).</li>
+            <li>Logical operators: Used for logical operations (e.g. &&, ||, !).</li>
+        </ul>
+    </div>
+    <div class = "lessonMiddle lessonpage2">
+        <h2>First, let's talk about arithmetic operators:</h2>
+        <h3>Arithmetic Operators:</h3>
+        <p>The arithmetic operators are often used in math calculations.</p>
+        <p>Here are the common arithmetic operators:</p>
+        <ul>
+            <li>= (Assignment)</li>
+            <li>+ (Addition)</li>
+            <li>- (Subtraction)</li>
+            <li>* (Multiplication)</li>
+            <li>/ (Division)</li>
+            <li>^ (Exponentiation)</li>
+        </ul>
+        <h3>For example:</h3>
+        <p><code>let x = 10;</code></p>
+        <p><code>let y = 5;</code></p>
+        <p><code>let result = x + y;</code></p>
+        <p><code>console.log(result);</code></p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems">
+                    <p><code>15</code></p>
                 </div>
+            </div>
+          </div>
+        <div>
+
         </div>
+    </div>
+
+    <div class = "lessonMiddle lessonpage3">
+        <h2>Arithmetic Operators</h2>
+        <p>There are 8 arithmetic operators in total:</p>
+        <ul>
+            <li>Addition <code>+</code></li>
+            <li>Subtraction <code>-</code></li>
+            <li>Multiplication <code>*</code></li>
+            <li>Division <code>/</code></li>
+            <li>Exponentiation <code>**</code></li>
+            <li>Remainder <code>%</code></li>
+            <li>Increment <code>++</code></li>
+            <li>Decrement <code>--</code></li>
+        </ul>
+        <p>Addition through exponentiation are all symbols we often use in math class.</p>
+        <p><code>let x = 2;</code></p>
+        <p><code>let y = 4;</code></p>  
+        <p><code>console.log(x + y);</code></p>
+        <p><code>console.log(x - y);</code></p>
+        <p><code>console.log(x * y);</code></p>
+        <p><code>console.log(x / y);</code></p>
+        <p><code>console.log(x ** y);</code></p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>6</code></p></div>
+                <div class="consoleContentItems"><p><code>-2</code></p></div>
+                <div class="consoleContentItems"><p><code>8</code></p></div>
+                <div class="consoleContentItems"><p><code>0.5</code></p></div>
+                <div class="consoleContentItems"><p><code>16</code></p></div>
+            </div>                          
         </div>
-        <iframe id="noteIframe" src="note.html"></iframe>
-        <script>
-            document.getElementById("menu-icon").addEventListener("click", function(){
-                document.getElementById("nav-menu").classList.toggle("show");
-            });
-            window.addEventListener("click", function(){
-                if (!event.target.matches("#menu-icon")){
-                    document.getElementById("nav-menu").classList.remove("show");
-                }
-            });
-        </script>
-        </div>
-        <div class = "lessonMiddle lessonpage1">
-            <h2>Variables:</h2>
-            <p>Variables are used to make the computer remember information to display or change. It is like a storing game. You can organize your storage box by adding a label for where the T-shirt belongs to the ‘clothing’ box. In this case, the variable is clothing, and the content inside is value. And it look like this:
-            </p>
-            <code>let clothing = “T-shirt”</code>
-        </div>
+    </div>
+
+    <div class = "lessonMiddle lessonpage4">
+    </div>
+
+    <div class="lessonMiddle lessonpage5">
+        <h2>Remainder, Increment, and Decrement Operators</h2>
+        <p>You may not know remainder, increment, and decrement. What are they?</p>
         
-        <script>
-            document.getElementById("submitButton").addEventListener("click", function(){
-                let userAnswer = document.querySelector('#variableInput').value.trim();
-                userAnswer = userAnswer.replace(/\s+/g, '');
-                let correctAnswer = 'letdoor="open";';
-                checkAnswer(userAnswer, correctAnswer, 'lessonPage13');
-            });
-            function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
-                const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
-                if (response) {
-                    if (answer === correctAnswer) {
-                        response.innerHTML = "Correct!";
-                        response.classList.remove("wrongAnswer");
-                        response.classList.add("rightAnswer");
-                    } else {
-                        response.innerHTML = "Try Again!";
-                        response.classList.remove("rightAnswer");
-                        response.classList.add("wrongAnswer");
+        <h3>Remainder:</h3>
+        <p>The modulus operator (<code>%</code>) returns the division remainder.</p>
+        
+        <h3>Increment:</h3>
+        <p>The increment operator (<code>++</code>) increases the variable's value by 1.</p>
+        
+        <h3>Decrement:</h3>
+        <p>The decrement operator (<code>--</code>) decreases the variable's value by 1.</p>
+        
+        <h3>Examples:</h3>
+        <p><code>a = 10;</code></p>
+        <p><code>b = 30;</code></p>
+    
+        <p><code>console.log(a % b);</code></p>
+        <p><code>console.log(a++);</code></p>
+        <p><code>console.log(b--);</code></p>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>10</code></p></div>
+                <div class="consoleContentItems"><p><code>11</code></p></div>
+                <div class="consoleContentItems"><p><code>29</code></p></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage6">
+        <h2>Assignment Operators</h2>
+        <p>Assignment operators assign value to variables.</p>
+    
+        <h3>Example:</h3>
+        <p>let energy = 50;</p>
+        <p>energy += 30; <span>// The addition assignment operator (+=) adds a value to variable (50+30)</span></p>
+        <p>console.log("Current Energy:", energy);</p>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>Current Energy: 80</code></p></div>
+            </div>
+        </div>
+    </div>    
+
+            <script>
+                document.getElementById("submitButton").addEventListener("click", function(){
+                    let userAnswer = document.querySelector('#variableInput').value.trim();
+                    userAnswer = userAnswer.replace(/\s+/g, '');
+                    let correctAnswer = 'letdoor="open";';
+                    checkAnswer(userAnswer, correctAnswer, 'lessonPage13');
+                });
+                function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
+                    const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
+                    if (response) {
+                        if (answer === correctAnswer) {
+                            response.innerHTML = "Correct!";
+                            response.classList.remove("wrongAnswer");
+                            response.classList.add("rightAnswer");
+                        } else {
+                            response.innerHTML = "Try Again!";
+                            response.classList.remove("rightAnswer");
+                            response.classList.add("wrongAnswer");
+                        }
                     }
                 }
-            }
-        </script>
+            </script>
 
-        <div class="lessonButton">
-        <button class="lessonPageButton1" onclick="changePage(1)">1</button>
-        <button class="lessonPageButton2" onclick="changePage(2)">2</button>
-        <button class="lessonPageButton3" onclick="changePage(3)">3</button>
-        <button class="lessonPageButton1" onclick="changePage(4)">4</button>
-        <button class="lessonPageButton2" onclick="changePage(5)">5</button>
-        <button class="lessonPageButton3" onclick="changePage(6)">6</button>
-        <button class="lessonPageButton1" onclick="changePage(7)">7</button>
-        <button class="lessonPageButton2" onclick="changePage(8)">8</button>
-        <button class="lessonPageButton3" onclick="changePage(9)">9</button>
-        <button class="lessonPageButton1" onclick="changePage(10)">10</button>
-        <button class="lessonPageButton2" onclick="changePage(11)">11</button>
-        <button class="lessonPageButton3" onclick="changePage(12)">12</button>
-        <button class="lessonPageButton1" onclick="changePage(13)">13</button>
-        <button class="lessonPageButton2" onclick="changePage(14)">14</button>
-    
-    
+    <div class="lessonButton">
+    <button class="lessonPageButton1" onclick="changePage(1)">1</button>
+    <button class="lessonPageButton2" onclick="changePage(2)">2</button>
+    <button class="lessonPageButton3" onclick="changePage(3)">3</button>
+    <button class="lessonPageButton1" onclick="changePage(4)">4</button>
+    <button class="lessonPageButton2" onclick="changePage(5)">5</button>
+    <button class="lessonPageButton3" onclick="changePage(6)">6</button>
+    <button class="lessonPageButton1" onclick="changePage(7)">7</button>
+    <button class="lessonPageButton2" onclick="changePage(8)">8</button>
+    <button class="lessonPageButton3" onclick="changePage(9)">9</button>
+    <button class="lessonPageButton1" onclick="changePage(10)">10</button>
+    <button class="lessonPageButton2" onclick="changePage(11)">11</button>
+    <button class="lessonPageButton3" onclick="changePage(12)">12</button>
+    <button class="lessonPageButton1" onclick="changePage(13)">13</button>
+    <button class="lessonPageButton2" onclick="changePage(14)">14</button>
+
+
+</div>
     </div>
-        </div>
+    
 </body>
 </html>

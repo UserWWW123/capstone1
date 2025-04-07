@@ -13,7 +13,7 @@
      <div class="levelBox">
         <div class = "levelContainer">
             <div class = "levelTitles">
-                <p id="level1Title">Level 1: Introduction of JavaScript</p>    
+                <p>Level 1: Introduction of JavaScript</p>    
             </div>
             <p class = "levelReminder levelReminder1">Click images to explore lessons and games!</p>
             <i class="fa-solid fa-down-long levelReminderPointDown levelReminderPointDown1"></i>
@@ -54,13 +54,50 @@
 
         <div class = "levelContainer">
             <div class = "levelTitles">
-                <p id="level1Title">Level 2: Variables</p>    
+                <p>Level 2: Variables</p>    
             </div>
                 <div class = "level">
                     <a href="/pages/variables.html">
                     <button class="levelButtons">
                         <img class="levelImages levelDoor" src="/assets/doorClosed_N.png"></img>
                         <p class = "stageName">Variables Introduction</p>
+                    </button>
+                    </a>
+                    <a href = "/pages/variables.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelArrow" src="/assets/arrow_S.png"></img>
+                        <p class = "stageName">Create a variable & Add a value to the variable</p>
+                    </button>
+                    </a>
+                    <a href = "/pages/variables.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelDoor" src="/assets/doorClosed_N.png"></img>
+                        <p class = "stageName">Small Game</p>
+                    </button>
+                    </a>
+                    <a href="/pages/stage1.html">
+                        <button class="levelButtons">
+                            <img class="levelImages levelArrow" src="/assets/arrow_S.png"></img>
+                            <p class = "stageName">Variable Game</p>
+                        </button>
+                        </a>
+                    </div>
+           </div>
+           
+           <button onclick = "goRight()" class = "levelMoveRight" class = "levelMoveRight1">
+            <i class="fa-solid fa-caret-right levelGoToRightArrow"></i>
+            <p>Go to Next Level!</p>
+        </button>
+
+           <div class = "levelContainer">
+            <div class = "levelTitles">
+                <p>Level 3: Javascript operators:</p>    
+            </div>
+                <div class = "level">
+                    <a href="/pages/lesson3.html">
+                    <button class="levelButtons">
+                        <img class="levelImages levelDoor" src="/assets/doorClosed_N.png"></img>
+                        <p class = "stageName">JS Operators Introduction</p>
                     </button>
                     </a>
                     <a href = "/pages/variables.html">
@@ -91,7 +128,7 @@
         <script>
             function goRight(){
                 let box = document.querySelector('.levelBox');
-                box.scrollBy({ left: 1100, behavior: "smooth"});
+                box.scrollBy({ left: 750, behavior: "smooth"});
             }
         </script>
 
