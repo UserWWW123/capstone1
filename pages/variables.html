@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>variables</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="lesson1.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="https://q5js.org/q5.js"></script>
     <script src="https://p5play.org/v3/planck.min.js"></script>
-    <script src="p5play (1).js"></script>
-    <script src = 'overlapVariableActivity.js'></script>
+    <script src="/js/p5play (1).js"></script>
+    <script src = '/js/overlapVariableActivity.js'></script>
 
 </head>
 <body class="lessonPage">
@@ -60,10 +60,19 @@
         <code>let ball;</code>
         <p>We use the assignment operator = to put some data into the variable we just made.</p>
         <code>ball = ‘basketball’;</code>
-        <p class = "additionInformation">(We use semicolons (;) to end a statement. Without it, the computer doesn't know when your statement ends and makes an error. Remember to add a semicolon when you end a statement!)
-        </p>
+        <div class = "additionInformation">
+            <p><strong>Important:</strong></p>
+            <p>We use semicolons (;) to end a statement. Without it, the computer doesn't know when your statement ends and makes an error. Remember to add a semicolon when you end a statement!</p>
+        </div>
         <p>The string is now saved into the memory area associated with the variable. We can assess it by the variable name:</p>
-        <code>alert(ball);</code>
+        <p><code>console.log(ball);</code></p>
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent"><p><code>basketball</code></p></div>
+          </div>
+        <div>
+
+        </div>
 </div>
     <div class = "lessonMiddle lessonpage3 boxActivity">
         <div id = "box">
@@ -81,9 +90,9 @@
             <button class ='submitBoxes' id = 'submitBoxName'>Submit</button>
             <p>Choose a value name and put it into box!</p>
             <ul>
-                <li>&bull; wood_white</li>
-                <li>&bull; wood_brown</li>
-                <li>&bull; wood_green</li>
+                <li>wood_white</li>
+                <li>wood_brown</li>
+                <li>wood_green</li>
             </ul>
             <input class ='inputBoxes' type="text" id="inputVariable" placeholder="Enter code">
             <button class ='submitBoxes' id = 'submitVariableName'>Submit</button>
@@ -107,7 +116,13 @@
             
             <p><code>let ball = 'basketball'; // declare ball</code></p>
             <p><code>ball = 'softball'; // value changed</code></p>
-        
+            
+            <div class = "additionInformation">
+                <p><strong>Important:</strong></p>
+                <p>We use // in JS to make comments. It’s important to make comments to make the code easy to understand for yourself or others for later analysis and debugging purposes. 
+                </p>
+            </div>
+
             <p>In the example above, the variable <code>ball</code> is declared once, and its value is changed later from 'basketball' to 'softball'. You can change the value of a variable as many times as you need, but the declaration can only happen once.</p>        
             <h2>We can also declare two variables and copy data from one into another:</h2>
             <p><code>
@@ -127,9 +142,9 @@
 
         <div class = "lessonMiddle lessonpage6">
             <h2>Different ways to declare variables:</h2>
-            <h3>Const vs. let vs. var</h3>
+            <h3>Const vs. let vs. var:</h3>
             <p>There are multiple ways to declare variables. Other than the let we talked about, there is also const and var.</p>
-            <h4>Var</h4>
+            <h4>Var:</h4>
             <p>Var is very similar to let. You can change the value. Var is the older version of let. They have a very similar function.</p>
 
             <h4>Const:</h4>
@@ -140,10 +155,16 @@
             <br>
             <code>arrow = “Go to left”;</code>
             <code>//You will get an error.</code>
+            <div class="consoleOutput">
+                <div class="consoleTitle"><p>Console</p></div>
+                <div class="consoleContent"><p><code>error</code></p></div>
+              </div>
         </div>
         <div class = "lessonMiddle lessonpage7">
-            <p>You can think of let as a "snap-on battery box" because you can easily open the battery box and change the battery (the value of the variable). On the other hand, const is like a "screw-down battery box," which requires a tool (finding the line where the constant is declared and substituting the old value with the new value) to open and replace the battery inside. The process of finding the right tool refers to needing to find the line where the variable is declared, unlike let, where the value can be reassigned easily.
-            </p>
+            <p>You can think of let as a "snap-on battery box" because you can easily open the battery box and change the battery (the value of the variable).</p>
+            <p>On the other hand, const is like a "screw-down battery box," which requires a tool (finding the line where the constant is declared and substituting the old value with the new value) to open and replace the battery inside.</p>
+        
+            <p>The process of finding the right tool refers to needing to find the line where the variable is declared, unlike let, where the value can be reassigned easily.</p>            
         </div>
         <div class = "lessonMiddle lessonpage8">
             <h2>Variable Naming:</h2>
@@ -171,21 +192,20 @@
             </div>
 
         <div class = "lessonMiddle lessonpage9">
-            <p><strong>Tips:</strong></p>
+            <h2>Tips:</h2>
             <ul>
-              <li>&#8226; The dollar sign <code>$</code> and the underscore <code>_</code> can also be used in names.</li>
-              <li>&#8226; <strong>AAA</strong> and <strong>aaa</strong> are different variables → lowercase or uppercase matters!</li>
-              <li>&#8226; There is a list of reserved words that you cannot use as variable names because they are used by the language itself.</li>
+              <li>The dollar sign <code>$</code> and the underscore <code>_</code> can also be used in names.</li>
+              <li><strong>AAA</strong> and <strong>aaa</strong> are different variables → lowercase or uppercase matters!</li>
+              <li>There is a list of reserved words that you cannot use as variable names because they are used by the language itself.</li>
             </ul>
             <p>For example:</p>
             <ul>
-              <li>&#8226; <code>let</code></li><br>
-              <li>&#8226; <code>const</code></li><br>
-              <li>&#8226; <code>class</code></li><br>
-              <li>&#8226; <code>function</code></li><br>
-              <li>&#8226; <code>return</code></li><br>
-            </ul>
-            
+              <li><code>let</code></li>
+              <li><code>const</code></li>
+              <li><code>class</code></li>
+              <li><code>function</code></li>
+              <li><code>return</code></li>
+            </ul>               
             </div>
 
         <div class = "lessonMiddle lessonpage10">
@@ -194,7 +214,7 @@
             <p style="font-weight: bold; background-color: #e4d7bf; padding: 10px;">Declare a ufo variable using different methods! And choose an alien to put into the ufo!</p>
             <div id="letBox">
             <div id = "overlapVariableDeclaration"></div>
-            <script src = 'overlapVariableActivity.js'></script>
+            <script src = '/js/overlapVariableActivity.js'></script>
             <style>
                 Canvas{
                     position: relative;
@@ -209,9 +229,9 @@
                         <br>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
-                            <li>&bull; alien_Yellow</li>
-                            <li>&bull; alien_Beige</li>
-                            <li>&bull; alien_Green</li>
+                            <li>alien_Yellow</li>
+                            <li>alien_Beige</li>
+                            <li>alien_Green</li>
                         </ul>
                         <input class ='inputBoxes' type="text" id="inputAlien" placeholder="Enter code">
                         <button class ='submitBoxes' id = 'submitAlien'>Submit</button>
@@ -228,9 +248,9 @@
                         <button class ='submitBoxes' id = 'submitUFOName2'>Submit</button>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
-                            <li>&bull; alien_Yellow</li>
-                            <li>&bull; alien_Beige</li>
-                            <li>&bull; alien_Green</li>
+                            <li>alien_Yellow</li>
+                            <li>alien_Beige</li>
+                            <li>alien_Green</li>
                         </ul>
                         <p id = callUFO2></p>
                     </div>
@@ -244,9 +264,9 @@
                         <button class ='submitBoxes' id = 'submitUFOName3'>Submit</button>
                         <p>Choose an alien and put it into ufo!</p>
                         <ul>
-                            <li>&bull; alien_Yellow</li>
-                            <li>&bull; alien_Biege</li>
-                            <li>&bull; alien_Green</li>
+                            <li>alien_Yellow</li>
+                            <li>alien_Biege</li>
+                            <li>alien_Green</li>
                         </ul>
                         <input class ='inputBoxes' type="text" id="inputAlien3" placeholder="Enter code">
                         <button class ='submitBoxes' id = 'submitAlien3'>Submit</button>
@@ -256,7 +276,7 @@
         </div>
             </div>
             <div class="lessonMiddle lessonpage11" id="lessonPage11">
-                <p><strong>Which answer declares a variable correctly?</strong></p>
+                <p class="questionTitle"><strong>Which answer declares a variable correctly?</strong></p>
                 <div class="choices">
                     <button class="choicesButton" onclick="checkAnswer('answer1', 'answer3', 'lessonPage11')"><code>Let cat = 'feed'</code></button>
                     <button class="choicesButton" onclick="checkAnswer('answer2', 'answer3', 'lessonPage11')"><code>Let dog = sleeping;</code></button>
@@ -266,19 +286,51 @@
             </div>
             
             <div class="lessonMiddle lessonpage12" id="lessonPage12">
-                <p><strong>What should we do if we want to change the value inside a variable?</strong></p>
+                <p class="questionTitle"><strong>What should we do if we want to change the value inside a variable?</strong></p>
                 <div class="choices">
                     <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage12')"><code>Use const</code></button>
                     <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage12')"><code>Use let and type 'let variable = newValue'</code></button>
                     <button class="choicesButton" onclick="checkAnswer('answer3', 'answer2', 'lessonPage12')"><code>Use let and type 'let variable = newValue';</code></button>
                     <p class="answer"></p>
-                </div>
             </div>
-                     
-        
+            </div>
+            
+            <div class="lessonMiddle lessonpage13" id="lessonPage13">
+                <p class="questionTitle"><strong>Type the elements in the correct sequence to form a variable:</strong></p>
+                <p class="questionTitle"><code>let | door | = | “ | open | ”;</code></p>
+                <div class="questionTitle" class = "inputContainer">
+                <input class = "inputBoxes" type="text" id="variableInput" placeholder="Type your answer here">
+                <button class = "submitBoxes" id="submitButton">Submit</button>
+                </div>
+                <br>
+                <p class="answer"></p>
+            </div>
+
+            <div class="lessonMiddle lessonpage14" id="lessonPage14">
+                <p class="questionTitle"><strong>Examine the following code:
+                </strong></p>
+                <p class="questionTitle"><code>let burgerBun# = 5;</code></p>
+                <p class="questionTitle"><code>let cheese = 9;</code></p>
+                <p class="questionTitle"><code>Let purchaseList = burgerBun + cheese;</code></p>                
+                <p class="questionTitle"><strong>"How can you fix this code?"
+                </strong></p>
+
+                <div class="choices">
+                    <button class="choicesButton" onclick="checkAnswer('answer1', 'answer1', 'lessonPage14')"><code>Delete #</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer2', 'answer1', 'lessonPage14')"><code>Use const</code></button>
+                    <button class="choicesButton" onclick="checkAnswer('answer3', 'answer1', 'lessonPage14')"><code>Use var</code></button>
+                    <p class="answer"></p>
+            </div>
+        </div>
             <script>
-                function checkAnswer(answer, correctAnswer, lessonId) {
-                    const response = document.querySelector(`#${lessonId} .answer`);
+                document.getElementById("submitButton").addEventListener("click", function(){
+                    let userAnswer = document.querySelector('#variableInput').value.trim();
+                    userAnswer = userAnswer.replace(/\s+/g, '');
+                    let correctAnswer = 'letdoor="open";';
+                    checkAnswer(userAnswer, correctAnswer, 'lessonPage13');
+                });
+                function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
+                    const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
                     if (response) {
                         if (answer === correctAnswer) {
                             response.innerHTML = "Correct!";
@@ -314,6 +366,8 @@
     <button class="lessonPageButton1" onclick="changePage(10)">10</button>
     <button class="lessonPageButton2" onclick="changePage(11)">11</button>
     <button class="lessonPageButton3" onclick="changePage(12)">12</button>
+    <button class="lessonPageButton1" onclick="changePage(13)">13</button>
+    <button class="lessonPageButton2" onclick="changePage(14)">14</button>
 
 
 </div>

@@ -5,11 +5,11 @@ const s1 = (p) => {
     let userAnswer;
 
     p.preload = () => {
-        shipYellowimg = p.loadImage("assets/ufoYellow.png");
-        shipYellowimg2 = p.loadImage("assets/ufoYellow_damage2.png");
-        alienBiegeimg = p.loadImage("assets/alienBiege_front.png");
-        alienGreenimg = p.loadImage("assets/alienGreen_front.png");
-        alienYellowimg = p.loadImage("assets/alienYellow_front.png");
+        shipYellowimg = p.loadImage("/assets/ufoYellow.png");
+        shipYellowimg2 = p.loadImage("/assets/ufoYellow_damage2.png");
+        alienBiegeimg = p.loadImage("/assets/alienBiege_front.png");
+        alienGreenimg = p.loadImage("/assets/alienGreen_front.png");
+        alienYellowimg = p.loadImage("/assets/alienYellow_front.png");
     };
 
     p.setup = () => {
@@ -122,10 +122,10 @@ const s2 = (p) => {
     let currentSprite = null;
 
     p.preload = () => {
-        boximg = p.loadImage("assets/box.png");
-        woodbimg = p.loadImage("assets/wood-brown.png");
-        woodwimg = p.loadImage("assets/wood-white.png");
-        woodgimg = p.loadImage("assets/wood-green.png");    
+        boximg = p.loadImage("/assets/box.png");
+        woodbimg = p.loadImage("/assets/wood-brown.png");
+        woodwimg = p.loadImage("/assets/wood-white.png");
+        woodgimg = p.loadImage("/assets/wood-green.png");    
     };
 
     p.setup = () => {
@@ -137,7 +137,7 @@ const s2 = (p) => {
         let variableButton = document.getElementById('submitBoxName');
 
         variableButton.addEventListener("click", () =>{
-                    let userAnswer = document.getElementById('inputBox').value.trim(); 
+            let userAnswer = document.getElementById('inputBox').value.trim(); 
         userAnswer = userAnswer.replace(/\s+/g, '');
         if (userAnswer === 'letbox;') {
             box = new p.Sprite(100,270,100,100);
@@ -207,12 +207,12 @@ const s3 = (p) => {
     let correctUFO;
 
     p.preload = () => {
-        shipYellowimg = p.loadImage("assets/ufoYellow.png");
-        shipYellowimg2 = p.loadImage("assets/ufoYellow_damage2.png");
-        alienBiegeimg = p.loadImage("assets/alienBiege_front.png");
-        alienGreenimg = p.loadImage("assets/alienGreen_front.png");
-        alienYellowimg = p.loadImage("assets/alienYellow_front.png");
-        ufoYellowImg = p.loadImage("assets/ufoYellow.png");
+        shipYellowimg = p.loadImage("/assets/ufoYellow.png");
+        shipYellowimg2 = p.loadImage("/assets/ufoYellow_damage2.png");
+        alienBiegeimg = p.loadImage("/assets/alienBiege_front.png");
+        alienGreenimg = p.loadImage("/assets/alienGreen_front.png");
+        alienYellowimg = p.loadImage("/assets/alienYellow_front.png");
+        ufoYellowImg = p.loadImage("/assets/ufoYellow.png");
     };
 
     p.setup = () => {
@@ -294,11 +294,11 @@ const s4 = (p) => {
     let currentSprite = null;
 
     p.preload = () => {
-        shipYellowimg = p.loadImage("assets/ufoYellow.png");
-        shipYellowimg2 = p.loadImage("assets/ufoYellow_damage2.png");
-        alienBiegeimg = p.loadImage("assets/alienBiege_front.png");
-        alienGreenimg = p.loadImage("assets/alienGreen_front.png");
-        alienYellowimg = p.loadImage("assets/alienYellow_front.png");
+        shipYellowimg = p.loadImage("/assets/ufoYellow.png");
+        shipYellowimg2 = p.loadImage("/assets/ufoYellow_damage2.png");
+        alienBiegeimg = p.loadImage("/assets/alienBiege_front.png");
+        alienGreenimg = p.loadImage("/assets/alienGreen_front.png");
+        alienYellowimg = p.loadImage("/assets/alienYellow_front.png");
     };
 
     p.setup = () => {

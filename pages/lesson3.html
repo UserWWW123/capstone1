@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variables</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="lesson1.js"></script>
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+    <script src="https://q5js.org/q5.js"></script>
+    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="p5play (1).js"></script>
+    <script src = 'overlapVariableActivity.js'></script>
+
+</head>
+<body>
+    <div class="lesson">
+        <div class= "lessonTop">
+            <p class="lessonTitle">Level 2: Variables</p>
+            <div class="toolButton">
+            <button class="takeNote" onclick="toggleNoteIframe()">
+                <i class="fa-solid fa-note-sticky"></i>
+                Take Note</button>
+                <a href="stage1.html">
+                    <button class="nextLesson">
+                    <i class="fa-solid fa-caret-right"></i>
+                    Next: Variables Game
+                </button>
+                </a>
+                <div class = "main-nav" id="main-nav">
+                    <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                    <div class = "nav-dropdown" id = "nav-menu">
+                        <a href = "index.html" >Home</a>
+                        <a class = "active"href = "note.html">Note</a>
+                        <a href = "levelsPage.html">Learn</a>
+                        <a href = "stage1.html">Game</a>
+                </div>
+        </div>
+        </div>
+        <iframe id="noteIframe" src="note.html"></iframe>
+        <script>
+            document.getElementById("menu-icon").addEventListener("click", function(){
+                document.getElementById("nav-menu").classList.toggle("show");
+            });
+            window.addEventListener("click", function(){
+                if (!event.target.matches("#menu-icon")){
+                    document.getElementById("nav-menu").classList.remove("show");
+                }
+            });
+        </script>
+        </div>
+        <div class = "lessonMiddle lessonpage1">
+            <h2>Variables:</h2>
+            <p>Variables are used to make the computer remember information to display or change. It is like a storing game. You can organize your storage box by adding a label for where the T-shirt belongs to the ‘clothing’ box. In this case, the variable is clothing, and the content inside is value. And it look like this:
+            </p>
+            <code>let clothing = “T-shirt”</code>
+        </div>
+        
+        <script>
+            document.getElementById("submitButton").addEventListener("click", function(){
+                let userAnswer = document.querySelector('#variableInput').value.trim();
+                userAnswer = userAnswer.replace(/\s+/g, '');
+                let correctAnswer = 'letdoor="open";';
+                checkAnswer(userAnswer, correctAnswer, 'lessonPage13');
+            });
+            function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
+                const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
+                if (response) {
+                    if (answer === correctAnswer) {
+                        response.innerHTML = "Correct!";
+                        response.classList.remove("wrongAnswer");
+                        response.classList.add("rightAnswer");
+                    } else {
+                        response.innerHTML = "Try Again!";
+                        response.classList.remove("rightAnswer");
+                        response.classList.add("wrongAnswer");
+                    }
+                }
+            }
+        </script>
+
+        <div class="lessonButton">
+        <button class="lessonPageButton1" onclick="changePage(1)">1</button>
+        <button class="lessonPageButton2" onclick="changePage(2)">2</button>
+        <button class="lessonPageButton3" onclick="changePage(3)">3</button>
+        <button class="lessonPageButton1" onclick="changePage(4)">4</button>
+        <button class="lessonPageButton2" onclick="changePage(5)">5</button>
+        <button class="lessonPageButton3" onclick="changePage(6)">6</button>
+        <button class="lessonPageButton1" onclick="changePage(7)">7</button>
+        <button class="lessonPageButton2" onclick="changePage(8)">8</button>
+        <button class="lessonPageButton3" onclick="changePage(9)">9</button>
+        <button class="lessonPageButton1" onclick="changePage(10)">10</button>
+        <button class="lessonPageButton2" onclick="changePage(11)">11</button>
+        <button class="lessonPageButton3" onclick="changePage(12)">12</button>
+        <button class="lessonPageButton1" onclick="changePage(13)">13</button>
+        <button class="lessonPageButton2" onclick="changePage(14)">14</button>
+    
+    
+    </div>
+        </div>
+</body>
+</html>

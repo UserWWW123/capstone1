@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="lesson1.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
 
 </head>
@@ -67,7 +67,7 @@
     --> 
 </div>
     <div class = "lessonMiddle lessonpage3">
-        <h1>Summary:</h1>
+        <h2>Summary:</h2>
         <ol>
             <li>1. HTML to define the content of web pages</li>
             <li>2. CSS to specify the layout of web pages</li>
@@ -77,13 +77,35 @@
         <p>In this game, you can learn about basic concepts in JS, such as arrays and data storage. You will also learn how to use p5play, a Javascript library, to make animation and interactive elements. 
         </p>
         </div>
+
+    <div class = "lessonMiddle lessonpage4">
+        <h2>Using <code>console.log()</code> to See What's Happening in Your Code</h2>
+
+        <p>You will also see <code>console.log()</code> throughout the lesson. What is <code>console.log</code> then?</p>
+
+        <p><strong>Example:</strong></p>
+
+        <p><code>let getHtml = document.getElementById("placeholderForText");</code></p>
+        <p><code>getHtml.innerHTML = "Welcome to CodeReaction!";</code></p>
+        <p><code>console.log("getHtml"); // → shows the text in the console</code></p>
+
+        <p><code>console.log()</code> is a JavaScript function used to display information or values in the console.</p>
+
+        <p>A console is a tool that is used to debug and check the execution of functions and data in the program.</p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent"><p><code></code></p></div>
+          </div>
+
+    </div>
     <div class="lessonButton">
     <button class="lessonPageButton1" onclick="changePage(1)">1</button>
     <button class="lessonPageButton2" onclick="changePage(2)">2</button>
     <button class="lessonPageButton3" onclick="changePage(3)">3</button>
-<!--    <button class="lessonPageButton1" onclick="changePage(4)">4</button>
-    <button class="lessonPageButton2" onclick="changePage(5)">5</button>
-    <button class="lessonPageButton3" onclick="changePage(6)">6</button> -->
+    <button class="lessonPageButton1" onclick="changePage(4)">4</button>
+
+
 </div>
     </div>
     <script>

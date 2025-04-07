@@ -1,13 +1,13 @@
 let blockimg, stairsimg, arrowimg, crateimg, doorwayimg, doorClosedimg, alienimg;
 
 function preload(){
-    blockimg = loadImage("assets/block_E.png");
-    stairsimg = loadImage('assets/stairs_E.png');
-    arrowimg = loadImage('assets/arrow_W.png');
-    crateimg = loadImage('assets/crate_E.png');
-    doorwayimg = loadImage('assets/doorwayMiddle_W.png');
-    doorClosedimg = loadImage('assets/doorClosed_S.png');
-    alienimg = loadImage('assets/shipYellow.png');
+    blockimg = loadImage("/assets/block_E.png");
+    stairsimg = loadImage('/assets/stairs_E.png');
+    arrowimg = loadImage('/assets/arrow_W.png');
+    crateimg = loadImage('/assets/crate_E.png');
+    doorwayimg = loadImage('/assets/doorwayMiddle_W.png');
+    doorClosedimg = loadImage('/assets/doorClosed_S.png');
+    alienimg = loadImage('/assets/shipYellow.png');
 }
 
 function setup() {
@@ -95,10 +95,10 @@ function update(){
         block.vel.y = 2;
     }
      if (block.colliding(doorClosed)) {
-            doorClosed.image = 'assets/doorOpen_S.png';
+            doorClosed.image = '/assets/doorOpen_S.png';
             doorClosed.image.scale = 2;
             doorClosed.x = 470;
-        if(doorClosed.image = 'assets/doorOpen_S.png'){
+        if(doorClosed.image = '/assets/doorOpen_S.png'){
         block.vel.x = -10;
         block.vel.y = -10;
         alien.x = width/2;
