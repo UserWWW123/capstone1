@@ -114,7 +114,7 @@ function update(){
 }
 
     // Check the order of blocks in the codingSection
-    function checkOrder() {
+function checkOrder() {
         const blocksInCodingSection = Array.from(codingSection.children); // get all added block in the coding Section
         const correctp =  document.getElementById('correct');
 

@@ -489,18 +489,15 @@ margin-bottom: 0;
   }
 #correct{
     font-size: 100%;
-    z-index: 2;
+    z-index: 20;
     position: absolute;
     right: 300px;
     width:100px;
     height:100px;
     display: none;
 }
-
 Canvas{
-    position: absolute;
-    top: 0%;
-    bottom: 0%;
+    position: relative;
     z-index: 2;
 }
 #winNote{
@@ -571,11 +568,9 @@ code {
     overflow: auto;
 }
 
-.lessonPageButton1:active,
-.lessonPageButton2:active,
-.lessonPageButton3:active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #333;
+.active-button, .lessonPageButton:hover{
+    background-color: rgba(255, 255, 255, 0.1)!important;
+    color: #333!important;
 }
 
 
@@ -608,7 +603,7 @@ iframe body .buttons{
     margin-top: 0.5%;
     margin-bottom: 0.5%;
 }
-.lessonPageButton1{
+.lessonPageButton1, .lessonPageButton4, .lessonPageButton7, .lessonPageButton10, .lessonPageButton13, .lessonPageButton16, .lessonPageButton19{
     background-color: #f4eddfff;    
     border: none;
     padding: 0.5% 1%;
@@ -617,7 +612,7 @@ iframe body .buttons{
     color: #a15e21ff;
     cursor: pointer;
 }
-.lessonPageButton2{
+.lessonPageButton2, .lessonPageButton5, .lessonPageButton8, .lessonPageButton11, .lessonPageButton14, .lessonPageButton17, .lessonPageButton20{
     background-color: #ed8b1cff;   
     border: none;
     padding: 0.5% 1%;
@@ -626,7 +621,7 @@ iframe body .buttons{
     color: #f4eddf;
     cursor: pointer;
 }
-.lessonPageButton3{
+.lessonPageButton3, .lessonPageButton6, .lessonPageButton9, .lessonPageButton12, .lessonPageButton15, .lessonPageButton18, .lessonPageButton21{
     background-color: #a15e21ff;   
     border: none; 
     padding: 0.5% 1%;
@@ -876,4 +871,97 @@ iframe body .buttons{
     height: 100px;
     font-size: 50px;
     cursor: pointer;
+}
+
+/*lesson3*/
+.lessonGamesContainer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.lessonGamesContainer_p5play{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.BoxText{
+    position: relative;
+    z-index: 2;
+}
+.buttonSubmitContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+  th, td {
+    padding: 20px;
+    text-align: left;
+    border: 1px solid #d6ac8c;
+  }
+
+  .opCol1, .opCol2, .opCol3 {
+    width: 33%; 
+  }
+
+/*allpractice*/
+.practicetitle{
+    font-weight: bold; 
+    background-color: #e4d7bf; 
+    padding: 10px;
+}
+
+pre code {
+    display: block;
+    white-space: pre-wrap; 
+}
+
+.nobackground3, .collapsible:hover, .operator:hover{
+    background-color:#e4d7bf;
+    border:none;
+}
+.collapsibleContent{
+    display: none;
+}
+
+.collapsible, .operator{
+    padding:10px;
+    background-color:bisque;
+    color:#a15e21;
+    border-radius: 5px;
+    font-size:16px;
+    border: 1px solid #a15e21;
+    font-weight: 700;
+    text-align: center;
+    width: 300px;
+}
+
+.nobackground3{
+    background-color:#e4d7bf;
+    border:none;
+    padding:10px;
+    color:#a15e21;
+    border-radius: 5px;
+    font-size:16px;
+    font-weight: 700;
+    text-align: center;
+    width: 300px;
 }

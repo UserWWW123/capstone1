@@ -1,20 +1,21 @@
 function changePage(pageNumber) {
     let pages = document.querySelectorAll('.lessonMiddle');
-    let buttons = document.querySelectorAll('.lessonPageButton1, .lessonPageButton2, .lessonPageButton3');
-    
-    pages.forEach(page => { //for all other pages. (content)
+    let buttons = document.querySelectorAll('.lessonPageButton'); 
+
+    pages.forEach(page => {
         page.style.display = 'none';
     });
 
     buttons.forEach(button => {
-        button.classList.remove('active-button'); //for all other buttons. 
+        button.classList.remove('active-button');
     });
 
-    let getPage = document.querySelector(`.lessonpage${pageNumber}`); //hide pages
+    let getPage = document.querySelector(`.lessonpage${pageNumber}`);
     if (getPage) {
         getPage.style.display = 'block';
     }
-    let activeButton = document.querySelector(`.lessonPageButton${pageNumber}`); //hide whiter effect
+
+    let activeButton = document.querySelector(`.lessonPageButton${pageNumber}`);
     if (activeButton) {
         activeButton.classList.add('active-button');
     }

@@ -10,7 +10,7 @@
     <script src="https://q5js.org/q5.js"></script>
     <script src="https://p5play.org/v3/planck.min.js"></script>
     <script src="/js/p5play (1).js"></script>
-    <script src = '/js/overlapVariableActivity.js'></script>
+    <script src = '/js/lesson3.js'></script>
 
 </head>
 <body class="lessonPage">
@@ -21,10 +21,10 @@
         <button class="takeNote" onclick="toggleNoteIframe()">
             <i class="fa-solid fa-note-sticky"></i>
             Take Note</button>
-            <a href="stage1.html">
+            <a href="stage3.html">
                 <button class="nextLesson">
                 <i class="fa-solid fa-caret-right"></i>
-                Next: Variables Game
+                Next: Operators Game
             </button>
             </a>
             <div class = "main-nav" id="main-nav">
@@ -135,28 +135,117 @@
     </div>
 
     <div class = "lessonMiddle lessonpage4">
+        <div id="declearActivity">
+            <h2>Let Practice!</h2>
+            <p class="practicetitle">Clone area!</p>
+            <div class="lessonGamesContainer">
+                <div id = "cloneArea"></div>
+                <div class="BoxText">
+                    <p>Choose a number from 1 to 10 to clone <code>alien_Beige</code></p>
+                    <input class ='inputBoxes' type="text" id="input1" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit1'>Submit</button>
+
+                <p id = response></p>
+                <br>
+                <div>
+                    <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+                    <div class='collapsibleContent'>
+                                            <!--code for collapsible section-->
+                    <script>
+                        var coll = document.getElementsByClassName("collapsible");
+                        var i;
+                        for (i = 0; i < coll.length; i++) {
+                            coll[i].addEventListener('click', function() {
+                                this.classList.toggle("active");
+                                var collapsibleContent = this.nextElementSibling;
+                                if (collapsibleContent.style.display === "block") {
+                                    collapsibleContent.style.display = 'none';
+                                } else {
+                                    collapsibleContent.style.display = 'block';
+                                }
+                            });
+                        }
+                    </script>
+<pre><code>
+// This section includes content you can explore in more detail later!
+
+// Use the DOM to get the value you submitted
+let submit1 = document.getElementById('submit1');
+submit1.addEventListener('click', () => {
+    
+userAnswer = document.getElementById('input1').value.trim();
+
+// Remove old sprites
+for (let sprite of sprites) {
+    sprite.remove(); 
+}
+
+// Create an empty array for the new sprites
+sprites = []; 
+
+// Pay attention here! Notice how we use arithmetic operators like the assignment operator (=) and the increment operator (++).
+// This is how we use arithmetic and assignment operators in JavaScript! 
+
+// Check if the input is a valid number
+let numSprites = parseInt(userAnswer);
+
+if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
+    // If the input is a valid number and between 1 and 6...
+
+    // Create new sprites
+    for (let i = 0; i < numSprites; i++) {
+        // Here's the increment operator in action: i++
+        let newSprite = new p.Sprite(300, 150); 
+
+        newSprite.img = alienBiegeimg;
+        newSprite.image.scale = 1.5;
+        newSprite.width = 100;
+        newSprite.height = 140;
+        newSprite.collider = 'dynamic';
+
+        sprites.push(newSprite); // Add the sprite to the array
+    }
+
+} else {
+    alert("Enter a number between 1 and 6!");
+}
+});
+</code></pre>                        
+</div>
+                </div>              
+            </div>
+        </div>
+        </div>
     </div>
 
     <div class="lessonMiddle lessonpage5">
         <h2>Remainder, Increment, and Decrement Operators</h2>
-        <p>You may not know remainder, increment, and decrement. What are they?</p>
+        <p>You may not know remainder, increment, and decrement. What are they?</p>        
+        <p>Remainder:</p>
+        <p>The modulus operator <code>%</code> returns the division remainder.</p>
         
-        <h3>Remainder:</h3>
-        <p>The modulus operator (<code>%</code>) returns the division remainder.</p>
+        <p>Increment:</p>
+        <p>The increment operator <code>++</code> increases the variable's value by 1.</p>
         
-        <h3>Increment:</h3>
-        <p>The increment operator (<code>++</code>) increases the variable's value by 1.</p>
-        
-        <h3>Decrement:</h3>
-        <p>The decrement operator (<code>--</code>) decreases the variable's value by 1.</p>
+        <p>Decrement:</p>
+        <p>The decrement operator <code>--</code> decreases the variable's value by 1.</p>
         
         <h3>Examples:</h3>
-        <p><code>a = 10;</code></p>
-        <p><code>b = 30;</code></p>
-    
-        <p><code>console.log(a % b);</code></p>
-        <p><code>console.log(a++);</code></p>
-        <p><code>console.log(b--);</code></p>
+        <p><code>// initialize a and b </code></p>
+        <p><code>let a = 10;</code></p>
+        <p><code>let b = 30;</code></p>
+        <p><code>console.log(a % b); // 10 (10 divided by 30 gives a quotient of 0 and a remainder of 10.)</code></p>
+        
+        <br>
+
+        <p><code>a++; // a becomes 11</code></p>
+        <p><code>console.log(a); // 11</code></p>
+        
+        <br>
+
+        <p><code>b--; // b becomes 29</code></p>
+        <p><code>console.log(b); // 29</code></p>
+        
     
         <div class="consoleOutput">
             <div class="consoleTitle"><p>Console</p></div>
@@ -173,10 +262,10 @@
         <p>Assignment operators assign value to variables.</p>
     
         <h3>Example:</h3>
-        <p>let energy = 50;</p>
-        <p>energy += 30; <span>// The addition assignment operator (+=) adds a value to variable (50+30)</span></p>
-        <p>console.log("Current Energy:", energy);</p>
-    
+        <p><code>let energy = 50;</code></p>
+        <p><code>energy += 30; // The addition assignment operator (+=) adds a value to variable (50+30)</code></p>
+        <p><code>console.log("Current Energy:", energy);</code></p>
+        
         <div class="consoleOutput">
             <div class="consoleTitle"><p>Console</p></div>
             <div class="consoleContent">
@@ -184,6 +273,478 @@
             </div>
         </div>
     </div>    
+
+    <div class="lessonMiddle lessonpage7">
+        <table>
+              <tr>
+                <th class="opCol1">Operator</th>
+                <th class="opCol2">Example</th>
+                <th class="opCol3">Same As</th>
+              </tr>
+              <tr>
+                <td class="opCol1">=</td>
+                <td class="opCol2">x = y</td>
+                <td class="opCol3">x = y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">+=</td>
+                <td class="opCol2">x += y</td>
+                <td class="opCol3">x = x + y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">-=</td>
+                <td class="opCol2">x -= y</td>
+                <td class="opCol3">x = x - y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">*=</td>
+                <td class="opCol2">x *= y</td>
+                <td class="opCol3">x = x * y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">/=</td>
+                <td class="opCol2">x /= y</td>
+                <td class="opCol3">x = x / y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">%=</td>
+                <td class="opCol2">x %= y</td>
+                <td class="opCol3">x = x % y</td>
+              </tr>
+              <tr>
+                <td class="opCol1">**=</td>
+                <td class="opCol2">x **= y</td>
+                <td class="opCol3">x = x ** y</td>
+              </tr>
+          </table>
+        </div>
+
+
+    <div class = "lessonMiddle lessonpage8">
+        <div id="declearActivity">
+            <h2>Let Practice!</h2>
+            <p class="practicetitle">Click an operator button and then enter any number to start the calculation!</p>
+            <div class="lessonGamesContainer">
+                <div id = "cloneArea7"></div>
+                <div class="BoxText">
+                    <button id = "remainder" class="operator">Remainder: a%b</button>
+                    <button id = "add_assignment" class="operator">Addition Assignment: a+=b</button>
+                    
+                    <div class="buttonSubmitContainer">
+                    <p>let a = </p>
+                    <input class ='inputBoxes' type="text" id="input7_a" placeholder="Enter number">
+                </div>
+
+                <div class="buttonSubmitContainer">
+                    <p>let b = </p>
+                    <input class ='inputBoxes' type="text" id="input7_b" placeholder="Enter number">
+                    <button class ='submitBoxes' id = 'submit_all'>Submit</button>
+                    </div>
+                    
+                    <br>
+                    <br>
+
+                    <button id = "increment" class="operator">Increment: c++</button>
+                    <button id = "decrement" class="operator">Decrement: c--</button>
+                    <div class="buttonSubmitContainer">
+                    <p>let c = </p>
+                    <input class ='inputBoxes' type="text" id="input7_c" placeholder="Enter number">
+                    <button class ='submitBoxes' id = 'submit_c'>Submit</button>
+                    </div>
+
+                    <br>
+                    <br>
+                    <br>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class = "lessonMiddle lessonpage9">
+        <p>Comparison operators:</p>
+        <p>The comparison operators are used to compare 2 variables and return a Boolean result (true or false) based on whether the comparison is true or false.</p>
+
+        <p>Example:</p>
+        <p><code>let decodeTime = 10;</code></p>
+        <p><code>let timeLimit = 10;</code></p>
+        <p><code>let result = decodeTime &lt; timeLimit; // the less than operator</code></p>
+
+        <p><code>console.log(result); // (10 is not less than 10, so it is false, and it returns false.)</code></p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>false</code></p></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class = "lessonMiddle lessonpage10">
+        <p><code>let x = 12;</code></p>
+        <table>
+            <tr>
+              <th>Operator</th>
+              <th>Description</th>
+              <th>Comparing</th>
+              <th>Returns</th>
+            </tr>
+            <tr>
+              <td>==</td>
+              <td>equal to</td>
+              <td>x == 5</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>x == 12</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>x == "12"</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>===</td>
+              <td>equal value and equal type</td>
+              <td>x === 12</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>x === "12"</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>!=</td>
+              <td>not equal</td>
+              <td>x != 5</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>!==</td>
+              <td>not equal value or not equal type</td>
+              <td>x !== 12</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>x !== "12"</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>x !== 8</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>&gt;</td>
+              <td>greater than</td>
+              <td>x &gt; 10</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>&lt;</td>
+              <td>less than</td>
+              <td>x &lt; 40</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>&gt;=</td>
+              <td>greater than or equal to</td>
+              <td>x &gt;= 150</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>&lt;=</td>
+              <td>less than or equal to</td>
+              <td>x &lt;= 12</td>
+              <td>true</td>
+            </tr>
+          </table>          
+          <br>
+          <br>
+    </div>
+
+    <div class = "lessonMiddle lessonpage11">
+        <h2>String comparison</h2>
+        <p>String comparison uses a string to connect or compare.</p>
+        <p>A string is text within quotation marks. It is a way to store text in JavaScript.</p>
+        <p>Example: <code>"Laser Beams"</code></p>
+        <p>Example:</p>
+        <p><code>let alienMessagePart1 = "Pull the String";</code></p>
+        <p><code>let alienMessagePart2 = "to open the trap";</code></p>
+        <p><code>let result = alienMessagePart1 + " " + alienMessagePart2;</code></p>
+        <p><code>console.log(result);</code></p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>Pull the String to open the trap</code></p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "lessonMiddle lessonpage12">
+        <h2>Logical Operators</h2>
+        <p>Logical operators combine multiple conditions, judge, and return “false” or “true”.</p>
+
+        <p>They can be used with comparison operators.</p>
+
+        <p>Example:</p>
+
+        <p><code>let hasKey = true;</code></p>
+        <p><code>let correctPassword = true;</code></p>
+        <p><code>let openTrap = hasKey && correctPassword;</code></p>
+        <p><code>console.log(openTrap);</code></p>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>true</code></p></div>
+            </div>
+        </div>
+
+        <p><code>let passcode1 = 4321;</code></p>
+        <p><code>let passcode2 = 1234;</code></p>
+
+        <table>
+            <tr>
+              <th>Operator</th>
+              <th>Name</th>
+              <th>Example</th>
+              <th>Returns</th>
+            </tr>
+            <tr>
+              <td>&&</td>
+              <td>and</td>
+              <td><code>console.log(passcode1 == 4321 && passcode2 == 1234)</code></td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>||</td>
+              <td>or</td>
+              <td><code>console.log(passcode1 == 2345 || passcode2 == 9876)</code></td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>!</td>
+              <td>not</td>
+              <td><code>console.log(!(passcode1 == passcode2))</code></td>
+              <td>true</td>
+            </tr>
+          </table>
+          <br>
+          <br>
+    </div>    
+
+    <div class = "lessonMiddle lessonpage13">
+        <h2>p5play: Sprite Other Features — Color, Text, Rotation</h2>
+
+        <p>p5play time! Let's learn more about p5play!</p>
+        
+        <p><code>let sprite;<br>
+        sprite = new Sprite(100, 100, 50, 50);</code></p>
+
+        <div class="lessonGamesContainer_p5play">
+        <div class="BoxText">
+        <h2>Rotation:</h2>
+        
+        <p><code>sprite.rotation = 45;</code></p>
+        
+        <p>Try it! Add other values to <code>sprite.rotation</code>!</p>
+
+        <div class="buttonSubmitContainer">
+            <input class ='inputBoxes' type="text" id="input13.r" placeholder="Enter number">
+            <button class ='submitBoxes' id = 'submit13.r'>Submit</button>
+            </div>
+    </div>
+        <div id = "rotation"></div>
+    </div>
+    <br>
+    <br>
+    
+        <div class="lessonGamesContainer_p5play">
+            <div class="BoxText">
+                <h2>Color:</h2>
+                
+                <p><code>sprite.color = 'red';</code></p>
+                
+                <p><code>sprite.stroke = 'orange';</code></p>
+                
+                <p>Try it! Add other values to <code>sprite.color</code> and <code>sprite.stroke</code>!</p>
+        
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="text" id="input13.c" placeholder="Enter color">
+                    <button class ='submitBoxes' id = 'submit13.c'>Submit</button>
+                </div>
+            </div>
+            <div id="color"></div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="lessonGamesContainer_p5play">
+            <div class="BoxText">
+                <h2>Diameter: Make a circle!</h2>
+                
+                <p><code>sprite.d = 100;</code></p>
+                
+                <p>Try it! Add other values to <code>sprite.d</code>!</p>
+            
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="text" id="input13.d" placeholder="Enter diameter">
+                    <button class ='submitBoxes' id = 'submit13.d'>Submit</button>
+                </div>
+            </div>
+            <div id="diameter"></div>
+        </div>
+        
+        <br>
+        <br>
+        
+        <div class="lessonGamesContainer_p5play">
+            <div class="BoxText">
+                <h2>Text: Add text to sprite!</h2>
+                
+                <p><code>sprite.text = "Text";</code></p>
+                
+                <p><code>sprite.textSize = 40;</code></p>
+                
+                <p>Try it! Add other values to <code>sprite.text</code> and <code>sprite.textSize</code>!</p>
+            
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="text" id="input13.t1" placeholder="Enter text">
+                    <button class ='submitBoxes' id = 'submit13.t1'>Submit</button>
+                </div>
+                <br>
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="number" id="input13.t2" placeholder="Enter text size">
+                    <button class ='submitBoxes' id = 'submit13.t2'>Submit</button>
+                </div>
+            </div>
+            <div id="text"></div>
+        </div>
+        
+        <br>
+        <br>
+
+    </div>
+
+    <div class="lessonMiddle lessonpage14" id="lessonPage14">
+        <p class="questionTitle">Examine the following code:</p>
+        <p class="questionTitle"><code>let messagePart1 = "The password is ";</code></p>
+        <p class="questionTitle"><code>let messagePart2 = secret;</code></p>
+        <p class="questionTitle"><code>messagePart1 + messagePart2</code></p>
+        <p class="questionTitle">What will this expression evaluate to?</p>
+        <p class="questionTitle">How would you fix this code?</p>
+    
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1','answer2','lessonPage14')">
+                <code>The password is secret.</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2','answer2','lessonPage14')">
+                <code>Error, because secret doesn’t have quotes.</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer3','answer2','lessonPage14')">
+                <code>"The password is " + "secret"</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>    
+
+    <div class="lessonMiddle lessonpage15" id="lessonPage15">
+        <p class="questionTitle">Examine the following code:</p>
+        <p class="questionTitle"><code>let isAuthenticated = false;</code></p>
+        <p class="questionTitle"><code>let hasAccess = true;</code></p>
+        <p class="questionTitle"><code>isAuthenticated && hasAccess</code></p>
+        <p class="questionTitle">What will this expression return?</p>
+    
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1','answer1','lessonPage15')">
+                <code>False</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2','answer1','lessonPage15')">
+                <code>True</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer3','answer1','lessonPage15')">
+                <code>False true</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>    
+
+    <div class="lessonMiddle lessonpage16" id="lessonPage16">
+        <p class="questionTitle">Examine the following code:</p>
+        <p class="questionTitle"><code>let x = 15;</code></p>
+        <p class="questionTitle"><code>let y = 4;</code></p>
+        <p class="questionTitle"><code>console.log(x % y);</code></p>
+        <p class="questionTitle">What will print in the console based on this expression?</p>
+    
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1','answer1','lessonPage16')">
+                <code>3</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2','answer1','lessonPage16')">
+                <code>0.26</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer3','answer1','lessonPage16')">
+                <code>7.5</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage17" id="lessonPage17">
+        <p class="questionTitle">Examine the following code:</p>
+        <p class="questionTitle"><code>let score = 100;</code></p>
+        <p class="questionTitle"><code>score += 20;</code></p>
+        <p class="questionTitle"><code>score *= 2;</code></p>
+        <p class="questionTitle">What will be the final value of the score?</p>
+    
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1','answer3','lessonPage17')">
+                <code>120</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2','answer3','lessonPage17')">
+                <code>220</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer3','answer3','lessonPage17')">
+                <code>240</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage18" id="lessonPage18">
+        <p class="questionTitle">Examine the following code:</p>
+        <p class="questionTitle"><code>let a = 10;</code></p>
+        <p class="questionTitle"><code>let b = "10";</code></p>
+        <p class="questionTitle"><code>a === b</code></p>
+        <p class="questionTitle">What will this comparison return?</p>
+    
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1','answer1','lessonPage18')">
+                <code>false</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2','answer1','lessonPage18')">
+                <code>true</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer3','answer1','lessonPage18')">
+                <code>null</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
 
             <script>
                 document.getElementById("submitButton").addEventListener("click", function(){
@@ -209,20 +770,28 @@
             </script>
 
     <div class="lessonButton">
-    <button class="lessonPageButton1" onclick="changePage(1)">1</button>
-    <button class="lessonPageButton2" onclick="changePage(2)">2</button>
-    <button class="lessonPageButton3" onclick="changePage(3)">3</button>
-    <button class="lessonPageButton1" onclick="changePage(4)">4</button>
-    <button class="lessonPageButton2" onclick="changePage(5)">5</button>
-    <button class="lessonPageButton3" onclick="changePage(6)">6</button>
-    <button class="lessonPageButton1" onclick="changePage(7)">7</button>
-    <button class="lessonPageButton2" onclick="changePage(8)">8</button>
-    <button class="lessonPageButton3" onclick="changePage(9)">9</button>
-    <button class="lessonPageButton1" onclick="changePage(10)">10</button>
-    <button class="lessonPageButton2" onclick="changePage(11)">11</button>
-    <button class="lessonPageButton3" onclick="changePage(12)">12</button>
-    <button class="lessonPageButton1" onclick="changePage(13)">13</button>
-    <button class="lessonPageButton2" onclick="changePage(14)">14</button>
+    <button class= "lessonPageButton lessonPageButton1 active-button" onclick="changePage(1)">1</button>
+    <button class="lessonPageButton lessonPageButton2" onclick="changePage(2)">2</button>
+    <button class="lessonPageButton lessonPageButton3" onclick="changePage(3)">3</button>
+    <button class="lessonPageButton lessonPageButton4" onclick="changePage(4)">4</button>
+    <button class="lessonPageButton lessonPageButton5" onclick="changePage(5)">5</button>
+    <button class="lessonPageButton lessonPageButton6" onclick="changePage(6)">6</button>
+    <button class="lessonPageButton lessonPageButton7" onclick="changePage(7)">7</button>
+    <button class="lessonPageButton lessonPageButton8" onclick="changePage(8)">8</button>
+    <button class="lessonPageButton lessonPageButton9" onclick="changePage(9)">9</button>
+    <button class="lessonPageButton lessonPageButton10" onclick="changePage(10)">10</button>
+    <button class="lessonPageButton lessonPageButton11" onclick="changePage(11)">11</button>
+    <button class="lessonPageButton lessonPageButton12" onclick="changePage(12)">12</button>
+    <button class="lessonPageButton lessonPageButton13" onclick="changePage(13)">13</button>
+    <button class="lessonPageButton lessonPageButton14" onclick="changePage(14)">14</button>
+    <button class="lessonPageButton lessonPageButton15" onclick="changePage(15)">15</button>
+    <button class="lessonPageButton lessonPageButton16" onclick="changePage(16)">16</button>
+    <button class="lessonPageButton lessonPageButton17" onclick="changePage(17)">17</button>
+    <button class="lessonPageButton lessonPageButton18" onclick="changePage(18)">18</button>
+
+
+
+
 
 
 </div>
