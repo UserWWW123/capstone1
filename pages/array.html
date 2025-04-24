@@ -10,13 +10,13 @@
     <script src="https://q5js.org/q5.js"></script>
     <script src="https://p5play.org/v3/planck.min.js"></script>
     <script src="/js/p5play (1).js"></script>
-    <script src = '/js/dataType.js'></script>
+    <script src = '/js/array.js'></script>
 
 </head>
 <body class="lessonPage">
     <div class="lesson">
     <div class= "lessonTop">
-        <p class="lessonTitle">Level 4: JavaScript Data Type</p>
+        <p class="lessonTitle">Level 5: JavaScript Array</p>
         <div class="toolButton">
         <button class="takeNote" onclick="toggleNoteIframe()">
             <i class="fa-solid fa-note-sticky"></i>
@@ -24,7 +24,7 @@
             <a href="stage4.html">
                 <button class="nextLesson">
                 <i class="fa-solid fa-caret-right"></i>
-                Next: Data Type Game
+                Next: Array Game
             </button>
             </a>
             <div class = "main-nav" id="main-nav">
@@ -50,239 +50,243 @@
     </script>
     </div>
     <div class="lessonMiddle lessonpage1">
-        <h2>Data Types</h2>
+        <h2>Arrays</h2>
     
-        <p>There are 8 types of data:</p>
-        <ul>
-            <li>String</li>
-            <li>Number</li>
-            <li>Bigint</li>
-            <li>Boolean</li>
-            <li>Undefined</li>
-            <li>Null</li>
-            <li>Symbol</li>
-            <li>Object</li>
-        </ul>
+        <p>An array is a special type of object.</p>
+        <p>Arrays are written inside square brackets <code>[ ]</code>.</p>
+        <p>You can store items in a single variable through an array.</p>
+        <p>Array items are separated by commas.</p>
     
-        <p>Data is information stored in a computer. For example, it can store passwords, which are often stored as strings. Even if a password contains only numbers, it’s still treated as a string because the sequence of numbers matters, and it is not used for calculation.</p>
-    
-        <p><code>let password = "12345";</code></p>
-        <p><code>console.log(password);</code></p>
-
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>12345</code></p>
-                </div>
-            </div>
-          </div>
-    </div>    
-
-    <div class="lessonMiddle lessonpage2">
-        <h2>Data Types and Variable Assignments</h2>
-    
-        <p>Data types are dynamic because a variable's value can change between different data types.</p>
-    
-        <ul>
-            <li>Both <code>var</code> and <code>let</code> can be used to change a variable's value.</li>
-            <ul>
-                <li><code>let rollingBoulder;</code> // rollingBoulder is undefined</li>
-                <li><code>rollingBoulder = "active";</code> // now rollingBoulder is a string</li>
-                <li><code>rollingBoulder = 0;</code> // now rollingBoulder is a number</li>
-            </ul>
-        </ul>
-    
-        <ul>
-            <li>But what about <code>const</code>?</li>
-            <ul>
-                <li>It is true that the value assigned to a variable with <code>const</code> cannot be reassigned. But you can modify the contents of the object or array, such as changing the element inside it.</li>
-                    <ul>
-                        <ol>-->We will talk more about these later in the array lesson.</li>
-                    </ul>
-                <br>
-                <p><code>const numbers = [6, 2, 7]; // You cannot reassign the entire array:</code></p>
-                <p><code>numbers = [4, 5, 6]; // This will throw an error!</code></p>
-                <p><code>// But you can modify the elements inside the array:</code></p>
-                <p><code>numbers[0] = 9; // This is allowed</code></p>
-                <p><code>numbers.push(4); // You can add new elements to the array</code></p>
-                <p><code>console.log(numbers);</code></p>
-            </ul>
-        </ul>
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>[9, 2, 7, 4]</code></p>
-                </div>
-            </div>
-          </div>
-    </div>
-     
-    <div class="lessonMiddle lessonpage3">
-        <h2>Strings</h2>
-    
-        <p>A string is a series of characters enclosed within single or double quotes.</p>
-    
-        <p>Example:</p>
-        <ul>
-            <li><code>"Touch the pressure plate!"</code></li>
-            <li><code>"1234567"</code></li>
-            <li><code>"Caution: Time limit is 1 minute."</code></li>
-        </ul>
-    <br>
-        <p>If you need to use quotes inside a string, you can either:</p>
-        <ul>
-            <li>Use single quotes inside double quotes</li>
-            <li>Use double quotes inside single quotes</li>
-        </ul>
-    <br>
-        <p><code>let camouflageBlocks = "It’s'SAFE' to touch it";</code></p>
-        <p><code>let message = "riddle: 'What can you break without touching it?'";</code></p>
-        <p><code>let answer = "A: 'A promise'";</code></p>
-        <p><code>console.log(camouflageBlocks);</code></p>
-        <p><code>console.log(message);</code></p>
-        <p><code>console.log(answer);</code></p>
+        <p><code>const direction = ["west", "south", "north", "east"];</code></p>
+        <p><code>console.log(direction);</code></p>
+        <p><code>console.log(direction[2]);</code></p>
     
         <div class="consoleOutput">
             <div class="consoleTitle"><p>Console</p></div>
             <div class="consoleContent">
                 <div class="consoleContentItems">
-                    <p><code>It’s'SAFE' to touch it</code></p>
+                    <p><code>["west", "south", "north", "east"]</code></p>
                 </div>
                 <div class="consoleContentItems">
-                    <p><code>riddle: 'What can you break without touching it?'</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>A: 'A promise'</code></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="lessonMiddle lessonpage4">
-        <h2>Numbers</h2>
-    
-        <p>Just numbers!</p>
-    
-        <p>Example:</p>
-        <ul>
-            <li><code>8765678</code></li>
-            <li><code>888.88</code></li>
-        </ul>
-    
-        <p>Numbers can also be written in scientific notation:</p>
-        <p><code>123e5</code> // 12300000 (<code>e5</code> = move the decimal point 5 places to the right)</p>
-        <p><code>888e-3</code> // 0.888 (<code>e-3</code> = move the decimal point 3 places to the left)</p>
-    
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>12300000</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>0.888</code></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="lessonMiddle lessonpage5">
-        <h2>Undefined</h2>
-    
-        <p>A variable with no value is <code>undefined</code>.</p>
-    
-        <p>Example:</p>
-        <p><code>let invisibleWall; // undefined</code></p>
-        <p>You can also set the variable to undefined.</p>
-        <p><code>let invisibleWall = "inactive"; // invisibleWall is defined.</code></p>
-        <p><code>invisibleWall = undefined; // Now invisibleWall is set to undefined. It doesn’t hold any value.</code></p>
-        <p><code>console.log(invisibleWall);</code></p>
-
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>undefined</code></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="lessonMiddle lessonpage6">
-        <h2>Null</h2>
-    
-        <p><code>null</code> is a special value that represents the "no value" or "empty" state.</p>
-    
-        <p>This is different from <code>undefined</code> because <code>null</code> is intentionally assigned to a variable to show that it has no value. <code>undefined</code> just means a variable has not been assigned a value yet.</p>
-    
-        <p><code>let secretPassage = null; // secretPassage is intentionally set to have no value</code></p>
-    
-        <p><code>console.log(secretPassage);</code></p>
-
-        <p><code>let trapDoor; // trapDoor is undefined because no value has been assigned</code></p>
-    
-        <p><code>console.log(trapDoor);</code></p>
-
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>null</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>undefined</code></p>
-                </div>
-            </div>
-        </div>
-    </div>
-      
-    <div class="lessonMiddle lessonpage7">
-        <h2>Object</h2>
-    
-        <p>An <code>object</code> is a collection of properties, written inside curly braces <code>{}</code>.</p>
-    
-        <p>Object properties are written as name:value pairs, separated by commas.</p>
-    
-        <p><code>const passcode = {</code></p>
-        <p><code>"object orientation": "1,3,5,7,8",</code></p>
-        <p><code>"active pressure plate": "red",</code></p>
-        <p><code>gravity: 2 // name needs to be inside " " if the name has a space or special character, but it is optional if there is not.</code></p>
-        <p><code>};</code></p>
-    
-        <p><code>//The object passcode contains 3 properties: (object orientation, active pressure plate, gravity)</code></p>
-    
-        <p><code>console.log(passcode);</code></p>
-        <p><code>console.log(passcode["object orientation"]);</code></p>
-
-    
-        <div class="consoleOutput">
-            <div class="consoleTitle"><p>Console</p></div>
-            <div class="consoleContent">
-                <div class="consoleContentItems">
-                    <p><code>{</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>"object orientation": "1,3,5,7,8",</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>"active pressure plate": "red",</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>gravity: 2</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>}</code></p>
-                </div>
-                <div class="consoleContentItems">
-                    <p><code>1,3,5,7,8</code></p>
+                    <p><code>north</code></p>
                 </div>
             </div>
         </div>
         
     </div>
     
+    <div class="lessonMiddle lessonpage2">
+        <h2>Syntax:</h2>
+        <code>const arrayName = [item1, item2, …];</code>
+        
+        <p>If you like, you can also write the array in this format:</p>
+        <p><code>const direction = [</code></p>
+        <p><code>"west",</code></p>
+        <p><code>"south",</code></p>
+        <p><code>"north",</code></p>
+        <p><code>"east"</code></p>
+        <p><code>];</code></p>
+        <p>// Both formats work the same way! Choose the style that fits you best!</p>
+    
+        <p>You can also create an empty array and add values to it afterward:</p>
+        <p><code>const direction = [];</code></p>
+        <p><code>direction[0] = "west";</code></p>
+        <p><code>direction[1] = "south";</code></p>
+        <p><code>direction[2] = "north";</code></p>
+        <p><code>direction[3] = "east";</code></p>
+    </div>
+    
+    <div class="lessonMiddle lessonpage3">
+        <h2>Index in Arrays</h2>
+        
+        <p>The index determines the position of a value in the array! You can access a value inside an array by referring to its index number. Just like how you access a page through its page number!</p>
+        
+        <h3>*Index starts from 0!</h3>
+    
+        <p>For example:</p>
+        <p><code>direction[0]</code> refers to the first item in the array.</p>
+        <p><code>direction[3]</code> refers to the fourth item in the array.</p>
+    </div>
+    
+    <div class="lessonMiddle lessonpage4">
+        <h2>Why Are Arrays Special Kinds of Objects?</h2>
+    
+        <p>Arrays are special kinds of objects because they both store multiple values. Just like objects that use names to access their following elements, arrays use numbers to access the specific value.</p>
+    
+        <h3>Object Example:</h3>
+        <p><code>const traps = {trapName: "Spikes", trigger: "step", amount: 10};</code></p>
+        <p><code>console.log(traps['trapName']);</code></p>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems">
+                    <p><code>"Spikes"</code></p>
+                </div>
+            </div>
+        </div>
+    
+        <h3>Array Example:</h3>
+        <p><code>const traps = ["Spikes", "Lever", "Hole"];</code></p>
+        <p><code>console.log(traps[1]);</code></p>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems">
+                    <p><code>"Lever"</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage5">
+        <h2>Array Properties and Methods</h2>
+    
+        <p>A method is a function that is associated with an object or data type. Since an array is an object, you can call methods that are provided by JavaScript to manipulate the array values.</p>
+        <p>It means you can use methods like <code>push()</code>, <code>pop()</code>, <code>unshift()</code>, <code>shift()</code>, <code>sort()</code>, <code>length</code>, and more!</p>
+        
+        <br>
+
+        <h3>push()</h3>
+        <p><code>push()</code>: Adds an item to the end of the array.</p>
+        <h3>pop()</h3>
+        <p><code>pop()</code>: Removes an item from the end of the array.</p>
+        <h3>unshift()</h3>
+        <p><code>unshift()</code>: Adds an item to the start of the array.</p>
+        <h3>shift()</h3>
+        <p><code>shift()</code>: Removes an item from the start of the array.</p>
+        <h3>sort()</h3>
+        <p><code>sort()</code>: Sorts the array by alphabetical order or numerical order.</p>
+        <h3>length</h3>
+        <p><code>length</code>: Identifies the number of items inside the array.</p>
+    </div>
+    
+    <div class="lessonMiddle lessonpage6">
+        <h2>Example:</h2>
+    
+        <p><code>const number = [5, 8, 6, 2, 1, 0, 22];</code></p>
+        <br>
+        <p><code>number.push(100);</code></p>
+        <p><code>console.log(number);</code></p>
+        <br>
+        <p><code>number.pop();</code></p>
+        <p><code>console.log(number);</code></p>
+        <br>
+        <p><code>number.shift();</code></p>
+        <p><code>console.log(number);</code></p>
+        <br>
+        <p><code>number.unshift(200);</code></p>
+        <p><code>console.log(number);</code></p>
+        <br>
+        <p><code>number.sort((a, b) => (a - b));</code></p>
+        <p><code>console.log(number);</code></p>
+        <br>
+        <p><code>console.log(number.length);</code></p>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle">
+                <p>Console</p>
+            </div>
+            <div class="consoleContent">
+                <div class="consoleContentItems">
+                    <p><code>[5, 8, 6, 2, 1, 0, 22, 100]</code></p>
+                </div>
+                <div class="consoleContentItems">
+                    <p><code>[5, 8, 6, 2, 1, 0, 22]</code></p>
+                </div>
+                <div class="consoleContentItems">
+                    <p><code>[8, 6, 2, 1, 0, 22]</code></p>
+                </div>
+                <div class="consoleContentItems">
+                    <p><code>[200, 8, 6, 2, 1, 0, 22]</code></p>
+                </div>
+                <div class="consoleContentItems">
+                    <p><code>[0, 1, 2, 6, 8, 22, 200]</code></p>
+                </div>
+                <div class="consoleContentItems">
+                    <p><code>7</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage7">
+        <h2>Practice</h2>
+        <h3>Instruction:</h3>
+        <ol>
+            <li>Create an array named <code>tool</code> that includes the following items: "crate", "stairs", "doors", "window", "doorway".</li>
+            <li>Remove "doorway" from the end of the array.</li>
+            <li>Add a "switch" to the end of the array.</li>
+            <li>Remove "crate" from the array.</li>
+            <li>Add a "crate" to the front of the array.</li>
+            <li>Remove a "switch" from the array.</li>
+            <li>Add a "doorway" to the end of the array.</li>
+            <li>Sort the array in alphabetical order.</li>
+            <li>Count the number of items in the array.</li>
+        </ol>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="lessonGamesContainer_p5play">
+            <div class="BoxText">
+            <div class="buttonSubmitContainer">
+                <p>1.</p>
+                <input class ='inputBoxes' type="text" id="input13.1" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.1'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>2.</p>
+                <input class ='inputBoxes' type="text" id="input13.2" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.2'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>3.</p>
+                <input class ='inputBoxes' type="text" id="input13.3" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.3'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>4.</p>
+                <input class ='inputBoxes' type="text" id="input13.4" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.4'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>5.</p>
+                <input class ='inputBoxes' type="text" id="input13.5" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.5'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>6.</p>
+                <input class ='inputBoxes' type="text" id="input13.6" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.6'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>7.</p>
+                <input class ='inputBoxes' type="text" id="input13.7" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.7'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>8.</p>
+                <input class ='inputBoxes' type="text" id="input13.8" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.8'>Submit</button>
+                </div>
+            <div class="buttonSubmitContainer">
+                <p>9.</p>
+                <input class ='inputBoxes' type="text" id="input13.9" placeholder="Enter code">
+                <button class ='submitBoxes' id = 'submit13.9'>Submit</button>
+                </div>
+                <br>
+        </div>
+        <div><p>&nbsp;&nbsp;</p></div>
+            <div id = "array"></div>
+            <p id  = 'response'></p>
+        </div>
+        </div>
+    
+
     <div class="lessonMiddle lessonpage8">
         <h2>The typeof Operator</h2>
         <p>You can use the typeof operator to find the type of the value.</p>

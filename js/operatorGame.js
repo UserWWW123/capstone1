@@ -120,7 +120,6 @@ function update(){
 
 function checkOrder() {
     const blocksInCodingSection = Array.from(codingSection.children); // get all added block in the coding Section
-    const correctp =  document.getElementById('correct');
 
     if (blocksInCodingSection.length !== ifFunction.length){
         return;
@@ -138,18 +137,14 @@ function checkOrder() {
       } else {
         block.classList.remove('wrong');
         block.classList.add('right'); 
-        correctp.style.display = "block";
       }
     });
     // Check if blocks are in the correct order
     const Correct = allCorrect && blocksInCodingSection.every((block, index) => block.querySelector('.draggable').innerText.trim() === ifFunction[index]);
 
-    correctp.addEventListener("click", function(){
-      location.reload();});
 
     if (Correct) {
       //gameStart();
-      correctp.style.display = "none";
       gameStart();
     }else{
         gameFreeze();

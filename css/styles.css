@@ -371,7 +371,7 @@ button{
 }
 
 
-li{
+ul{
     list-style-type: disc;
     background: #f4eddf;
     font-size: 100%;
@@ -487,15 +487,7 @@ margin-bottom: 0;
   .over {
     background-color: #ddd;
   }
-#correct{
-    font-size: 100%;
-    z-index: 20;
-    position: absolute;
-    right: 300px;
-    width:100px;
-    height:100px;
-    display: none;
-}
+
 Canvas{
     position: relative;
     z-index: 2;
