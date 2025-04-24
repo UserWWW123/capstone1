@@ -6,7 +6,7 @@ function preload(){
     alien1img = loadImage('/assets/alienBiege_jump.png');
     alien2img = loadImage('/assets/alienBlue_stand.png');
     doorOpenedimg = loadImage('/assets/doorOpen_S.png');
-    wallimg = loadImage('/assets/wall_s.png')
+    wallimg = loadImage('/assets/wall_S.png')
     alien3img = loadImage('/assets/alienGreen_climb1.png');
     alien4img = loadImage('/assets/alienGreen_front.png');
     floorimg = loadImage('/assets/floor_E.png');
