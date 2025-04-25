@@ -85,7 +85,6 @@ function setup(){
     doorClosed.image.scale = 2;
     doorClosed.layer = 2;
 
-    //enableDebugForAllSprites();
 }
 
 function draw(){

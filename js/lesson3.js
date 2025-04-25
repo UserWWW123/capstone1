@@ -173,11 +173,9 @@ const s2 = (p) => {
                 if (currentOperation === "increment") {
                     resultSprite.text = c + 1;
                     resultSprite.color = "white";
-                    console.log("increment ok");
                 }else if (currentOperation === "decrement") {
                     resultSprite.text = c -1;
                     resultSprite.color = "white";
-                    console.log("increment ok");
                 }else {
                     resultSprite.text = "Unknown Operator";
                     resultSprite.color = "red";

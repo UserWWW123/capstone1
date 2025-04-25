@@ -199,72 +199,11 @@ function checkOrder() {
     }
   }
 
-let password;
 
 async function gameStart(){
-    await delay(500);
-    slab2.remove();
-    await delay(500);
-    crate3.remove();
-    await delay(500);
-    block1.remove();
-    await delay(500);
-    block2.remove();
-    await delay(500);
-    doorway2.remove();
-    await delay(500);
-    crate2.remove();
-    await delay(500);
-    crate1.remove();
-    await delay(500);
-    doorway.remove();
-    await delay(500);
-    slab.remove();    
-    await delay(500);
-    alien1.img = alien2img;
-    alien1.moveTo(330,230, 2);
+
 }
 
 async function gameFreeze(){
-    alien1.x = 330
-    alien1.y = 470;
-    alien1.img = alien1img;
-
-    block1.x = 340;
-    block1.y = 255;
-    block1.img = blockimg;
-
-    block2.x = 210;
-    block2.y = 150;
-    block2.img = block2img;
-
-    crate1.x = 210;
-    crate1.y = 290;
-    crate1.img = crateimg;
-
-    crate2.x = 470;
-    crate2.y = 290;
-    crate2.img = crateimg;
-
-    crate3.x = 340;
-    crate3.y = 130;
-    crate3.img = crateimg;
-
-    slab.x = 280;
-    slab.y = 363;
-    slab.img = slabimg;
-
-    slab2.x = 340;
-    slab2.y = 0;
-    slab2.img = slabimg;
-
-    doorway.x = 340;
-    doorway.y = 370;
-    doorway.img = doorwayimg;
-
-    doorway2.x = 455;
-    doorway2.y = 200;
-    doorway2.img = doorwayimg;
-
 
 }

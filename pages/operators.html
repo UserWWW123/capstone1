@@ -21,7 +21,7 @@
         <button class="takeNote" onclick="toggleNoteIframe()">
             <i class="fa-solid fa-note-sticky"></i>
             Take Note</button>
-            <a href="stage3.html">
+            <a href="operatorsGame.html">
                 <button class="nextLesson">
                 <i class="fa-solid fa-caret-right"></i>
                 Next: Operators Game
@@ -33,7 +33,6 @@
                     <a href = "/index.html" >Home</a>
                     <a class = "active"href = "note.html">Note</a>
                     <a href = "levelsPage.html">Learn</a>
-                    <a href = "stage1.html">Game</a>
             </div>
     </div>
     </div>
@@ -745,12 +744,6 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
     
 
             <script>
-                document.getElementById("submitButton").addEventListener("click", function(){
-                    let userAnswer = document.querySelector('#variableInput').value.trim();
-                    userAnswer = userAnswer.replace(/\s+/g, '');
-                    let correctAnswer = 'letdoor="open";';
-                    checkAnswer(userAnswer, correctAnswer, 'lessonPage13');
-                });
                 function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
                     const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
                     if (response) {
