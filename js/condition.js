@@ -289,67 +289,109 @@ const s3 = (p) => {
 new p5(s3, 'keys');
 
 const s4 = (p) => { 
-    let alien, alienimg;
-    let blocks;
+    let alien, alienimg, hitT;
+    let blocks, startButton, backgroundimg;
+    let gameStarted = false; // To track whether the game has started
+    let hit = 0; // To track the hit
     
     p.preload = () => {
         alienimg = p.loadImage('/assets/shipYellow.png');
+        backgroundimg = p.loadImage('/assets/uncolored_piramids.png');
     };
     
     p.setup = () => {
         p.createCanvas(1200, 500);
+        p.world.gravity.y = 10;
     
-        alien = new p.Sprite(0, 150, 60, 85, 'kinetic'); 
+        alien = new p.Sprite(-300, 100, 60, 20, 'none'); 
+        alien.addCollider(0,-20, 33); //(x-offset, y-offset, diameter)
+        alien.addCollider(0,10,60,15);
+        alien.addCollider(-23,20,20);//13 left from the center. 20 down from the center. 20 diameter
+        alien.addCollider(23,20,20);
+        alien.offset.y = -10;
         alien.img = alienimg;
-        alien.img.scale = 1.5;
+        alien.scale = 1.5;
         alien.debug = true;
+        alien.collider = 'dynamic';
+        alien.rotationLock = true;
+        alien.vel.x = 0;
+        alien.friction = 0;
+        alien.bounciness = 0;
+
+        hitT = new p.Sprite(70,30,100,30, 'none');
+        hitT.color = 'white';
+        hitT.stroke = 'white';
+        hitT.text = hit;
         
         blocks = new p.Group();
-        blocks.x = (i) => p.random(1200);
-        blocks.y = (i) => p.random(500);
-        blocks.amount = 50;
-        blocks.collider = 'static';
-        blocks.color = '#FAF3DD';
-        blocks.stroke = '#FFA69E';
-        blocks.strokeWeight = 2;
-        blocks.d = 10;
+        
+        for (let i = 0; i < 100; i++) {
+            let gapSize = p.random(60,100); // Make gaps' height bigger/smaller
+            let gapY = p.random(150,300); // Gaps location
 
-        createInitialBlocks();
+            let topBlock = new p.Sprite(i*250+200, gapY - gapSize - 250, 100, 500, 'static');
+            topBlock.color = '#FAF3DD';
+            topBlock.stroke = '#FFA69E';
+        
+            let bottomBlock = new p.Sprite(i*250+200, gapY + gapSize + 250, 100, 500, 'static');
+            bottomBlock.color = '#FAF3DD';
+            bottomBlock.stroke = '#FFA69E';
+            
+            blocks.add(topBlock);   // Add the blocks to the group
+            blocks.add(bottomBlock);
+        };
+
+        blocks.bounciness = 0;
+        startButton = new p.Sprite(alien.x, 250, 200, 100, 'static');
+        startButton.color = 'white';
+        startButton.stroke = 'white';
+        startButton.opacity = 0.5;
+        startButton.text = 'Click to start';
+        startButton.textSize = 20;
     };
     
     p.draw = () => {
-        p.background('#AED9E0');
-        alien.moveTowards(p.mouse, 0.02);
+        p.background(backgroundimg);
+        if (startButton.mouse.pressed()) {
+            startButton.remove();
+            gameStarted = true; // Game has started
+        };
 
-        // Check if blocks are out of the camera view and create new blocks
-        for (let block of blocks) {
-            if (block.x < p.camera.x - p.width / 2 || block.x > p.camera.x + p.width / 2 || block.y < p.camera.y - p.height / 2 || block.y > p.camera.y + p.height / 2) {
-                repositionBlock(block);
+        if (gameStarted) {
+            alien.vel.x = 3; // Set vel.x to 3 only after the game has started
+        }
+
+        if (p.mouse.presses()) {
+            alien.vel.y = -3;  
+        };
+
+        blocks.forEach(block => { // Check collisions with each block individually
+            if (alien.collide(block)) {
+                hit += 1;  // Increment hit for each collision with a block
             }
+        });
+        if (hit >=10){
+            alien.x = -300;
+            hit = 0;
+        }
+        if (alien.y>600){
+            alien.y = 100;
+            alien.x = -300;
+            hit = 0;
+            alien.vel.y = 0;
         }
     };
     
     p.drawFrame = () => {
-        p.camera.x = alien.x;
-        p.camera.y = alien.y;
+        p.camera.on();
+        p.camera.x = alien.x;  
+        alien.draw();
+        blocks.draw();
+
+        p.camera.off();
+        hitT.text = `Hits: ${hit}`; // Update hit display
+        hitT.draw();        
     };
-
-    // Function to create blocks
-    function createInitialBlocks() {
-        for (let i = 0; i < blocks.amount; i++) {
-            let block = new p.Sprite(p.random(1200), p.random(500), blocks.d, blocks.d, 'static');
-            block.color = blocks.color;
-            block.stroke = blocks.stroke;
-            block.strokeWeight = blocks.strokeWeight;
-            blocks.add(block);
-        }
-    }
-
-    function repositionBlock(block) {
-        // Reset the position of the block to a random position
-        block.x = p.random(p.camera.x - p.width / 2, p.camera.x + p.width / 2);
-        block.y = p.random(p.camera.y - p.height / 2, p.camera.y + p.height / 2);
-    }
 };
 
 new p5(s4, 'camera');

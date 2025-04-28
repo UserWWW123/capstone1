@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConditionGame</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/conditionGame.js"></script>
+    <script src="/js/lesson1.js"></script>
+
+    <script src="https://q5js.org/q5.js"></script>
+    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="/js/p5play (1).js"></script>
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+
+</head>
+<body class ="stagePageY">
+    <style>
+        li{
+    list-style-type: none;
+    background: #f4eddf;
+    font-size: 100%;
+    margin-bottom: 10px;
+}
+    Canvas{
+        position: absolute;
+        top: 0%;
+        bottom: 0%;
+        z-index: 2;
+    }
+    ul{
+        background: transparent;
+    }
+    </style>
+    <div class="stage1Container">
+        <div class="empty" id="gameContainer">
+        <div id="winNote">
+            <p id = "win"></p>
+            <a href = "conditionalStatement.html"> <!--change the link to next lesson-->
+            <button id="nextButton"></button>
+        </a>
+        </div>
+        </div>
+        <div class="wholerightPanel">
+            <div class="toolBox">
+                <p id="toolBoxTitle">ToolBox</p>
+                <ul class="draggable-list" id="draggable-list"></ul>
+            </div>
+            <button class="check-btn" id="check">
+                <i class="fa-solid fa-play"></i>
+              </button>    
+        <div class="rightPanel">
+        <div class="rightPaneltop">
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "/index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+            </div>
+            <script>
+                document.getElementById("menu-icon").addEventListener("click", function(){
+                    document.getElementById("nav-menu").classList.toggle("show");
+                });
+                window.addEventListener("click", function(){
+                    if (!event.target.matches("#menu-icon")){
+                        document.getElementById("nav-menu").classList.remove("show");
+                    }
+                });
+            </script>
+    </div>
+            <a href="conditionalStatement.html">
+            <button class = "rightLeftButton"id="previousLevel">
+                <i class="fa-solid fa-caret-left"></i></button>
+            </a>
+            <h1 id="rightPanelTitle">If-Else</h1>
+            <a href="conditionalStatement.html"> <!--change the link to next lesson-->
+            <button class = "rightLeftButton" id="nextLevel">
+                <i class="fa-solid fa-caret-right"></i></button>
+            </a>
+            <button class="takeNote stageNote" onclick="toggleNoteIframe()">
+                <i class="fa-solid fa-note-sticky"></i>
+                Take Note</button>
+                <iframe id="noteIframe" src="note.html"></iframe>
+        </div>
+
+        <div class="rightPanelInstruction">
+            <div>
+                <p>An alien is trapped! Create a game following the instructions, and play the game to make the obstacle trapping the alien go away!</p>
+                <h2>Instruction:</h2>
+                <p>1. Create a sprite called <code>ground</code>.</p>
+                <p>2. Create a sprite called <code>user</code> that follows the mouse.</p>
+                <p>3. Make the <code>user</code> sprite able to click to create a sprite called <code>new Sprite()</code>.</p>
+                <p>4. Add images to the sprites in this sequence: <code>doorClosed</code>, <code>doorway</code>, <code>arrow</code>.</p>
+                <p>5. Create an if statement to let door images change from <code>doorClosed</code> to <code>doorOpen</code> if <code>new Sprite()</code> hits it.</p>
+                <p>6. Create an if statement to make a sprite speed up in a 40-degree direction when it contacts the <code>arrow</code>.</p>
+                <p>7. Make the camera move as the <code>new Sprite()</code> moves.</p>
+                <p>8. Make the ground not be impacted by the camera movement.</p>
+                <p>9. Click to create <code>new Sprite()</code>! Make <code>new Sprite()</code> hit the door to open it!</p>                  
+            </div>
+            
+        </div>
+            <div class="codingSection">
+            </div>
+                
+        </div>
+    </div>
+</div>
+    
+    <script src="/js/conditionBlocks.js"></script>
+</body>
+</html>
