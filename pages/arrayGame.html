@@ -36,7 +36,7 @@
         <div class="empty" id="gameContainer">
         <div id="winNote">
             <p id = "win"></p>
-            <a href = "array.html"> <!--change the link to next lesson-->
+            <a href = "conditionalStatement.html"> <!--change the link to next lesson-->
             <button id="nextButton"></button>
         </a>
         </div>
@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-caret-left"></i></button>
             </a>
             <h1 id="rightPanelTitle">Array</h1>
-            <a href="array.html"> <!--change the link to next lesson-->
+            <a href="conditionalStatement.html"> <!--change the link to next lesson-->
             <button class = "rightLeftButton" id="nextLevel">
                 <i class="fa-solid fa-caret-right"></i></button>
             </a>
@@ -92,29 +92,24 @@
                 </p>
             <div>
                 <h2>Instruction:</h2>
-                <p>1. Create variables in this order: <code>ball</code>, <code>speedUpPlate</code>, <code>crate1</code>, <code>crate2</code>, <code>crate3</code>, <code>block1</code>, <code>block2</code>, <code>block3</code>.</p>
-
-                <p>2. Create an array to store: <code>crate1</code>, <code>crate2</code>, <code>crate3</code>, <code>block1</code>, <code>block2</code>, <code>block3</code>.</p>
+                <p>1. Create a sprite called <code>ball</code>.</p>
                 
                 <p>3. Set the ball’s collider to <code>"dynamic"</code>.</p>
                 
-                <p>4. Set the ball’s mass to <code>100</code>.</p>
+                <p>4. Set the ball’s mass to <code>20</code>.</p>
                 
-                <p>5. Set the ball’s direction to <code>180</code> and speed to <code>5</code>.</p>
+                <p>5. Set the ball’s direction to <code>-20</code> and speed to <code>10</code>.</p>
                 
-                <p>6. Use the array and its indices to:</p>
+                <p>6. Create an array to store 6 new Sprite objects by assigning their locations in the following sequence:</p>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(151, 321)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(375, 210)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(500, 275)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(280, 385)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(80, 500)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-(580, 400)<br>
                 
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;- Make each variable in the array a sprite in this order: <code>crate1</code>, <code>crate2</code>, <code>crate3</code>, <code>block1</code>, <code>block2</code>, <code>block3</code>.</p>
-                
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;- Set each sprite’s collider to <code>"dynamic"</code>.</p>
-                
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;- Move each sprite to its position in this sequence:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>crate1</code> → (10, 10)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>crate2</code> → (20, 20)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>crate3</code> → (30, 30)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>block1</code> → (40, 40)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>block2</code> → (50, 50)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>block3</code> → (60, 60)</p>
+                <p>7. Set each sprite’s collider to <code>"dynamic"</code> using its index in the array (from index 0 to 5).</p>
+                <p>8. Set each sprite’s image to <code>"/assets/crate.png"</code> in the same sequence as above.</p>
                 
             </div>
             
