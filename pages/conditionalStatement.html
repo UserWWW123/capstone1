@@ -566,6 +566,7 @@ const s4 = (p) => {
     let blocks, startButton, backgroundimg;
     let gameStarted = false; // To track whether the game has started
     let hit = 0; // To track the hit
+    let isPaused = false;
     
     p.preload = () => {
         alienimg = p.loadImage('/assets/shipYellow.png');
@@ -625,34 +626,49 @@ const s4 = (p) => {
     
     p.draw = () => {
         p.background(backgroundimg);
-        if (startButton.mouse.pressed()) {
+        if (startButton.mouse.presses()) {
             startButton.remove();
             gameStarted = true; // Game has started
         };
 
-        if (gameStarted) {
-            alien.vel.x = 3; // Set vel.x to 3 only after the game has started
-        }
+        if (gameStarted && !isPaused) {
+            alien.vel.x = 3; // Set vel.x to 3 only after the game has started and game is not paused by using space
+        };
 
         if (p.mouse.presses()) {
             alien.vel.y = -3;  
         };
 
+        if (p.kb.presses('space')) {
+            if (!isPaused) { //When it's not paused, pause the game
+                alien.vel.x = 0;
+                alien.vel.y = 0;
+                alien.collider = 'static';
+                isPaused = true;
+            } else { //When it's paused, unpause the game.
+                alien.collider = 'dynamic';
+                alien.vel.x = 3;
+                isPaused = false;
+            };
+        };
+
+
         blocks.forEach(block => { // Check collisions with each block individually
             if (alien.collide(block)) {
                 hit += 1;  // Increment hit for each collision with a block
-            }
+            };
         });
         if (hit >=10){
             alien.x = -300;
             hit = 0;
-        }
+        };
+
         if (alien.y>600){
             alien.y = 100;
             alien.x = -300;
             hit = 0;
             alien.vel.y = 0;
-        }
+        };
     };
     
     p.drawFrame = () => {
@@ -668,11 +684,11 @@ const s4 = (p) => {
 };
 
 new p5(s4, 'camera');
-
 </code></pre>
 </div>        
         <br>
         <br>
+        <p>->Click "Start" to begin the game! <br>->Click anywhere to make the alien jump and hover in the air. <br>->Press the spacebar to pause and unpause the game.</p>
         <div class="lessonGamesContainer_p5play">
             <div id="camera"></div> 
     </div>
