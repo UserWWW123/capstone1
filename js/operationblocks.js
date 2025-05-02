@@ -61,7 +61,7 @@ const draggable_list = document.getElementById('draggable-list');
 
           listItems.push(listItem);
 
-          draggable_list.appendChild(listItem);
+          draggable_list.appendChild(listItem); //push to list
         });
 
       addEventListeners();
@@ -83,22 +83,58 @@ const draggable_list = document.getElementById('draggable-list');
       e.preventDefault();
     }
 
-    function dragDrop(event) {
-      event.preventDefault(); 
-      const draggedItem = document.querySelector(`[data-index='${dragStartIndex}']`); //get the dragged element by using data-index attribute
-
-      if (this.classList.contains('codingSection')) { //if droped into codingSection
-        this.appendChild(draggedItem); 
-        codingSectionArray.push(draggedItem.querySelector('.draggable').innerText.trim()); //get text content, remove start/end spaces, add to the array
-      } else {
-        const dragEndIndex = +this.getAttribute('data-index'); //get the dragging element data-index
-        if (!isNaN(dragEndIndex)) { //check if it is a number, if dragEndIndex is a number...
-          dropItems(dragStartIndex, dragEndIndex); //chance sequence
+    function dragDrop(e) {
+      e.preventDefault();
+      const draggedItem = document.querySelector(`[data-index='${dragStartIndex}']`);
+      const dropTarget = this;
+    
+      const isInToolB = dropTarget.closest('#draggable-list');
+      const isInCodingS = dropTarget.closest('.codingSection');
+    
+      // Check if the dragged item is being dropped in the coding section or the list
+      if (isInCodingS || isInToolB) {
+        const parent = dropTarget.closest('ul') || dropTarget.closest('.codingSection');
+        const children = [...parent.querySelectorAll('li')]; // Get all children of the parent list
+    
+        let inserted = false;
+    
+        for (const child of children) { // Check each child
+          const bounding = child.getBoundingClientRect(); // Get the bounding of the child
+          const offset = e.clientY - bounding.top; // Get the offset of the mouse position relative to the child
+    
+          if (offset < bounding.height / 2) { // If the mouse is in the upper half of the child
+            parent.insertBefore(draggedItem, child); // Insert the dragged item before the item it was over
+            inserted = true;
+            break; // Exit
+          }
+        }
+    
+        if (!inserted) { // If not inserted
+          parent.appendChild(draggedItem);
         }
       }
-      this.classList.remove('over');
+    
+      dropTarget.classList.remove('over');
+    
+      if (dropTarget.closest('.codingSection')) {
+        updateCodingSectionArray();
+      }
     }
-    //swap items
+
+    function updateCodingSectionArray() {
+      let codingSectionArray = []; //Create a empty array to store the coding section items
+      const codingItems = document.querySelectorAll('.codingSection li .draggable');
+      codingItems.forEach(item => { //item = codingItems[i]
+        codingSectionArray.push(item.innerText.trim());
+      });
+
+      /* same as: 
+      for (let i = 0; i < codingItems.length; i++) { 
+      codingSectionArray.push(codingItems[i].innerText.trim());
+      }*/
+    }   
+    
+    /*//swap items
     function dropItems(fromIndex, toIndex) {
       if (fromIndex === toIndex) return;
 
@@ -108,17 +144,18 @@ const draggable_list = document.getElementById('draggable-list');
       listItems[fromIndex].appendChild(itemTwo);
       listItems[toIndex].appendChild(itemOne);
 
-    }
-
+    }*/
 
     function addEventListeners() {
       const draggables = document.querySelectorAll('.draggable');
       const dragListItems = document.querySelectorAll('.draggable-list li');
       
+      //Make the draggable items can be dragged to the coding list
       draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', dragStart);
       });
 
+      //Make the draggable items can be dragged to the coding list
       dragListItems.forEach(item => {
         item.addEventListener('dragover', dragOver);
         item.addEventListener('drop', dragDrop);

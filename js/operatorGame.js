@@ -91,11 +91,6 @@ function draw(){
     background('#dbb691ff');
 }
 
-function enableDebugForAllSprites() {
-    for (let sprite of allSprites) {
-        sprite.debug = true;
-    }
-}
 
 function update(){
     if (alien2.position.x === 435 && alien2.position.y === 300) {

@@ -16,7 +16,7 @@
 </head>
 <body class ="stagePageY">
     <style>
-    .codingSection li{
+    .codingSection li {
     list-style-type: none;
     background: #f4eddf;
     font-size: 100%;
@@ -41,7 +41,7 @@
         <div class="empty" id="gameContainer">
         <div id="winNote">
             <p id = "win"></p>
-            <a href = "conditionalStatement.html"> <!--change the link to next lesson-->
+            <a href = "loops.html"> <!--change the link to next lesson-->
             <button id="nextButton"></button>
         </a>
         </div>
@@ -79,7 +79,7 @@
                 <i class="fa-solid fa-caret-left"></i></button>
             </a>
             <h1 id="rightPanelTitle">If-Else</h1>
-            <a href="conditionalStatement.html"> <!--change the link to next lesson-->
+            <a href="loops.html"> <!--change the link to next lesson-->
             <button class = "rightLeftButton" id="nextLevel">
                 <i class="fa-solid fa-caret-right"></i></button>
             </a>
@@ -188,32 +188,33 @@
                             </li>
                             <li>Else if space key is pressed and collectBlock is true:
                               <ul>
-                                <li>Set blocks.collider = 'dynamic'</li>
+                                <li>Set blockA.collider = 'dynamic'</li>
                                 <li>Launch blockA with:
                                   <ul>
-                                    <li>blocks.vel.x = 5</li>
-                                    <li>blocks.vel.y = -5</li>
+                                    <li>blockA.vel.x = 5</li>
+                                    <li>blockA.vel.y = -5</li>
                                   </ul>
                                 </li>
                                 <li>blockA.rotationLock = false</li>
                                 <li>Set collectBlock = false</li>
                               </ul>
                             </li>
-                            <li>If collectBlock is true:
-                              <ul>
-                                <li>Set blocks.collider = 'none'</li>
-                                <li>Update blockA to follow the alien:
-                                  <ul>
-                                    <li>blockA.x = alien.x + 50</li>
-                                    <li>blockA.y = alien.y + 10</li>
-                                    <li>blockA.rotationLock = true</li>
-                                    <li>blockA.rotation = 0</li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
                           </ol>
                         </li>
+                        <li>If collectBlock is true:
+                            <ul>
+                              <li>Set blockA.collider = 'none'</li>
+                              <li>Update blockA to follow the alien:
+                                <ul>
+                                  <li>blockA.x = alien.x + 50</li>
+                                  <li>blockA.y = alien.y + 10</li>
+                                  <li>blockA.rotationLock = true</li>
+                                  <li>blockA.rotation = 0</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        <li>Make the door image change when the alien collides with it — the door opens!</li>
                       </ol>
                     </li>
                   </ol>
@@ -224,7 +225,7 @@
 <div class='collapsibleContent'>
 <pre><code>
 function setup(){
-    createCanvas(865, 750);
+    new Canvas(865, 750);
     background('#dbb691ff');
 
     world.gravity.y = 15;
@@ -263,41 +264,53 @@ function drawFrame(){
 };
 
 function update(){
+
     alienLifeS.text = 'Alien Life: ' + alienLife;
 
     if (kb.presses('up')){
         alien.vel.y = -5;
-    }
+    };
 
     if(kb.pressing('right')){
         alien.vel.x = 2.5;
     } else if(kb.pressing('left')){
         alien.vel.x = -2.5;
-    }
+    };
 
     if (kb.pressing('down') && alien.collides(blockA)) {
         alien.vel.x = 0;
         collectBlock = true;
     } else if (kb.presses('space')) {
         if (collectBlock === true){
-            blocks.collider = 'dynamic';
-            blocks.vel.x = 5;
-            blocks.vel.y = -5;
+            blockA.collider = 'dynamic';
+            blockA.vel.x = 5;
+            blockA.vel.y = -5;
             blockA.rotationLock = false;
             collectBlock = false;
         };
     };
 
     if (collectBlock === true) {
-        blocks.collider = 'none';
+        blockA.collider = 'none';
         blockA.x = alien.x + 50;
         blockA.y = alien.y + 10;
         blockA.rotationLock = true;
         blockA.rotation = 0;
     };
+    if (alien.collide(door)){
+        door.img = doorimg2;
+    };
 };
 </code></pre>
-    </div>      
+    </div>         
+
+    <p>Want to see the collider? Type allSprites.debug = true; in the box below!</p>
+    <div class="buttonSubmitContainer">
+        <input class='inputBoxes' type="text" id="input" placeholder="Enter code">
+        <button class='submitBoxes' id='submit'>Submit</button>
+    </div>
+    <p id = 'response'></p>
+
         </div>
             <div class="codingSection">
             </div>

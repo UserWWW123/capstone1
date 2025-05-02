@@ -101,18 +101,12 @@ function setup(){
     alien1.scale = 1.5;
     alien1.layer = 1;
     
-    //enableDebugForAllSprites();
 }
 
 function draw(){
     background('#dbb691ff');
 }
 
-function enableDebugForAllSprites() {
-    for (let sprite of allSprites) {
-        sprite.debug = true;
-    }
-}
 
 function update(){
     if (ball2 && arrowc && ball2.collides(arrowc)) {

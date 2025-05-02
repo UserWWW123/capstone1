@@ -11,6 +11,7 @@ let collectBlock = false;
 let wallimg, wallimg2, wallimg3, wall1, wall2, wall3, wall4, wall5;
 
 let blocks, blockA;
+let gameStart = false;
 
 
 function preload(){
@@ -27,7 +28,7 @@ function preload(){
 
 function setup(){
     const container = document.getElementById('gameContainer');
-    createCanvas(container.offsetWidth, container.offsetHeight);
+    new Canvas(container.offsetWidth, container.offsetHeight);
     background('#dbb691ff');
 
     world.gravity.y = 15;
@@ -53,6 +54,7 @@ function setup(){
     wall2.img = wallimg3;
     wall2.scale = 5;
     wall2.layer = 0;
+    
 
     wall3 = new Sprite(830,300,50,50, 'none');
     wall3.img = wallimg2;
@@ -159,9 +161,24 @@ function setup(){
     monsterLifeS.strokeWeight = 2;
     monsterLifeS.opacity = 0.7;
 
+    let submit = document.getElementById('submit');
+    let response = document.getElementById('response');
     
-    enableDebugForAllSprites();
-
+    submit.addEventListener('click', () => {
+        // Get the value when the button is clicked
+        let input = document.getElementById('input').value.trim().replace(/\s+/g, '');
+        response.innerHTML = '';
+        if (input === 'allSprites.debug=true;') {
+            allSprites.debug = true;
+            response.innerHTML = 'Correct! Debugging is now turned on.';
+            console.log('correct');
+        } else {
+            allSprites.debug = false;
+            response.innerHTML = "Wrong! Enter <code>allSprites.debug=true;</code> to enable debugging.";
+            console.log('wrong');
+        }
+    });
+    
 }
 
 function draw(){
@@ -185,16 +202,16 @@ function drawFrame(){
     
 }
 
-function enableDebugForAllSprites() {
-    for (let sprite of allSprites) {
-        sprite.debug = true;
-    }
-}
-
 function update(){
+
 
     alienLifeS.text = 'Alien Life: '+ alienLife;
     monsterLifeS.text = 'Monster Life: '+ monsterLife;
+
+    //Change door image after collision
+    if (alien.collide(door)){
+        door.img = doorimg2;
+    };
 
     //Monster's movement
     //movingRight: remember the currect direction
@@ -258,7 +275,8 @@ function update(){
         blockA.y = 80;
     };
 
-
+//Make player can control character only after the blocks are in correct order
+if (gameStart === true){
     //Keyboard input + control alien's movement/animation
     if (kb.presses('up')){
         alien.vel.y = -5;
@@ -309,6 +327,7 @@ function update(){
         alien.anis.offset.y = 8;
         alien.anis.offset.x = 0;
     };
+}
 
     //If the block is collected
     if (collectBlock === true) {
@@ -347,16 +366,8 @@ function checkOrder() {
 
 
     if (Correct) {
-      //gameStart();
-      gameStart();
+        gameStart = true;
     }else{
-        gameFreeze();
+        gameStart = false;
     }
   }
-
-function gameStart(){
-
-}
-function gameFreeze(){
-
-}

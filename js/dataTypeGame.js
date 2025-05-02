@@ -144,18 +144,12 @@ function setup(){
     doorway2.textSize = 30;
     doorway2.textColor = color(253, 240, 213);
 
-    //enableDebugForAllSprites();
 }
 
 function draw(){
     background('#dbb691ff');
 }
 
-function enableDebugForAllSprites() {
-    for (let sprite of allSprites) {
-        sprite.debug = true;
-    }
-}
 
 function update(){
     if (alien1.x === 330 && alien1.y === 230){

@@ -66,19 +66,12 @@ function setup() {
     doorClosed.layer = 1;
     alien.layer = 0;
 
-    enableDebugForAllSprites();
-
 }
 
 function draw(){
     background('#dbb691ff');
 }
 
-function enableDebugForAllSprites() {
-    for (let sprite of allSprites) {
-        sprite.debug = true;
-    }
-}
 
 function update(){
     block.rotationSpeed =0;

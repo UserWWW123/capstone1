@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Type</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/lesson1.js"></script>
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+    <script src="https://q5js.org/q5.js"></script>
+    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="/js/p5play (1).js"></script>
+    <script src = '/js/loop.js'></script>
+
+</head>
+<body class="lessonPage">
+    <div class="lesson">
+    <div class= "lessonTop">
+        <p class="lessonTitle">Level 7: Loops</p>
+        <div class="toolButton">
+        <button class="takeNote" onclick="toggleNoteIframe()">
+            <i class="fa-solid fa-note-sticky"></i>
+            Take Note</button>
+            <a href="loops.html">
+                <button class="nextLesson">
+                <i class="fa-solid fa-caret-right"></i>
+                Next: Loops Game
+            </button>
+            </a>
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "/index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+            </div>
+    </div>
+    </div>
+    <iframe id="noteIframe" src="note.html"></iframe>
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function(){
+            document.getElementById("nav-menu").classList.toggle("show");
+        });
+        window.addEventListener("click", function(){
+            if (!event.target.matches("#menu-icon")){
+                document.getElementById("nav-menu").classList.remove("show");
+            }
+        });
+    </script>
+    </div>
+    <div class="lessonMiddle lessonpage1">
+        <h2>Loops</h2>
+      
+        <p>By using loops, the computer can execute a block of code multiple times.</p>
+
+        <br>
+      
+        <h4>Different kinds of loops:</h4>
+      
+        <h3>->for loop</h3>
+        <p>A block of code runs until a specific condition becomes false.</p>
+      
+        <h3>->while loop</h3>
+        <p>Loop through a block of code while a condition is true.</p>
+      </div>
+      
+      <div class="lessonMiddle lessonpage2">
+        <h2>For loop:</h2>
+      
+        <p>A for loop repeats until a specific condition becomes false.</p>
+      
+        <p><code>//create an array to store the trap items.</code></p>
+        <p><code>let trapItems = ['doorway', 'window', 'staircase', 'tile', 'door'];</code></p>
+      
+        <p><code>//create a loop to go through each item and print it to the console. The loop break after going through the array once.</code></p>
+        <p><code>for (let i = 0; i &lt; trapItems.length; i++){</code></p>
+        <p><code>&nbsp;&nbsp;console.log(trapItems[i]);</code></p>
+        <p><code>}</code></p>
+      
+        <div class="consoleOutput">
+          <div class="consoleTitle"><p>Console</p></div>
+          <div class="consoleContent">
+            <div class="consoleContentItems"><p><code>doorway</code></p></div>
+            <div class="consoleContentItems"><p><code>window</code></p></div>
+            <div class="consoleContentItems"><p><code>staircase</code></p></div>
+            <div class="consoleContentItems"><p><code>tile</code></p></div>
+            <div class="consoleContentItems"><p><code>door</code></p></div>
+          </div>
+        </div>
+      </div>
+      
+<div class="lessonMiddle lessonpage3">
+<h2>Example:</h2>
+<p><pre><code>
+let tiles = []; // Create an empty array for tiles
+
+// Create 7 tiles and store them into the array
+for (let i = 0; i &lt; 7; i++) {
+    tiles[i] = new Sprite(100 + i * 50, 100, 50, 50);
+}
+
+// Set sequence for tile trap activation
+let tileTrapActivateSequence = [3, 1, 0, 4, 6, 5];
+
+// Loop through the activation sequence and activate traps
+for (let i = 0; i &lt; tileTrapActivateSequence.length; i++) {
+    activateTrap(tileTrapActivateSequence[i]);
+}
+
+// Function to remove the tile at the given index
+function activateTrap(index) {
+    if (tiles[index]) {
+    tiles[index].remove(); // Remove the tile if it exists
+    }
+}</code></pre></p>
+
+    <p>Enter a value for the index to remove the tiles! <br>
+    <div class="buttonSubmitContainer">
+        <p>index = </p><input class='inputBoxes' type="number" id="input_1" placeholder="Enter a number">
+        <button class='submitBoxes' id='submit_1'>Submit</button><p>;</p>
+    </div>
+    <code>activateTrap(index);</code></p>
+    <div class="lessonGamesContainer_p5play">
+        <div id="for1"></div>
+    </div>    </div>
+      
+    
+    <div class="lessonMiddle lessonpage4" id="lessonPage4">
+        <p class="questionTitle">Which of the following is true?</p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer1', 'lessonPage4')">
+            <code>if (condition) { code to be executed if condition is true };</code>
+          </button>
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer1', 'lessonPage4')">
+            <code>if (condition) { code to be executed if condition is false };</code>
+          </button>
+          <button class="choicesButton" onclick="checkAnswer('answer3', 'answer1', 'lessonPage4')">
+            <code>if { code to be executed };</code>
+          </button>
+          <p class="answer"></p>
+        </div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage5" id="lessonPage5">
+        <p class="questionTitle">True or false:</p>
+        <p class="questionTitle">There can be more than one if statement in a single conditional statement.        </p>
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1', 'answer1', 'lessonPage5')">
+                <code>True</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2', 'answer1', 'lessonPage5')">
+                <code>False</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage6" id="lessonPage6">
+        <p class="questionTitle">True or false:</p>
+        <p class="questionTitle">There can be more than one if statement in a single conditional statement.
+        </p>
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1', 'answer1', 'lessonPage6')">
+                <code>True</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2', 'answer1', 'lessonPage6')">
+                <code>False</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage7" id="lessonPage7">
+        <p class="questionTitle">True or false:</p>
+        <p class="questionTitle">There can be more than one else statement in a single conditional statement.        </p>
+        <div class="choices">
+            <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage7')">
+                <code>True</code>
+            </button>
+            <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2','lessonPage7')">
+                <code>False</code>
+            </button>
+            <p class="answer"></p>
+        </div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage8" id="lessonPage8">
+    <p class="questionTitle">What's wrong with the code? Click all the correct answers.</p>
+    <p class="questionTitle">
+        <code>let sunDirection;</code>
+    </p>
+    <p class="questionTitle">
+        <code>if (time > 6 || time < 8) {</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;sunDirection = 'East'</code><br>
+        <code>} else if (time > 8 || time < 12) {</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;sunDirection = 'southeast'</code><br>
+        <code>} else if (time === 12) {</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;sunDirection = 'south'</code><br>
+        <code>} else if (time > 12 || time < 4) {</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;sunDirection = 'southwest'</code><br>
+        <code>} else (time > 4 || time < 6) {</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;sun = 'West'</code><br>
+        <code>}</code>
+    </p>
+    <div class="choices">
+        <label><input type="checkbox" name="question1" value="a"> Code lacks semicolons.</label><br>
+        <label><input type="checkbox" name="question1" value="b"> The first conditional statement should be an else.</label><br>
+        <label><input type="checkbox" name="question1" value="c"> The If in the if statement should be lowercase.</label><br>
+        <label><input type="checkbox" name="question1" value="d"> else doesn't need a condition.</label><br>
+        <label><input type="checkbox" name="question1" value="e"> The variable in the last statement is wrong.</label><br>
+        <label><input type="checkbox" name="question1" value="f"> You need to declare a variable called time.</label><br>
+        <label><input type="checkbox" name="question1" value="g"> Parentheses need to be added to time.</label><br>
+        <button class="checkMulti" onclick="returnScore()">Submit</button>
+        <p id="answer"></p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="answerContainer"><p class="answer"></p></div>
+    </div>
+        
+    <div class="lessonMiddle lessonpage9" id="lessonPage9">
+        <h2>p5play time! Let's learn more about p5play!</h2>
+    
+        <p>With p5play, you can easily detect mouse movement and change sprite movement based on it.</p>
+    
+        <h2>sprite.mouse</h2>
+    
+        <p><code>sprite.mouse</code>: Use it to detect mouse interaction related to the sprite.</p>
+    
+        <p><code>sprite.mouse.dragging</code>: Make the sprite draggable by clicking and moving it with the mouse.</p>
+    
+        <p><code>sprite.mouse.hovering</code>: Detect when the mouse is hovering over a sprite.</p>
+    
+        <p><code>sprite.mouse.x</code>: Detect the mouse's x position relative to the sprite.</p>
+    
+        <p><code>sprite.mouse.y</code>: Detect the mouse's y position relative to the sprite.</p>
+        <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+        <div class='collapsibleContent'>
+            <code>
+                function draw() { <br>
+                &nbsp;&nbsp;background(57, 92, 107);<br>
+                &nbsp;&nbsp;world.gravity.y = 10;<br><br>
+                &nbsp;&nbsp;mouseXSprite.text = mouse.x;<br>
+                &nbsp;&nbsp;mouseYSprite.text = mouse.y;<br>
+                &nbsp;&nbsp;mouseSX.text = alien.mouse.x;<br>
+                &nbsp;&nbsp;mouseSY.text = alien.mouse.y;<br><br>
+                &nbsp;&nbsp;if (alien.mouse.dragging()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.moveTowards(mouse.x + alien.mouse.x, mouse.y + alien.mouse.y, 1);<br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;if (alien.mouse.hovering()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.img = alien2img;<br>
+                &nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.img = alien1img;<br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;if (mouse.x >= 500) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.collider = 'dynamic';<br>
+                &nbsp;&nbsp;}<br>
+                }
+                </code>
+                </div>
+        <br>
+        <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
+                <div class="BoxText">
+                    <p>In the canvas, you can see some text changing.<br> The first sprite represents <code>mouse.x</code> <br>The second sprite represents <code>mouse.y</code> <br>The third sprite represents <code>character.mouse.x</code> <br> The fourth sprite represents <code>character.mouse.y</code><br>
+                        Move the mouse around and click and drag the <br>character to see the difference!</p>
+                </div>
+                <div id="spritemouse"></div>
+            </div>
+        </div>
+<br>
+        <h2>mouse</h2>
+
+        <p><code>mouse</code>: Used to detect mouse movement.</p>
+
+        <p><code>mouse.pressing</code>: Detect when the mouse is being pressed.</p>
+
+        <p><code>mouse.x</code>: Detect the mouse's x position on the page.</p>
+
+        <p><code>mouse.y</code>: Detect the mouse's y position on the page.</p>
+
+        <p><code>mouse.visible</code>: Set whether the mouse is visible. <code>true</code> = visible, <code>false</code> = invisible.</p>
+
+        <p><code>mouse.cursor</code>: Set how the mouse cursor appears.</p>
+
+        <p>Cursor types: 
+        <code style="cursor: default;">default</code>, 
+        <code style="cursor: grab;">grab</code>, 
+        <code style="cursor: move;">move</code>, 
+        <code style="cursor: pointer;">pointer</code>, 
+        <code style="cursor: wait;">wait</code> 
+        <span>(hover over the words to see how they look!)</span>
+        </p>
+        <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+        <div class='collapsibleContent'>
+
+            <code>
+                const s2 = (p) => { // This is the instance mode format. It allows you to create multiple canvases on a single page.<br>
+                &nbsp;&nbsp;let alien1img, alien2img, alien3img, alien, mouseX, mouseY;<br>
+                &nbsp;&nbsp;let floorimg, crateimg, crates, crate;<br><br>
+                
+                &nbsp;&nbsp;p.preload = () => {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien1img = p.loadImage('/assets/alienBiege_front.png');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien2img = p.loadImage('/assets/alienBiege_jump.png');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien3img = p.loadImage('/assets/alienBiege_stand.png');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floorimg = p.loadImage('/assets/floor_E.png')<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;crateimg = p.loadImage('/assets/crate_E.png');<br>
+                &nbsp;&nbsp;};<br><br>
+                
+                &nbsp;&nbsp;p.setup = () => {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;p.createCanvas(600, 300);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;p.world.gravity.y = 10;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien = new p.Sprite(150, 150, 50, 80);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.img = alien1img;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.scale = 1.5;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.debug = true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.mouse.active = true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.collider = 'dynamic';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;alien.layer = 2;<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;floor = new p.Sprite(200, 250, 300, 10);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floor.img = floorimg;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floor.collider = 'static';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floor.debug = true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floor.img.scale = 3;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;floor.layer = 1;<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;crates = new p.Group(); // A way to group multiple sprites together, similar to how an array works.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1; i &lt; 6; i++) { // Repeat the following 5 times<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate = new p.Sprite(250, -150 + 60 * i, 50, 39); // Create a new sprite<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.img = crateimg;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.friction = 0.5;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.layer = 6 - i;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.debug = true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crates.add(crate); // Then add it into the 'crates' group<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseX = new p.Sprite(500, 110, 150, 50, 'none');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseY = new p.Sprite(500, 180, 150, 50, 'none');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseX.color = 'white';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseY.color = 'white';<br>
+                &nbsp;&nbsp;};<br><br>
+                
+                &nbsp;&nbsp;p.draw = () => {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;p.background(57, 92, 107);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;p.world.gravity.y = 10;<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseX.text = p.mouse.x;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;mouseY.text = p.mouse.y;<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;if (alien.mouse.pressing()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alien.vel.y = -4;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;for (let crate of crates) { // Find crate inside crates group and do the following to each<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (crate.mouse.pressing()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.moveTowards(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.mouseX + crate.mouse.x,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.mouseY + crate.mouse.y,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (crate.mouse.released()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.layer = i;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crate.text = crate.layer;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;if (crates.mouse.hovering() || alien.mouse.hovering()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.mouse.cursor = 'grab';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.mouse.cursor = 'wait';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp};<br>
+                
+                new p5(s2, 'mouse'); // Create the s2 and put it in the div with id 'mouse'<br>
+                </code>
+                </div>
+        <br>
+        <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
+                <div class="BoxText">
+                    <p>Click and hover around to see how different things work. <br><br>Press on the alien and crates to see what happens! <br><br>The top box on the right represents <code>mouse.x</code>, and the bottom box represents <code>mouse.y</code>!</p>
+                </div>
+                <div id="mouse"></div>
+            </div>
+        </div>
+        <br>
+
+        <h2>Keyboard (kb)</h2>
+        <p>Keyboard track keys on the keyboard, from normal letter and number to 'enter', 'backspace', 'control', and 'shift'.</p>
+        <code>kb.pressing('shift');</code>
+
+        <p>Track user movement:</p>
+        <p>There are usually two ways to track user movement using keys. Use arrows and WASD:</p>
+        <ul>
+            <li>Arrow: 'arrowUp', 'arrowDown', 'arrowLeft', 'arrowRight'.</li>
+            <li>WASD: 'up', 'down', 'left', 'right'.</li>
+        </ul>
+
+        <p>If you want a second user, like a battle game, you can use IJKL:</p>
+        <ul>
+            <li>'up2', 'down2', 'left2', 'right2'.</li>
+        </ul>
+
+        <code>kb.pressing('arrowUp');</code>
+        <br>
+        <p>Here is a two player game! Use the arrow keys and WASD keys to move the aliens around! </p>
+        <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+        <div class='collapsibleContent'>
+<pre><code>
+const s3 = (p) => { 
+let alien2, alien1;
+let backgroundimg, ground, grounds, groundS;
+
+p.preload = () => {
+    backgroundimg = p.loadImage('/assets/colored_desert.png');
+};
+
+p.setup = () => {
+    p.createCanvas(1200, 500);
+    p.world.gravity.y = 20;
+
+    alien2 = new p.Sprite(0, 150, 60, 85, 'dynamic'); 
+    alien2.addAni('walk', ['/assets/alienYellow_walk1.png', '/assets/alienYellow_walk2.png'], 2);
+    alien2.addAni('stand', ['/assets/alienYellow_front.png'], 1);
+    alien2.frameDelay = 20;
+    alien2.debug = true;
+    alien2.rotationLock = true;
+    alien2.bounciness = 0;
+
+    alien1 = new p.Sprite(150, 150, 60, 95, 'dynamic'); 
+    alien1.addAni('walk', ['/assets/alienGreen_walk1.png', '/assets/alienGreen_walk2.png'], 2);
+    alien1.addAni('stand', ['/assets/alienGreen_front.png'], 1);
+    alien1.frameDelay = 20;
+    alien1.debug = true;
+    alien1.rotationLock = true;
+    alien1.bounciness = 0;
+
+    ground = new p.Sprite(600, 450, 1200, 100, 'static');
+    ground.color = '#c7b898';
+    ground.stroke = '#c7b898';
+    ground.friction = 0.8;
+
+    grounds = new p.Group();
+    for (let i = 1; i < 30; i++) {
+        groundS = new p.Sprite(100 + 300 * i, 400 - 80 * i, 200, 20, 'static');
+        groundS.color = '#c7b898';
+        groundS.stroke = '#c7b898'; 
+        grounds.add(groundS);
+        groundS.friction = 0.2;
+    }
+};
+
+p.draw = () => {
+    p.background(backgroundimg);
+
+    // Alien 2 (WASD movement)
+    if (p.kb.presses('W') && p.kb.pressing('D')) {
+        alien2.changeAni('walk');
+        alien2.vel.y = -5;
+        alien2.vel.x = 2;
+        alien2.scale.x = 1.5;
+        alien2.scale.y = 1.5;
+    }
+    else if (p.kb.presses('W') && p.kb.pressing('A')) {
+        alien2.changeAni('walk');
+        alien2.vel.y = -5;
+        alien2.vel.x = -2;
+        alien2.scale.x = -1.5;
+        alien2.scale.y = 1.5;
+    }
+    else if (p.kb.pressing('A')) {
+        alien2.changeAni('walk');
+        alien2.vel.x = -2;
+        alien2.scale.x = -1.5;
+        alien2.scale.y = 1.5;
+    }
+    else if (p.kb.pressing('D')) {
+        alien2.changeAni('walk');
+        alien2.vel.x = 2;
+        alien2.scale.x = 1.5;
+        alien2.scale.y = 1.5;
+    }
+    else if (p.kb.presses('W')) {
+        alien2.changeAni('stand');
+        alien2.vel.y = -5;
+        alien2.scale.x = 1.5;
+        alien2.scale.y = 1.5;
+    }
+    else {
+        alien2.changeAni('stand');
+        alien2.scale.x = 1.5;
+        alien2.scale.y = 1.5;
+    }
+
+    // Alien 1 (Arrow keys movement)
+    if (p.kb.presses('arrowUp') && p.kb.pressing('arrowRight')) {
+        alien1.changeAni('walk');
+        alien1.vel.y = -5;
+        alien1.vel.x = 2;
+        alien1.scale.x = 1.5;
+        alien1.scale.y = 1.5;
+    }
+    else if (p.kb.presses('arrowUp') && p.kb.pressing('arrowLeft')) {
+        alien1.changeAni('walk');
+        alien1.vel.y = -5;
+        alien1.vel.x = -2;
+        alien1.scale.x = -1.5;
+        alien1.scale.y = 1.5;
+    }
+    else if (p.kb.pressing('arrowLeft')) {
+        alien1.changeAni('walk');
+        alien1.vel.x = -2;
+        alien1.scale.x = -1.5;
+        alien1.scale.y = 1.5;
+    }
+    else if (p.kb.pressing('arrowRight')) {
+        alien1.changeAni('walk');
+        alien1.vel.x = 2;
+        alien1.scale.x = 1.5;
+        alien1.scale.y = 1.5;
+    }
+    else if (p.kb.presses('arrowUp')) {
+        alien1.changeAni('stand');
+        alien1.vel.y = -5;
+        alien1.scale.x = 1.5;
+        alien1.scale.y = 1.5;
+    }
+    else {
+        alien1.changeAni('stand');
+        alien1.scale.x = 1.5;
+        alien1.scale.y = 1.5;
+    }
+
+    // Block creation for Alien 2
+    if (p.kb.presses('S')) {
+        let block = new p.Sprite(alien2.x + 10, alien2.y + 20, 50, 50);
+        block.vel.x = 5;
+        block.color = 'white';
+        block.stroke = 'white';
+    }
+
+    // Block creation for Alien 1
+    if (p.kb.presses('arrowDown')) {
+        let block = new p.Sprite(alien1.x + 10, alien1.y + 20, 50, 50);
+        block.vel.x = 5;
+        block.color = 'white';
+        block.stroke = 'white';
+        block.friction = 0.1;
+    }
+};
+    // Camera follows Alien 1 and 2
+    p.drawFrame = () =>{
+        p.camera.x = alien1.x;
+        p.camera.y = alien2.y-100;
+        ground.x = p.camera.x;
+    }
+
+};
+
+new p5(s3, 'keys');
+</code></pre>
+</div>
+        <br>
+        <br>
+        <div class="lessonGamesContainer_p5play">
+                <div id="keys"></div> 
+        </div>
+        <br>
+        <h2>Camera Movement:</h2>
+        <p>
+            You can change the visible area (camera) by using <code>camera.x</code> and <code>camera.y</code>. 
+            Just like moving a camera in real life, if you increase the value of <code>camera.x</code>, 
+            the visible area of the canvas moves to the right. By default, the camera is located at the center of the canvas. 
+            You can use a <code>camera.moveTo(x,y)</code> to move the camera!
+        </p>
+        <p>
+            If you want the camera to move as the sprite moves, use the <code>drawFrame()</code> function, 
+            because <code>drawFrame()</code> runs after the physics simulation is updated. 
+            Try moving the camera by moving the sprite with the arrow keys!
+        </p>
+
+        <p>camera.on() & camera.off():</p>
+        <p>
+            Want to make an element fixed in a place while the camera moves? Here you go! 
+            Use <code>camera.off()</code> for elements you don't want to move—it makes them stick to the screen (like a label). 
+            For example, you can make a score sprite fixed at the top-left corner.
+        </p>
+
+        <p>
+            Use <code>camera.on()</code> for elements you want to be affected by the camera movement. 
+            Call <code>sprite.draw()</code> after <code>camera.off()</code> to draw elements that should be fixed and not move with the camera. 
+            Call <code>sprite.draw()</code> after <code>camera.on()</code> to draw elements that should move with the camera.
+        </p>
+        
+        <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+        <div class='collapsibleContent'>
+<pre><code>
+const s4 = (p) => { 
+    let alien, alienimg, hitT;
+    let blocks, startButton, backgroundimg;
+    let gameStarted = false; // To track whether the game has started
+    let hit = 0; // To track the hit
+    let isPaused = false;
+    
+    p.preload = () => {
+        alienimg = p.loadImage('/assets/shipYellow.png');
+        backgroundimg = p.loadImage('/assets/uncolored_piramids.png');
+    };
+    
+    p.setup = () => {
+        p.createCanvas(1200, 500);
+        p.world.gravity.y = 10;
+    
+        alien = new p.Sprite(-300, 100, 60, 20, 'none'); 
+        alien.addCollider(0,-20, 33); //(x-offset, y-offset, diameter)
+        alien.addCollider(0,10,60,15);
+        alien.addCollider(-23,20,20);//13 left from the center. 20 down from the center. 20 diameter
+        alien.addCollider(23,20,20);
+        alien.offset.y = -10;
+        alien.img = alienimg;
+        alien.scale = 1.5;
+        alien.debug = true;
+        alien.collider = 'dynamic';
+        alien.rotationLock = true;
+        alien.vel.x = 0;
+        alien.friction = 0;
+        alien.bounciness = 0;
+
+        hitT = new p.Sprite(70,30,100,30, 'none');
+        hitT.color = 'white';
+        hitT.stroke = 'white';
+        hitT.text = hit;
+        
+        blocks = new p.Group();
+        
+        for (let i = 0; i < 100; i++) {
+            let gapSize = p.random(60,100); // Make gaps' height bigger/smaller
+            let gapY = p.random(150,300); // Gaps location
+
+            let topBlock = new p.Sprite(i*250+200, gapY - gapSize - 250, 100, 500, 'static');
+            topBlock.color = '#FAF3DD';
+            topBlock.stroke = '#FFA69E';
+        
+            let bottomBlock = new p.Sprite(i*250+200, gapY + gapSize + 250, 100, 500, 'static');
+            bottomBlock.color = '#FAF3DD';
+            bottomBlock.stroke = '#FFA69E';
+            
+            blocks.add(topBlock);   // Add the blocks to the group
+            blocks.add(bottomBlock);
+        };
+
+        blocks.bounciness = 0;
+        startButton = new p.Sprite(alien.x, 250, 200, 100, 'static');
+        startButton.color = 'white';
+        startButton.stroke = 'white';
+        startButton.opacity = 0.5;
+        startButton.text = 'Click to start';
+        startButton.textSize = 20;
+    };
+    
+    p.draw = () => {
+        p.background(backgroundimg);
+        if (startButton.mouse.presses()) {
+            startButton.remove();
+            gameStarted = true; // Game has started
+        };
+
+        if (gameStarted && !isPaused) {
+            alien.vel.x = 3; // Set vel.x to 3 only after the game has started and game is not paused by using space
+        };
+
+        if (p.mouse.presses()) {
+            alien.vel.y = -3;  
+        };
+
+        if (p.kb.presses('space')) {
+            if (!isPaused) { //When it's not paused, pause the game
+                alien.vel.x = 0;
+                alien.vel.y = 0;
+                alien.collider = 'static';
+                isPaused = true;
+            } else { //When it's paused, unpause the game.
+                alien.collider = 'dynamic';
+                alien.vel.x = 3;
+                isPaused = false;
+            };
+        };
+
+
+        blocks.forEach(block => { // Check collisions with each block individually
+            if (alien.collide(block)) {
+                hit += 1;  // Increment hit for each collision with a block
+            };
+        });
+        if (hit >=10){
+            alien.x = -300;
+            hit = 0;
+        };
+
+        if (alien.y>600){
+            alien.y = 100;
+            alien.x = -300;
+            hit = 0;
+            alien.vel.y = 0;
+        };
+    };
+    
+    p.drawFrame = () => {
+        p.camera.on();
+        p.camera.x = alien.x;  
+        alien.draw();
+        blocks.draw();
+
+        p.camera.off();
+        hitT.text = `Hits: ${hit}`; // Update hit display
+        hitT.draw();        
+    };
+};
+
+new p5(s4, 'camera');
+</code></pre>
+</div>        
+        <br>
+        <br>
+        <p>->Click "Start" to begin the game! <br>->Click anywhere to make the alien jump and hover in the air. <br>->Press the spacebar to pause and unpause the game.</p>
+        <div class="lessonGamesContainer_p5play">
+            <div id="camera"></div> 
+    </div>
+
+    </div>
+    
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener('click', function() {
+                    this.classList.toggle("active");
+                    var collapsibleContent = this.nextElementSibling;
+                    if (collapsibleContent.style.display === "block") {
+                        collapsibleContent.style.display = 'none';
+                    } else {
+                        collapsibleContent.style.display = 'block';
+                    }
+                });
+            }
+        </script>
+        
+
+        <script>
+            function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
+                const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
+                if (response) {
+                    if (answer === correctAnswer) {
+                        response.innerHTML = "Correct!";
+                        response.classList.remove("wrongAnswer");
+                        response.classList.add("rightAnswer");
+                    } else {
+                        response.innerHTML = "Try Again!";
+                        response.classList.remove("rightAnswer");
+                        response.classList.add("wrongAnswer");
+                    }
+                }
+            }
+        </script>
+        
+        <script>
+            let answers = ['a', 'c', 'd', 'e', 'f'];
+            let total = answers.length;
+        
+            function checkMulti(checkboxName) {
+                let selected = [];
+                var checkboxes = document.getElementsByName(checkboxName);
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        selected.push(checkboxes[i].value);
+                    }
+                }
+                return selected;
+            }
+        
+            function getResult() {
+                let selectedAnswers = checkMulti('question1');
+                selectedAnswers.sort(); 
+                answers.sort();
+        
+                if (selectedAnswers.length !== answers.length) {
+                    return false;
+                }
+                for (let i = 0; i < answers.length; i++) {
+                    if (selectedAnswers[i] !== answers[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        
+            function returnScore() {
+                let result = getResult();
+                let answer = document.getElementById('answer');
+                if (result) {
+                    answer.innerHTML = "Correct!";
+                    answer.classList.remove("wrongAnswer");
+                    answer.classList.add("rightAnswer");
+                } else {
+                    answer.innerHTML = "Try Again!";
+                    answer.classList.remove("rightAnswer");
+                    answer.classList.add("wrongAnswer");
+                }
+            }
+        </script>      
+
+    <div class="lessonButton">
+    <button class= "lessonPageButton lessonPageButton1 active-button" onclick="changePage(1)">1</button>
+    <button class="lessonPageButton lessonPageButton2" onclick="changePage(2)">2</button>
+    <button class="lessonPageButton lessonPageButton3" onclick="changePage(3)">3</button>
+    <button class="lessonPageButton lessonPageButton4" onclick="changePage(4)">4</button>
+    <button class="lessonPageButton lessonPageButton5" onclick="changePage(5)">5</button>
+    <button class="lessonPageButton lessonPageButton6" onclick="changePage(6)">6</button>
+    <button class="lessonPageButton lessonPageButton7" onclick="changePage(7)">7</button>
+    <button class="lessonPageButton lessonPageButton8" onclick="changePage(8)">8</button>
+    <button class="lessonPageButton lessonPageButton9" onclick="changePage(9)">9</button>
+
+
+
+</div>
+    </div>
+    
+</body>
+</html>

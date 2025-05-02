@@ -377,7 +377,9 @@ button{
 }
 
 .stageNote{
-    margin-left: 30%;
+    position: absolute;
+    top: 15px;
+    right: 60px;
 }
 
 
@@ -476,12 +478,12 @@ margin-bottom: 0;
     outline: none;
   }
 
-.wrong {
-    background-color: #D32F2F;
+  .wrong {
+    background-color: #D32F2F !important; /*override the li background color*/
     color: white;
   }
   .right {
-    background-color: #4CAF50;
+    background-color: #4CAF50 !important;
     color: white;
   }
 
@@ -494,10 +496,15 @@ margin-bottom: 0;
   .draggable {
     padding: 5px;
     cursor: pointer;
-
   }
+
+  .draggable-list li:hover {
+    background-color: #f4eddfff;
+    opacity: 0.8;
+}
   .over {
     background-color: #ddd;
+    transition: 0.3s;
   }
 
 Canvas{

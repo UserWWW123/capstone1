@@ -1,70 +1,69 @@
-const draggable_list = document.getElementById('draggable-list');
+    const draggable_list = document.getElementById('draggable-list');
     const checkButton = document.getElementById('check');
     const resetButton = document.getElementById('reset');
-    let codingSectionArray = [];
 
     const ifFunction = [
       'function setup(){',
-'createCanvas(865, 750);',
-'background(\'#dbb691ff\');',
-'world.gravity.y = 15;',
-'alien = new Sprite(90, 150, 0, 0, \'dynamic\');',
-'alien.layer = 2;',
-'alien.rotationLock = true;',
-'blockA = new Sprite(200, 80, 50, 45);',
-'blockA.layer = 1;',
-'blockA.img = \'assets/block.png\';',
-'blockA.img.scale = 0.4;',
-'blockA.img.offset.y = -20;',
-'blockA.collider = \'dynamic\';',
-'alienLifeS = new Sprite(100, 30, 170, 30);',
-'alienLifeS.textSize = 20;',
-'alienLifeS.collider = \'none\';',
-'alienLifeS.color = \'#F5EE9E\';',
-'alienLifeS.stroke = \'white\';',
-'alienLifeS.textColor = \'#AB3428\';',
-'alienLifeS.strokeWeight = 2;',
-'alienLifeS.opacity = 0.7;',
-'};',
-'function draw(){',
-'background(\'#dbb691ff\');',
-'};',
-'function drawFrame(){',
-'camera.on();',
-'camera.x = alien.x + 200;',
-'camera.off();',
-'alienLifeS.draw();',
-'};',
-'function update(){',
-'alienLifeS.text = \'Alien Life: \' + alienLife;',
-'if (kb.presses(\'up\')){',
-'alien.vel.y = -5;',
-'}',
-'if(kb.pressing(\'right\')){',
-'alien.vel.x = 2.5;',
-'} else if(kb.pressing(\'left\')){',
-'alien.vel.x = -2.5;',
-'}',
-'if (kb.pressing(\'down\') && alien.collides(blockA)) {',
-'alien.vel.x = 0;',
-'collectBlock = true;',
-'} else if (kb.presses(\'space\')) {',
-'if (collectBlock === true){',
-'blocks.collider = \'dynamic\';',
-'blocks.vel.x = 5;',
-'blocks.vel.y = -5;',
-'blockA.rotationLock = false;',
-'collectBlock = false;',
-'};',
-'};',
-'if (collectBlock === true) {',
-'blocks.collider = \'none\';',
-'blockA.x = alien.x + 50;',
-'blockA.y = alien.y + 10;',
-'blockA.rotationLock = true;',
-'blockA.rotation = 0;',
-'};',
-'};'
+      'new Canvas(865, 750);',
+      'background(\'#dbb691ff\');',
+      'world.gravity.y = 15;',
+      'alien = new Sprite(90, 150, 0, 0, \'dynamic\');',
+      'alien.layer = 2;',
+      'alien.rotationLock = true;',
+      'blockA = new Sprite(200, 80, 50, 45);',
+      'blockA.layer = 1;',
+      'blockA.img = \'assets/block.png\';',
+      'blockA.img.scale = 0.4;',
+      'blockA.img.offset.y = -20;',
+      'blockA.collider = \'dynamic\';',
+      'alienLifeS = new Sprite(100, 30, 170, 30);',
+      'alienLifeS.textSize = 20;',
+      'alienLifeS.collider = \'none\';',
+      'alienLifeS.color = \'#F5EE9E\';',
+      'alienLifeS.stroke = \'white\';',
+      'alienLifeS.textColor = \'#AB3428\';',
+      'alienLifeS.strokeWeight = 2;',
+      'alienLifeS.opacity = 0.7;',
+      '};',
+      'function draw(){',
+      'background(\'#dbb691ff\');',
+      '};',
+      'function drawFrame(){',
+      'camera.on();',
+      'camera.x = alien.x + 200;',
+      'camera.off();',
+      'alienLifeS.draw();',
+      '};',
+      'function update(){',
+      'alienLifeS.text = \'Alien Life: \' + alienLife;',
+      'if (kb.presses(\'up\')){',
+      'alien.vel.y = -5;',
+      '};',
+      'if(kb.pressing(\'right\')){',
+      'alien.vel.x = 2.5;',
+      '} else if(kb.pressing(\'left\')){',
+      'alien.vel.x = -2.5;',
+      '}',
+      'if (kb.pressing(\'down\') && alien.collides(blockA)) {',
+      'alien.vel.x = 0;',
+      'collectBlock = true;',
+      '} else if (kb.presses(\'space\')) {',
+      'if (collectBlock === true){',
+      'blockA.collider = \'dynamic\';',
+      'blockA.vel.x = 5;',
+      'blockA.vel.y = -5;',
+      'blockA.rotationLock = false;',
+      'collectBlock = false;',
+      '};',
+      '};',
+      'if (collectBlock === true) {',
+      'blockA.collider = \'none\';',
+      'blockA.x = alien.x + 50;',
+      'blockA.y = alien.y + 10;',
+      'blockA.rotationLock = true;',
+      'blockA.rotation = 0;',
+      '};',
+      '};'
       ];
       
          
@@ -96,7 +95,7 @@ const draggable_list = document.getElementById('draggable-list');
 
           listItems.push(listItem);
 
-          draggable_list.appendChild(listItem);
+          draggable_list.appendChild(listItem); //push to list
         });
 
       addEventListeners();
@@ -118,22 +117,58 @@ const draggable_list = document.getElementById('draggable-list');
       e.preventDefault();
     }
 
-    function dragDrop(event) {
-      event.preventDefault(); 
-      const draggedItem = document.querySelector(`[data-index='${dragStartIndex}']`); //get the dragged element by using data-index attribute
-
-      if (this.classList.contains('codingSection')) { //if droped into codingSection
-        this.appendChild(draggedItem); 
-        codingSectionArray.push(draggedItem.querySelector('.draggable').innerText.trim()); //get text content, remove start/end spaces, add to the array
-      } else {
-        const dragEndIndex = +this.getAttribute('data-index'); //get the dragging element data-index
-        if (!isNaN(dragEndIndex)) { //check if it is a number, if dragEndIndex is a number...
-          dropItems(dragStartIndex, dragEndIndex); //chance sequence
+    function dragDrop(e) {
+      e.preventDefault();
+      const draggedItem = document.querySelector(`[data-index='${dragStartIndex}']`);
+      const dropTarget = this;
+    
+      const isInToolB = dropTarget.closest('#draggable-list');
+      const isInCodingS = dropTarget.closest('.codingSection');
+    
+      // Check if the dragged item is being dropped in the coding section or the list
+      if (isInCodingS || isInToolB) {
+        const parent = dropTarget.closest('ul') || dropTarget.closest('.codingSection');
+        const children = [...parent.querySelectorAll('li')]; // Get all children of the parent list
+    
+        let inserted = false;
+    
+        for (const child of children) { // Check each child
+          const bounding = child.getBoundingClientRect(); // Get the bounding of the child
+          const offset = e.clientY - bounding.top; // Get the offset of the mouse position relative to the child
+    
+          if (offset < bounding.height / 2) { // If the mouse is in the upper half of the child
+            parent.insertBefore(draggedItem, child); // Insert the dragged item before the item it was over
+            inserted = true;
+            break; // Exit
+          }
+        }
+    
+        if (!inserted) { // If not inserted
+          parent.appendChild(draggedItem);
         }
       }
-      this.classList.remove('over');
+    
+      dropTarget.classList.remove('over');
+    
+      if (dropTarget.closest('.codingSection')) {
+        updateCodingSectionArray();
+      }
     }
-    //swap items
+
+    function updateCodingSectionArray() {
+      let codingSectionArray = []; //Create a empty array to store the coding section items
+      const codingItems = document.querySelectorAll('.codingSection li .draggable');
+      codingItems.forEach(item => { //item = codingItems[i]
+        codingSectionArray.push(item.innerText.trim());
+      });
+
+      /* same as: 
+      for (let i = 0; i < codingItems.length; i++) { 
+      codingSectionArray.push(codingItems[i].innerText.trim());
+      }*/
+    }   
+    
+    /*//swap items
     function dropItems(fromIndex, toIndex) {
       if (fromIndex === toIndex) return;
 
@@ -143,17 +178,18 @@ const draggable_list = document.getElementById('draggable-list');
       listItems[fromIndex].appendChild(itemTwo);
       listItems[toIndex].appendChild(itemOne);
 
-    }
-
+    }*/
 
     function addEventListeners() {
       const draggables = document.querySelectorAll('.draggable');
       const dragListItems = document.querySelectorAll('.draggable-list li');
       
+      //Make the draggable items can be dragged to the coding list
       draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', dragStart);
       });
 
+      //Make the draggable items can be dragged to the coding list
       dragListItems.forEach(item => {
         item.addEventListener('dragover', dragOver);
         item.addEventListener('drop', dragDrop);
