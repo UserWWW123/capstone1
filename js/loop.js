@@ -1,15 +1,12 @@
 const s1 = (p) => {
     let floorimg, floor;
+    let images = ['/assets/crate_E.png', '/assets/stairs_E.png', '/assets/doorClosed_S.png', '/assets/doorwayMiddle_W.png', '/assets/window_E.png', '/assets/switchWallOff_E.png'];
     let tiles = [];
+    let imagesSprites = new p.Group();
+    let runCode = false;
+    let hasRun = false;
 
     p.preload = () => {
-        crateimg = p.loadImage('/assets/crate_E.png');
-        stairsimg = p.loadImage('/assets/stairs_E.png');
-        doorsimg = p.loadImage('/assets/doorClosed_S.png');
-        doorwayimg = p.loadImage('/assets/doorwayMiddle_W.png');
-        windowimg = p.loadImage('/assets/window_E.png');
-        switchimg = p.loadImage('/assets/switchWallOff_E.png');
-
         floorimg = p.loadImage('/assets/floor_E.png');
     };
 
@@ -17,48 +14,69 @@ const s1 = (p) => {
         p.createCanvas(1000, 400);
         p.world.gravity.y = 10;
         
-        for (let i = 0; i < 5; i++) {
-            tiles[i] = new p.Sprite(100 + i * 200, 300, 100, 10, 'static');
-            tiles[i].img = floorimg;
-            tiles[i].scale = 1.5;
-        }        
-        console.log(tiles);
-        p.allSprites.debug = true;
+        let submit = document.getElementById('submit');
 
-        /*
-        let submit2 = document.getElementById('submit_2');
-        let response2 = document.getElementById('response_2');
-
-        submit2.addEventListener('click', () => {
-            let input2 = document.getElementById('input_2').value.trim();
-            input2 = input2.replace(/\s+/g, '');
-            response2.innerHTML = '';
-        });
-        */
+        submit.addEventListener('click', () => {
+            runCode = true;
+            hasRun = false;
+        
+            // Remove old sprites
+            for (let i = 0; i < tiles.length; i++) {
+                tiles[i].remove();
+            }
+            for (let i = 0; i < imagesSprites.length; i++) {
+                imagesSprites[i].remove();
+            }
+        
+            // Clear existing sprites / groups/ arrays
+            tiles = [];              
+            imagesSprites.removeAll(); 
+        });        
         
     };
 
     p.draw = () => {
         p.background(21, 97, 109);
     
+        if (runCode && !hasRun){
+            hasRun = true;
+            
+            // Create floor sprites
+            for (let i = 0; i < 5; i++) {
+                tiles[i] = new p.Sprite(100 + i * 200, 300, 100, 10, 'static'); //Create a new sprite with different x positions (x position = 100 + i * 200)
+                tiles[i].img = floorimg;
+                tiles[i].scale = 1.5;
+            }        
+    
+            // Create sprites for images
+            for (let i = 0; i < images.length; i++) {
+                let sprite = new p.Sprite(100 + i * 200, 100, 50, 50, 'dynamic'); // Adjust size and type as needed
+                sprite.img = images[i]; // Assign image path
+                sprite.scale = 1.2; 
+                imagesSprites.add(sprite); // Add sprite to group imagesSprites
+              }
+    
+            //Adjust the size of the sprites for doorway and window
+            imagesSprites[3].height = 10;
+            imagesSprites[4].height = 80;
+            imagesSprites[2].height = 80;
+            // Create a sprite group in p5play:
+
         // Set sequence for tile trap activation
         let tileTrapActivateSequence = [3, 1, 0, 4, 6, 5, 2];
     
         // Loop through the activation sequence and activate traps with a delay
         for (let i = 0; i < tileTrapActivateSequence.length; i++) {
             // Set the delay for each trap activation
-            setTimeout(() => {
-                activateTrap(tileTrapActivateSequence[i]);
-            }, i * 1000+1000); // 1 second delay for each trap (multiplied by i to add a delay for each trap)
-        }
+            setTimeout(function() {
+                if(tiles[tileTrapActivateSequence[i]]){ //same as tiles[3] --> tileTrapActivateSequence[0] = 3
+                    tiles[tileTrapActivateSequence[i]].collider = 'dynamic'; // Activate the trap
+                }
+            }, i * 2000+3000); //Start after 1 second and activate each trap every second
+        };
+        p.allSprites.debug = true;
     };
-    
-    // Function to activate the trap at the given index
-    function activateTrap(index) {
-        if (tiles[index]) {
-            tiles[index].collider = 'dynamic'; // Activate the trap by changing the collider to 'dynamic'
-        }
-    }
+    };
     
 };
 
