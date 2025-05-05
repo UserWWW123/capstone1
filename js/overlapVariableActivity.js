@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let element = document.getElementById('overlapVariableDeclaration');
     if (element) {
         new p5(s1, 'overlapVariableDeclaration');
+        console.log('1Canvas created successfully');
     } else {
         console.error('Element not found');
     }
@@ -206,7 +207,15 @@ const s2 = (p) => {
         p.background("white");
     };
 };
-new p5(s2, 'box'); 
+document.addEventListener('DOMContentLoaded', function () {
+    let element = document.getElementById('box');
+    if (element) {
+        new p5(s2, 'box'); 
+        console.log('2Canvas created successfully');
+    } else {
+        console.error('Element not found');
+    }
+});
 
 const s3 = (p) => {
     let shipYellowimg, alienGreenimg, alienBiegeimg, alienYellowimg, shipYellowimg2, ufoYellowImg;
@@ -290,11 +299,15 @@ const s3 = (p) => {
     };
 };
 
-
-
-
-
-new p5(s3, 'overlapVariableDeclaration2');
+document.addEventListener('DOMContentLoaded', function () {
+    let element = document.getElementById('overlapVariableDeclaration2');
+    if (element) {
+        new p5(s3, 'overlapVariableDeclaration2'); 
+        console.log('3Canvas created successfully');
+    } else {
+        console.error('Element not found');
+    }
+});
 
 const s4 = (p) => {
     let shipYellowimg, alienGreenimg, alienBiegeimg, alienYellowimg, shipYellowimg2;
@@ -409,7 +422,15 @@ const s4 = (p) => {
     };
 
 };
-new p5(s4, 'overlapVariableDeclaration3');
+document.addEventListener('DOMContentLoaded', function () {
+    let element = document.getElementById('overlapVariableDeclaration3');
+    if (element) {
+        new p5(s4, 'overlapVariableDeclaration3'); 
+        console.log('4Canvas created successfully');
+    } else {
+        console.error('Element not found');
+    }
+});
 
 function keyPressed() {
     if (key === ' ') {  // Example: space key
