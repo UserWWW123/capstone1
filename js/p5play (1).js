@@ -1,6 +1,6 @@
 /**
  * p5play
- * @version 3.27
+ * @version 3.26
  * @author quinton-ashley
  */
 
@@ -33,7 +33,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			};
 			gtag('js', new Date());
 			gtag('config', 'G-EHXNCTSYLK');
-			gtag('event', 'p5play_v3_27');
+			gtag('event', 'p5play_v3_26');
 		};
 	}
 
@@ -510,7 +510,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			Object.defineProperty(this._canvasPos, 'x', {
 				get() {
 					let x = _this._pos.x - $.camera.x;
-					if ($._c2d) x += $.canvas.hw / $.camera._zoom;
+					if ($.canvas.renderer == 'c2d') x += $.canvas.hw / $.camera._zoom;
 					return x;
 				}
 			});
@@ -518,7 +518,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			Object.defineProperty(this._canvasPos, 'y', {
 				get() {
 					let y = _this._pos.y - $.camera.y;
-					if ($._c2d) y += $.canvas.hh / $.camera._zoom;
+					if ($.canvas.renderer == 'c2d') y += $.canvas.hh / $.camera._zoom;
 					return y;
 				}
 			});
@@ -607,14 +607,16 @@ p5.prototype.registerMethod('init', function p5playInit() {
 
 			x ??= group.x;
 			if (x === undefined) {
-				if ($._c2d) x = $.canvas.hw / this.tileSize;
-				else x = 0;
+				if ($.canvas?.renderer == 'c2d' && !$._webgpuFallback) {
+					x = $.canvas.hw / this.tileSize;
+				} else x = 0;
 				if (w) this._vertexMode = true;
 			}
 			y ??= group.y;
 			if (y === undefined) {
-				if ($._c2d) y = $.canvas.hh / this.tileSize;
-				else y = 0;
+				if ($.canvas?.renderer == 'c2d' && !$._webgpuFallback) {
+					y = $.canvas.hh / this.tileSize;
+				} else y = 0;
 			}
 
 			let forcedBoxShape = false;
@@ -7288,7 +7290,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			if (val === undefined || isNaN(val)) return;
 			this._pos.x = val;
 			let x = -val;
-			if ($._c2d) x += $.canvas.hw / this._zoom;
+			if ($.canvas.renderer == 'c2d') x += $.canvas.hw / this._zoom;
 			this.__pos.x = x;
 			if ($.allSprites.pixelPerfect) {
 				this.__pos.rounded.x = Math.round(x);
@@ -7307,7 +7309,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			if (val === undefined || isNaN(val)) return;
 			this._pos.y = val;
 			let y = -val;
-			if ($._c2d) y += $.canvas.hh / this._zoom;
+			if ($.canvas.renderer == 'c2d') y += $.canvas.hh / this._zoom;
 			this.__pos.y = y;
 			if ($.allSprites.pixelPerfect) {
 				this.__pos.rounded.y = Math.round(y);
@@ -7375,9 +7377,9 @@ p5.prototype.registerMethod('init', function p5playInit() {
 			if (val === undefined || isNaN(val)) return;
 			this._zoom = val;
 			let x = -this._pos.x;
-			if ($._c2d) x += $.canvas.hw / val;
+			if ($.canvas.renderer == 'c2d') x += $.canvas.hw / val;
 			let y = -this._pos.y;
-			if ($._c2d) y += $.canvas.hh / val;
+			if ($.canvas.renderer == 'c2d') y += $.canvas.hh / val;
 			this.__pos.x = x;
 			this.__pos.y = y;
 			if ($.allSprites.pixelPerfect) {
@@ -8521,7 +8523,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 		let g = $.createGraphics(size, size, $.P2D);
 		g.textSize(textSize);
 		g.textAlign($.CENTER);
-		g.textFont(!$.canvas.webgpu ? $.textFont() : $._g.textFont());
+		g.textFont($.canvas.renderer != 'webgpu' ? $.textFont() : $._g.textFont());
 		g.text(emoji, size / 2, textSize);
 
 		// same code as img.trim() in q5.js
@@ -8738,7 +8740,6 @@ p5.prototype.registerMethod('init', function p5playInit() {
 		});
 	};
 
-
 	let userDisabledP5Errors = p5.disableFriendlyErrors;
 	p5.disableFriendlyErrors = true;
 
@@ -8794,10 +8795,8 @@ p5.prototype.registerMethod('init', function p5playInit() {
 		let rend = _createCanvas.call($, ...args);
 		$.ctx = $.drawingContext;
 		let c = rend.canvas || rend;
-		if (rend.GL) {
-			c.renderer = 'webgl';
-			$._webgl = true;
-		} else if (!$._webgpu) $._c2d = true;
+		if (rend.GL) c.renderer = 'webgl';
+		else if (c.renderer != 'webgpu') c.renderer = 'c2d';
 		c.tabIndex = 0;
 		c.w = args[0];
 		c.h = args[1];
@@ -8830,13 +8829,14 @@ p5.prototype.registerMethod('init', function p5playInit() {
 		c.hw = c.w * 0.5;
 		c.hh = c.h * 0.5;
 		c.mouse = { x: $.mouseX, y: $.mouseY };
-		if ($._c2d) {
+		if (c.renderer == 'c2d' && !$._webgpuFallback) {
 			$.camera.x = $.camera.ogX = c.hw;
 			$.camera.y = $.camera.ogY = c.hh;
 		} else {
 			$.camera.x = 0;
 			$.camera.y = 0;
-			if ($._webgpu) {
+			if (c.renderer == 'webgl') $._textCache = false;
+			if (!$._webgpuFallback) {
 				$.p5play._renderStats = {
 					x: -c.hw + 10,
 					y: -c.hh + 20
@@ -8982,7 +8982,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 				c.style.height = '100%!important';
 			}
 		}
-		if ($._c2d) {
+		if (c.renderer == 'c2d') {
 			$.camera.x = c.hw;
 			$.camera.y = c.hh;
 		} else {
@@ -9054,7 +9054,7 @@ p5.prototype.registerMethod('init', function p5playInit() {
 	 */
 	this.loadImage = this.loadImg = function () {
 		if ($.p5play.disableImages) {
-			if (!$._q5) $._decrementPreload();
+			$._decrementPreload();
 			// return a dummy image object to prevent errors
 			return { w: 16, width: 16, h: 16, height: 16, pixels: [] };
 		}
@@ -9603,7 +9603,7 @@ main {
 			if ($.camera.x == $.camera.ogX && $.camera.y == $.camera.ogY && $.camera.zoom == 1) {
 				this.x = $.mouseX;
 				this.y = $.mouseY;
-			} else if (!$._webgpu) {
+			} else if ($.canvas.renderer != 'webgpu') {
 				this.x = ($.mouseX - $.canvas.hw) / $.camera.zoom + $.camera.x;
 				this.y = ($.mouseY - $.canvas.hh) / $.camera.zoom + $.camera.y;
 			} else {
@@ -10131,7 +10131,7 @@ main {
 		}
 		// convert PascalCase key names into camelCase
 		// which is more common for JavaScript properties
-		if (key.length > 1) {
+		if (key && key.length > 1) {
 			key = key[0].toLowerCase() + key.slice(1);
 		} else {
 			let lower = key.toLowerCase();
@@ -10156,7 +10156,7 @@ main {
 		if (this.p5play.standardizeKeyboard) {
 			key = _getKeyFromCode(e);
 		}
-		if (key.length > 1) {
+		if (key && key.length > 1) {
 			key = key[0].toLowerCase() + key.slice(1);
 		} else {
 			let lower = key.toLowerCase();
@@ -10675,6 +10675,8 @@ main {
 	 */
 	this.contro = new $.Contro('mock0');
 
+	if ($._webgpuFallback) $._beginRender = false;
+
 	/**
 	 * FPS, amongst the gaming community, refers to how fast a computer
 	 * can generate frames per second, not including the delay between when
@@ -10724,7 +10726,7 @@ main {
 
 		$.push();
 		$.fill(0, 0, 0, 128);
-		$.rect(rs.x - 5, rs.y - rs.fontSize, rs.fontSize * 8.5, rs.gap * 4 + 5);
+		$.rect(rs.x - 5, rs.y - rs.fontSize, rs.fontSize * 8.5, rs.gap * 5 + 5);
 		$.fill($.p5play._statsColor);
 		$.textAlign('left');
 		$.textSize(rs.fontSize);
@@ -10733,9 +10735,10 @@ main {
 		let x = rs.x;
 		let y = rs.y;
 		$.text('sprites: ' + $.p5play.spritesDrawn, x, y);
-		$.text('fps avg: ' + $.p5play._fpsAvg, x, y + rs.gap);
-		$.text('fps min: ' + $.p5play._fpsMin, x, y + rs.gap * 2);
-		$.text('fps max: ' + $.p5play._fpsMax, x, y + rs.gap * 3);
+		$.text('display: ' + Math.round($.frameRate()) + 'hz', x, y + rs.gap);
+		$.text('fps avg: ' + $.p5play._fpsAvg, x, y + rs.gap * 2);
+		$.text('fps min: ' + $.p5play._fpsMin, x, y + rs.gap * 3);
+		$.text('fps max: ' + $.p5play._fpsMax, x, y + rs.gap * 4);
 		$.pop();
 	};
 
@@ -10897,4 +10900,3 @@ p5.prototype.registerMethod('post', function p5playPostDraw() {
 	}
 	$.p5play._inPostDraw = false;
 });
-

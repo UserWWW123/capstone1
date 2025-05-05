@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', function() {
+    let element = document.getElementById('overlapVariableDeclaration');
+    if (element) {
+        new p5(s1, 'overlapVariableDeclaration');
+    } else {
+        console.error('Element with ID "overlapVariableDeclaration" not found.');
+    }
+});
 
 const s1 = (p) => {
     let shipYellowimg, alienGreenimg, alienBiegeimg, alienYellowimg, shipYellowimg2;
@@ -114,7 +122,6 @@ const s1 = (p) => {
     };
 
 };
-new p5(s1, 'overlapVariableDeclaration');
 
 
 const s2 = (p) => {
