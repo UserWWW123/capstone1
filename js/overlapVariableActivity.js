@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let element = document.getElementById('overlapVariableDeclaration');
-    if (element) {
-        new p5(s1, 'overlapVariableDeclaration');
-    } else {
-        console.error('Element with ID "overlapVariableDeclaration" not found.');
-    }
-});
-
 const s1 = (p) => {
     let shipYellowimg, alienGreenimg, alienBiegeimg, alienYellowimg, shipYellowimg2;
     let currentSprite = null;
@@ -122,6 +113,15 @@ const s1 = (p) => {
     };
 
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    let element = document.getElementById('overlapVariableDeclaration');
+    if (element) {
+        new p5(s1, 'overlapVariableDeclaration');
+    } else {
+        console.error('Element not found');
+    }
+});
 
 
 const s2 = (p) => {
