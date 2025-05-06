@@ -4,6 +4,10 @@ const draggable_list = document.getElementById('draggable-list');
     let codingSectionArray = [];
 
     const ifFunction = [
+      "0",
+      '1',
+      '2'
+      /*
         'let ball = new Sprite();',
         'ball.collider = "dynamic";',
         'ball.mass = 20;',
@@ -35,6 +39,7 @@ const draggable_list = document.getElementById('draggable-list');
         'sprites[3].img = "/assets/crate.png";',
         'sprites[4].img = "/assets/crate.png";',
         'sprites[5].img = "/assets/crate.png";',
+        */
       ];
       
          
