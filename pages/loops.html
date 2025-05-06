@@ -20,7 +20,7 @@
         <button class="takeNote" onclick="toggleNoteIframe()">
             <i class="fa-solid fa-note-sticky"></i>
             Take Note</button>
-            <a href="loops.html">
+            <a href="loopsGame.html">
                 <button class="nextLesson">
                 <i class="fa-solid fa-caret-right"></i>
                 Next: Loops Game
@@ -88,87 +88,87 @@
         </div>
       </div>
       
-<div class="lessonMiddle lessonpage3">
-<h2>Example:</h2>
-<p><pre><code>
-const s1 = (p) => {
+    <div class="lessonMiddle lessonpage3">
+    <h2>Example:</h2>
+    <p><pre><code>
+    const s1 = (p) => {
 
-let floorimg, floor;
-let images = ['/assets/crate_E.png', '/assets/stairs_E.png', '/assets/doorClosed_S.png', '/assets/doorwayMiddle_W.png', '/assets/window_E.png', '/assets/switchWallOff_E.png'];
-let tiles = [];
-let imagesSprites = new p.Group();
-floorimg = loadImage('/assets/floor_E.png');
+    let floorimg, floor;
+    let images = ['/assets/crate_E.png', '/assets/stairs_E.png', '/assets/doorClosed_S.png', '/assets/doorwayMiddle_W.png', '/assets/window_E.png', '/assets/switchWallOff_E.png'];
+    let tiles = [];
+    let imagesSprites = new p.Group();
+    floorimg = loadImage('/assets/floor_E.png');
 
-p.setup = () => {
-    p.createCanvas(1000, 400);
-    p.world.gravity.y = 10;
-    
-    //Create 5 new sprites with different x positions (x position = 100 + i * 200)
-    for (let i = 0; i < 5; i++) {
-        tiles[i] = new p.Sprite(100 + i * 200, 300, 100, 10, 'static'); //Create a new sprite with different x positions (x position = 100 + i * 200)
-        tiles[i].img = floorimg;
-        tiles[i].scale = 1.5;
-    }        
+    p.setup = () => {
+        p.createCanvas(1000, 400);
+        p.world.gravity.y = 10;
+        
+        //Create 5 new sprites with different x positions (x position = 100 + i * 200)
+        for (let i = 0; i < 5; i++) {
+            tiles[i] = new p.Sprite(100 + i * 200, 300, 100, 10, 'static'); //Create a new sprite with different x positions (x position = 100 + i * 200)
+            tiles[i].img = floorimg;
+            tiles[i].scale = 1.5;
+        }        
 
-    // Create new sprites with the images in the array and add them to imagesSprites
-    // (e.g., imagesSprites[0].img will be images[0])
+        // Create new sprites with the images in the array and add them to imagesSprites
+        // (e.g., imagesSprites[0].img will be images[0])
 
-    for (let i = 0; i < images.length; i++) {
-        let sprite = new p.Sprite(100 + i * 200, 100, 50, 50, 'dynamic'); // Adjust size and type as needed
-        sprite.img = images[i]; // Assign image path
-        sprite.scale = 1.2; 
-        imagesSprites.add(sprite); // Add sprite to group imagesSprites
-        }
-
-    //Adjust the size of the sprites for doorway and window
-    imagesSprites[3].height = 10;
-    imagesSprites[4].height = 80;
-    imagesSprites[2].height = 80;
-
-    p.allSprites.debug = true; //Make all sprites debug turn on
-
-    p.draw = () => {
-        p.background(21, 97, 109);
-    
-        // Set sequence for tile trap activation
-        let tileTrapActivateSequence = [3, 1, 0, 4, 6, 5, 2];
-    
-        // Loop through the activation sequence and activate traps with a delay
-        for (let i = 0; i < tileTrapActivateSequence.length; i++) {
-            // Set the delay for each trap activation
-            setTimeout(function() {
-                if(tiles[tileTrapActivateSequence[i]]){ //same as tiles[3] -> tileTrapActivateSequence[0] = 3
-                    tiles[tileTrapActivateSequence[i]].collider = 'dynamic'; // Activate the trap
-                }
-            }, i * 2000+3000); //Start after 1 second and activate each trap every second
-        };
-    };
-    
-};
-
-new p5(s1, 'for1');
-    
-};</code></pre></p>
-    <div class = "additionInformation">
-        <p><strong>What is setTimeout?</strong></p>
-        <p><strong>setTimeout(function, delay); </strong><br><br>
-        ->setTimeout is a JS function to delay execution of a function or a code block. 
-            1000 = 1 second.
-            </p>
-    </div>
-    <div class="buttonSubmitContainer">
-        <style> 
-            #submit {
-                background-color: #a15e21;
-                color: white;
+        for (let i = 0; i < images.length; i++) {
+            let sprite = new p.Sprite(100 + i * 200, 100, 50, 50, 'dynamic'); // Adjust size and type as needed
+            sprite.img = images[i]; // Assign image path
+            sprite.scale = 1.2; 
+            imagesSprites.add(sprite); // Add sprite to group imagesSprites
             }
-        </style>
-        <button class = collapsible id='submit'>Click here to see what the code does!</button>
+
+        //Adjust the size of the sprites for doorway and window
+        imagesSprites[3].height = 10;
+        imagesSprites[4].height = 80;
+        imagesSprites[2].height = 80;
+
+        p.allSprites.debug = true; //Make all sprites debug turn on
+
+        p.draw = () => {
+            p.background(21, 97, 109);
+        
+            // Set sequence for tile trap activation
+            let tileTrapActivateSequence = [3, 1, 0, 4, 6, 5, 2];
+        
+            // Loop through the activation sequence and activate traps with a delay
+            for (let i = 0; i < tileTrapActivateSequence.length; i++) {
+                // Set the delay for each trap activation
+                setTimeout(function() {
+                    if(tiles[tileTrapActivateSequence[i]]){ //same as tiles[3] -> tileTrapActivateSequence[0] = 3
+                        tiles[tileTrapActivateSequence[i]].collider = 'dynamic'; // Activate the trap
+                    }
+                }, i * 2000+3000); //Start after 1 second and activate each trap every second
+            };
+        };
+        
+    };
+
+    new p5(s1, 'for1');
+        
+    };</code></pre></p>
+        <div class = "additionInformation">
+            <p><strong>What is setTimeout?</strong></p>
+            <p><strong>setTimeout(function, delay); </strong><br><br>
+            ->setTimeout is a JS function to delay execution of a function or a code block. 
+                1000 = 1 second.
+                </p>
+        </div>
+        <div class="buttonSubmitContainer">
+            <style> 
+                #submit {
+                    background-color: #a15e21;
+                    color: white;
+                }
+            </style>
+            <button class = collapsible id='submit'>Click here to see what the code does!</button>
+        </div>
+        <div class="lessonGamesContainer_p5play">
+            <div id="for1"></div>
+        </div>    
     </div>
-    <div class="lessonGamesContainer_p5play">
-        <div id="for1"></div>
-    </div>    
-</div>
       
     <div class="lessonMiddle lessonpage4" id="lessonPage4">
         <h2>For Statement</h2>
@@ -209,7 +209,7 @@ new p5(s1, 'for1');
             
     </div>
       
-      <div class="lessonMiddle lessonpage5" id="lessonPage5">
+    <div class="lessonMiddle lessonpage5" id="lessonPage5">
         <h2>Difference Between <code>var</code> and <code>let</code> in a Loop</h2>
 
         <p>What happens when you declare <code>i</code> both inside and outside a loop with a different value?</p>
@@ -507,6 +507,140 @@ new p5(s1, 'for1');
         </div>
     </div>
     
+    <div class="lessonMiddle lessonpage15" id="lessonPage15">
+        <h2>p5play time! Let's learn more about p5play!</h2>
+      
+        <h2>Group:</h2>
+        <p>
+          Use a group to make an array and store sprites inside the array! You can edit the sprites in the group at once — much convenience!
+        </p>
+      
+        <p>
+          Use <code>sprites.length</code> to get the number of sprites in the group. You can also adjust a sprite in the group using its index.
+        </p>
+      
+        <pre><code>let sprites;
+      function setup(){
+        sprites = new Group();
+        sprites.w = 10;
+        sprites.h = 10;
+        sprites.y = 20;
+      
+        while (sprites.length &lt; 10) {
+          let sprite = new Sprite();
+          sprite.x = sprites.length * 20; // 20px gap between sprites
+        }
+      
+        sprites[2].y = 100;
+      }
+      </code></pre>
+      
+        <br>
+      
+        <div class="additionInformation">
+          <h3>Try it:</h3>
+          <p>Steps:</p>
+          <ul>
+            <li>
+              Create a new group called <code>balls</code>.
+            </li>
+            <li>
+              Set the collider type of the group to <code>'dynamic'</code> so that the sprites are affected by physics.
+            </li>
+            <li>
+              Set the color of the balls in the group to <code>'#C8553D'</code>.
+            </li>
+            <li>
+              Set the stroke (outline) color for the group to <code>'#F28F3B'</code>.
+            </li>
+            <li>
+              Set the diameter of the sprites in the group to 30 pixels.
+            </li>
+            <li>
+              Create 10 sprites using a <code>for</code> loop. Use <code>i</code> as the loop variable.
+            </li>
+            <li>
+              Set the gap between the sprites to 200 pixels, and position them starting 1800 pixels above the canvas.
+            </li>
+            
+          <p>Note</p>
+          <p>
+            After using the closing curly brace }, you don't need to use a semicolon because the curly brace marks the end of the code block. But you can if you want. It doesn't cause any error.          </p>
+          </ul>          
+      
+          <div class="buttonSubmitContainer">
+            <textarea class='textarea' id="input2" placeholder="Enter code"></textarea>
+            <button class='submitBoxes' id='submit2'>Submit</button>
+        </div>
+        <br>
+          <button type="button" class="collapsible">Need some clue? Click here!</button>                          
+        <div class='collapsibleContent'>
+<pre><code>
+balls = new Group();
+balls.collider = 'dynamic';
+balls.color = '#C8553D';
+balls.stroke = '#F28F3B';
+balls.x = 50;
+balls.d = 30;
+
+for (let i = 0; i < 10; i++) {
+    let ball = new balls.Sprite();
+    ball.y = i * 200 -1800;
+}
+</code></pre>
+            </div>
+            <br>            
+            <br>
+            <div class="lessonGamesContainer_p5play">
+          <div id="loop">
+          </div>
+          <p id = 'response2'></p>
+        </div>
+      </div>
+      <h2>Remove Sprites:</h2>
+        <p>You can use the <code>remove()</code> function to remove individual sprites.</p>
+        <p>Example: <code>sprite[5].remove();</code></p>
+        
+        <p>You can use the <code>removeAll()</code> function to remove multiple sprites from a group.</p>
+        <p>Example: <code>sprites.removeAll();</code></p>
+        
+        <h2>allSprites:</h2>
+        <p>You can also use <code>allSprites</code> to control all sprites on the canvas at once!</p>
+        <p>Example: <code>allSprites.removeAll();</code></p>
+
+        <h2>Life:</h2>
+        <p>In p5play, the game updates multiple times per second, allowing sprites to move visually. 
+        You can use life property to make sprites exist only in a certain amount of frames. When the sprite's life reaches 0, it will be removed. 
+        </p>
+
+        <div class="lessonGamesContainer_p5play">
+          <div class="lessonGamesContainer_content">
+            <div id="remove"></div>
+
+              <div class="BoxText">
+                <div class="buttonSubmitContainer">
+                  <p>Remove a sprite</p>
+                  <p>boxes[</p>
+                  <input class ='inputBoxes' type="number" id="input_r" placeholder="Enter a index within boxes">
+                  <p>].remove();</p>
+                  <button class ='submitBoxes' id = 'submit_r'>Submit</button>
+                  </div>           
+                  <div class="buttonSubmitContainer">
+                    <p>Remove all sprite</p>
+                    <input class ='inputBoxes' type="text" id="input_R" placeholder="Enter code">
+                    <button class ='submitBoxes' id = 'submit_R'>Submit</button>
+                    </div>  
+                  <div class="buttonSubmitContainer">
+                    <p>Enter a number as block's lifes:</p>
+                    <input class ='inputBoxes' type="number" id="input_l" placeholder="Enter a number">
+                    <button class ='submitBoxes' id = 'submit_l'>Submit</button>
+                    </div>    
+                </div>
+          </div>
+      </div>
+
+
+      </div>
     
         <script>
             var coll = document.getElementsByClassName("collapsible");
@@ -603,6 +737,7 @@ new p5(s1, 'for1');
     <button class="lessonPageButton lessonPageButton12" onclick="changePage(12)">12</button>
     <button class="lessonPageButton lessonPageButton13" onclick="changePage(13)">13</button>
     <button class="lessonPageButton lessonPageButton14" onclick="changePage(14)">14</button>
+    <button class="lessonPageButton lessonPageButton15" onclick="changePage(15)">15</button>
 
 
 

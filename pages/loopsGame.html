@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConditionGame</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/loopGame.js"></script>
+    <script src="/js/lesson1.js"></script>
+
+    <script src="/js/q5.js"></script>
+    <script src="/js/planck.min.js"></script>
+    <script src="/js/p5play (1).js"></script>
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+
+</head>
+<body class ="stagePageY">
+    <style>
+    .codingSection li {
+    list-style-type: none;
+    background: #f4eddf;
+    font-size: 100%;
+    margin-bottom: 10px;
+}
+    .draggable-list li{
+        list-style-type: none;
+        font-size: 100%;
+        margin-bottom: 10px;
+    }
+    Canvas{
+        position: absolute;
+        top: 0%;
+        bottom: 0%;
+        z-index: 2;
+    }
+    ul{
+        background: transparent;
+    }
+    </style>
+    <div class="stage1Container">
+        <div class="empty" id="gameContainer">
+        <div id="winNote">
+            <p id = "win"></p>
+            <a href = "loops.html"> <!--change the link to next lesson-->
+            <button id="nextButton"></button>
+        </a>
+        </div>
+        </div>
+        <div class="wholerightPanel">
+            <div class="toolBox">
+                <p id="toolBoxTitle">ToolBox</p>
+                <ul class="draggable-list" id="draggable-list"></ul>
+            </div>
+            <button class="check-btn" id="check">
+                <i class="fa-solid fa-play"></i>
+              </button>    
+        <div class="rightPanel">
+        <div class="rightPaneltop">
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "/index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+            </div>
+            <script>
+                document.getElementById("menu-icon").addEventListener("click", function(){
+                    document.getElementById("nav-menu").classList.toggle("show");
+                });
+                window.addEventListener("click", function(){
+                    if (!event.target.matches("#menu-icon")){
+                        document.getElementById("nav-menu").classList.remove("show");
+                    }
+                });
+            </script>
+    </div>
+            <a href="loops.html">
+            <button class = "rightLeftButton"id="previousLevel">
+                <i class="fa-solid fa-caret-left"></i></button>
+            </a>
+            <h1 id="rightPanelTitle">Loops</h1>
+            <a href="loops.html"> <!--change the link to next lesson-->
+            <button class = "rightLeftButton" id="nextLevel">
+                <i class="fa-solid fa-caret-right"></i></button>
+            </a>
+            <button class="takeNote stageNote" onclick="toggleNoteIframe()">
+                <i class="fa-solid fa-note-sticky"></i>
+                Take Note</button>
+                <iframe id="noteIframe" src="note.html"></iframe>
+        </div>
+
+        <div class="rightPanelInstruction">
+            <p>An alien is trapped in a room!</p>
+            <p>The room is designed so that the door will not open until the monster is defeated.</p>
+
+            <p>Create and play a game following the instructions below.</p>
+
+            <h2>How to play?</h2>
+            <p>Control the alien to collect a block and use it to hit the monster to unlock the door!</p>
+            <p>⚠️ Watch out for the monster’s attacks!⚠️<br>
+            If the alien's life reaches 0, the game will restart.</p>
+            <p>How to collect a block?</p>
+            <ul>
+                <li>Jump on top of the block and press <strong>down</strong> to pick it up.</li>
+                <li>Press <strong>space</strong> to throw the block and hit the monster!</li>
+            </ul>
+            <h2>Instruction:</h2>
+            <div>
+                <ol>
+                    <li>Create a setup function
+                      <ol type="a">
+                        <li>Create a canvas using the container’s width and height</li>
+                        <li>Set the background color as #dbb691ff</li>
+                        <li>Set world.gravity.y = 15</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create alien sprite, set its properties in the following sequence:
+                      <ol type="a">
+                        <li>layer = 2</li>
+                        <li>rotationLock = true</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create blockA sprite, set properties in this sequence:
+                      <ol type="a">
+                        <li>layer = 1</li>
+                        <li>img</li>
+                        <li>img.scale = 0.4</li>
+                        <li>img.offset.y = -20</li>
+                        <li>collider = 'dynamic'</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create alienLifeS sprite, set its properties in the following sequence:
+                      <ol type="a">
+                        <li>Position and size: (100, 30, 170, 30)</li>
+                        <li>textSize = 20</li>
+                        <li>collider = 'none'</li>
+                        <li>color = '#F5EE9E'</li>
+                        <li>stroke = 'white'</li>
+                        <li>textColor = '#AB3428'</li>
+                        <li>strokeWeight = 2</li>
+                        <li>opacity = 0.7</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create a draw function
+                      <ol type="a">
+                        <li>Clear background with color #dbb691ff</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create a drawFrame function
+                      <ol type="a">
+                        <li>Turn on camera</li>
+                        <li>Set the camera to follow the alien horizontally, keeping it slightly ahead by 200 pixels</li>
+                        <li>Turn off camera</li>
+                        <li>Draw alienLifeS</li>
+                      </ol>
+                    </li>
+                  
+                    <li>Create an update function
+                      <ol type="a">
+                        <li>Make alienLifeS show text with Alien Life and the current life count of the alien</li>
+                        <li>Use conditional statement and keys input to create the following functions:
+                          <ol type="i">
+                            <li>If up key is pressed:
+                              <ul>
+                                <li>Alien jump</li>
+                              </ul>
+                            </li>
+                            <li>If right key is being pressed:
+                              <ul>
+                                <li>Alien move to the right</li>
+                              </ul>
+                            </li>
+                            <li>Else if left key is being pressed:
+                              <ul>
+                                <li>Alien move to the left</li>
+                              </ul>
+                            </li>
+                            <li>If down key is being pressed and alien.collides(blockA) is true:
+                              <ul>
+                                <li>Set alien.vel.x = 0</li>
+                                <li>Set collectBlock = true</li>
+                              </ul>
+                            </li>
+                            <li>Else if space key is pressed and collectBlock is true:
+                              <ul>
+                                <li>Set blockA.collider = 'dynamic'</li>
+                                <li>Launch blockA with:
+                                  <ul>
+                                    <li>blockA.vel.x = 5</li>
+                                    <li>blockA.vel.y = -5</li>
+                                  </ul>
+                                </li>
+                                <li>blockA.rotationLock = false</li>
+                                <li>Set collectBlock = false</li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </li>
+                        <li>If collectBlock is true:
+                            <ul>
+                              <li>Set blockA.collider = 'none'</li>
+                              <li>Update blockA to follow the alien:
+                                <ul>
+                                  <li>blockA.x = alien.x + 50</li>
+                                  <li>blockA.y = alien.y + 10</li>
+                                  <li>blockA.rotationLock = true</li>
+                                  <li>blockA.rotation = 0</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        <li>Make the door image change when the alien collides with it — the door opens!</li>
+                      </ol>
+                    </li>
+                  </ol>
+                                 
+            </div>
+
+<button type="button" class="collapsible">Need some clue? Click here!</button>                          
+<div class='collapsibleContent'>
+<pre><code>
+function setup(){
+    new Canvas(865, 750);
+    background('#dbb691ff');
+
+    world.gravity.y = 15;
+
+    alien = new Sprite(90, 150, 0, 0, 'dynamic');
+    alien.layer = 2;
+    alien.rotationLock = true;
+
+    blockA = new Sprite(200, 80, 50, 45);
+    blockA.layer = 1;
+    blockA.img = 'assets/block.png';
+    blockA.img.scale = 0.4;
+    blockA.img.offset.y = -20;
+    blockA.collider = 'dynamic';
+
+    alienLifeS = new Sprite(100, 30, 170, 30);
+    alienLifeS.textSize = 20;
+    alienLifeS.collider = 'none';
+    alienLifeS.color = '#F5EE9E';
+    alienLifeS.stroke = 'white';
+    alienLifeS.textColor = '#AB3428';
+    alienLifeS.strokeWeight = 2;
+    alienLifeS.opacity = 0.7;
+};
+
+function draw(){
+    background('#dbb691ff');
+};
+
+function drawFrame(){
+    camera.on();
+    camera.x = alien.x + 200;
+
+    camera.off();
+    alienLifeS.draw();
+};
+
+function update(){
+
+    alienLifeS.text = 'Alien Life: ' + alienLife;
+
+    if (kb.presses('up')){
+        alien.vel.y = -5;
+    };
+
+    if(kb.pressing('right')){
+        alien.vel.x = 2.5;
+    } else if(kb.pressing('left')){
+        alien.vel.x = -2.5;
+    };
+
+    if (kb.pressing('down') && alien.collides(blockA)) {
+        alien.vel.x = 0;
+        collectBlock = true;
+    } else if (kb.presses('space')) {
+        if (collectBlock === true){
+            blockA.collider = 'dynamic';
+            blockA.vel.x = 5;
+            blockA.vel.y = -5;
+            blockA.rotationLock = false;
+            collectBlock = false;
+        };
+    };
+
+    if (collectBlock === true) {
+        blockA.collider = 'none';
+        blockA.x = alien.x + 50;
+        blockA.y = alien.y + 10;
+        blockA.rotationLock = true;
+        blockA.rotation = 0;
+    };
+    if (alien.collide(door)){
+        door.img = doorimg2;
+    };
+};
+</code></pre>
+    </div>         
+
+    <p>Want to see the collider? Type allSprites.debug = true; in the box below!</p>
+    <div class="buttonSubmitContainer">
+        <input class='inputBoxes' type="text" id="input" placeholder="Enter code">
+        <button class='submitBoxes' id='submit'>Submit</button>
+    </div>
+    <p id = 'response'></p>
+
+        </div>
+            <div class="codingSection">
+            </div>
+                
+        </div>
+    </div>
+</div>
+    
+    <script src="/js/loopBlock.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener('click', function() {
+                this.classList.toggle("active");
+                var collapsibleContent = this.nextElementSibling;
+                if (collapsibleContent.style.display === "block") {
+                    collapsibleContent.style.display = 'none';
+                } else {
+                    collapsibleContent.style.display = 'block';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
