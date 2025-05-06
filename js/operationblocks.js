@@ -4,7 +4,11 @@ const draggable_list = document.getElementById('draggable-list');
     let codingSectionArray = [];
 
     const ifFunction = [
-        'let',
+      '',
+      '1',
+      '2'
+      /*  
+      'let',
         'password',
         ';',
         'let whisper =',
@@ -30,6 +34,7 @@ const draggable_list = document.getElementById('draggable-list');
         '=',
         'password',
         ';', 
+        */
       ];
       
          
