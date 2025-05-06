@@ -97,7 +97,24 @@
                 <p>5. Set the sprite’s text size to be <code>20</code>.</p>
                 <p>6. Set the sprite’s text to be the value of the <code>password</code> variable.</p>
             </div>
-            
+            <button type="button" class="collapsible">Click Here To See the Code!</button>   
+            <div class='collapsibleContent'>
+                <br>
+<pre>
+<code>      
+let password;
+let whisper = new Sprite()';,
+whisper.width = 100;
+whisper.height = 50;
+whisper.x = 270;
+whisper.y = 350;
+password = "87537979"';
+whisper.textSize = 20;
+whisper.text = password;
+</code>
+</pre>
+                    </div>
+                    <br>
         </div>
             <div class="codingSection">
             </div>
@@ -106,5 +123,20 @@
     </div>
 </div>
         <script src="/js/operationblocks.js"></script>
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener('click', function() {
+                        this.classList.toggle("active");
+                        var collapsibleContent = this.nextElementSibling;
+                        if (collapsibleContent.style.display === "block") {
+                            collapsibleContent.style.display = 'none';
+                        } else {
+                            collapsibleContent.style.display = 'block';
+                        }
+                    });
+                }
+            </script>
 </body>
 </html>

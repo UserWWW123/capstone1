@@ -36,7 +36,7 @@
         <div class="empty" id="gameContainer">
         <div id="winNote">
             <p id = "win"></p>
-            <a href = "/index.html"> <!--change the link to next game-->
+            <a href = "operators.html"> <!--change the link to next game-->
             <button id="nextButton"></button>
         </a>
         </div>
@@ -89,8 +89,17 @@
             <p>Declare variables and assign values to them.</p>         
             <p>Drag the code blocks from the toolbox to the space below in the correct sequence.</p>                    
             <p>Click the checkbox to submit your code!</p>                    
-            <p>"Scroll down in the toolbox to see more code boxes!"</p>
-        </div>
+            <p>Scroll down in the toolbox to see more code boxes!</p>
+            <button type="button" class="collapsible">Click Here To See the Code!</button>   
+            <div class='collapsibleContent'>
+                <br>
+                <code>
+                    let block;<br>
+                    block = "block_E.png"
+                    </code>
+                    </div>
+                    <br>
+                </div>
             <div class="codingSection">
             </div>
                 
@@ -99,5 +108,20 @@
 </div>
     
     <script src="/js/stage1.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener('click', function() {
+                this.classList.toggle("active");
+                var collapsibleContent = this.nextElementSibling;
+                if (collapsibleContent.style.display === "block") {
+                    collapsibleContent.style.display = 'none';
+                } else {
+                    collapsibleContent.style.display = 'block';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

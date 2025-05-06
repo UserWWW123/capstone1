@@ -1,6 +1,6 @@
 
 let doorClosed, alien2, alien3, doorClosedimg, doorOpenedimg, alien1img, alien2img, floorimg, wallimg, alien3img, alien4img;
-
+let response, response1;
 function preload(){
     doorClosedimg = loadImage('/assets/doorClosed_S.png');
     alien1img = loadImage('/assets/alienBiege_jump.png');
@@ -147,21 +147,6 @@ function checkOrder() {
 
 let password;
 
-async function gameStart(){
-    alien2.moveTo (435,300,1);
-    password = new Sprite();
-    password.collider = 'none';
-    password.w = 100;
-    password.h = 50;
-    password.x = 270;
-    password.y = 350;
-    password.text = "87537979";
-    password.textSize = 20;
-    password.color = color(208, 214, 179);
-    password.stroke = color(247, 247, 247);
-    password.strokeWeight = 2;
-    password.textColor = color(20, 49, 9);
-}
 
 async function gameFreeze(){
     alien2.x = 300;
@@ -179,7 +164,7 @@ async function gameFreeze(){
     password.strokeWeight = 2;
     password.textColor = color(20, 49, 9);
 
-    let response = new Sprite();
+    response = new Sprite();
     response.collider = 'none';
     response.w = 220;
     response.h = 30;
@@ -191,7 +176,7 @@ async function gameFreeze(){
     response.stroke = color('transparent');
     response.text = "What are you waiting for?";
 
-    let response1 = new Sprite();
+    response1 = new Sprite();
     response1.collider = 'none';
     response1.w = 220;
     response1.h = 30;
@@ -203,4 +188,31 @@ async function gameFreeze(){
     response1.stroke = color('transparent');
     response1.text = "I need that password—now!";
 
+}
+
+async function gameStart(){
+    alien2.moveTo (435,300,1);
+    password = new Sprite();
+    password.collider = 'none';
+    password.w = 100;
+    password.h = 50;
+    password.x = 270;
+    password.y = 350;
+    password.text = "87537979";
+    password.textSize = 20;
+    password.color = color(208, 214, 179);
+    password.stroke = color(247, 247, 247);
+    password.strokeWeight = 2;
+    password.textColor = color(20, 49, 9);
+    if (response){
+        response.remove();
+    }
+    if (response1){
+        response1.remove();
+        alien.vel.x = 0;
+        alien.vel.y = 0;
+    }
+    if (password){
+        password.remove();
+    }
 }

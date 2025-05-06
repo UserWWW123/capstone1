@@ -4,10 +4,10 @@ const draggable_list = document.getElementById('draggable-list');
     let codingSectionArray = [];
 
     const ifFunction = [
-      '',
+      "0",
       '1',
       '2'
-      /*  
+      /*
       'let',
         'password',
         ';',
