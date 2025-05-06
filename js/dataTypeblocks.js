@@ -4,11 +4,7 @@ const draggable_list = document.getElementById('draggable-list');
     let codingSectionArray = [];
 
     const ifFunction = [
-      '1',
-      '2',
-      '3',
-      '4'
-      /*
+      
         'string',
         'string',
         'number',
@@ -18,7 +14,6 @@ const draggable_list = document.getElementById('draggable-list');
         'update',
         'door.img.offset.x = 10;',
         'door.img = "/assets/crate.png";'
-        */
         
       ];
       
