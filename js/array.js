@@ -404,10 +404,11 @@ const s1 = (p) => {
                 switch_.collider = "dynamic";
         
                 response.innerHTML = "Success!";
-                // Maybe unlock a next level or show a button?
+                submit6.disabled = false;
+                
             } else {
                 response.innerHTML = "Try Again!";
-                submit5.disabled = true;
+                submit6.disabled = true;
             }
         });
 
