@@ -3,10 +3,6 @@
     const resetButton = document.getElementById('reset');
 
     const ifFunction = [
-      '1',
-      '2',
-      '3'
-      /*
       'function setup(){',
       'new Canvas(865, 750);',
       'background(\'#dbb691ff\');',
@@ -68,8 +64,6 @@
       'blockA.rotation = 0;',
       '};',
       '};'
-
-      */
       ];
       
          

@@ -21,6 +21,21 @@ function changePage(pageNumber) {
     }
 }
 
+function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
+    const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
+    if (response) {
+        if (answer === correctAnswer) {
+            response.innerHTML = "Correct!";
+            response.classList.remove("wrongAnswer");
+            response.classList.add("rightAnswer");
+        } else {
+            response.innerHTML = "Try Again!";
+            response.classList.remove("rightAnswer");
+            response.classList.add("wrongAnswer");
+        }
+    }
+}
+
 function toggleNoteIframe(){
     let iframe = document.getElementById("noteIframe");
     if(iframe.style.display === "none" || iframe.style.display === ""){
@@ -36,4 +51,18 @@ function lessonIframe(){
     if (lessonIframe && noteButton){
         noteButton.style.display = "none";
     }
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function() {
+        this.classList.toggle("active");
+        var collapsibleContent = this.nextElementSibling;
+        if (collapsibleContent.style.display === "block") {
+            collapsibleContent.style.display = 'none';
+        } else {
+            collapsibleContent.style.display = 'block';
+        }
+    });
 }

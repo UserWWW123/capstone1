@@ -44,7 +44,6 @@ const s1 = (p) => {
                 currentSprite.width = 100;
                 currentSprite.height = 20;
                 currentSprite.collider = 'static';
-                currentSprite.debug = true;
                 correctUFO.innerHTML = "Variable 'ufo' is created!";
                 correctUFO.classList.add("correctReminder");
     
@@ -128,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const s2 = (p) => {
     let boximg, woodbimg, woodwimg, woodgimg;
     let currentSprite = null;
+    let box = null;
 
     p.preload = () => {
         boximg = p.loadImage("/assets/box.png");
@@ -147,6 +147,11 @@ const s2 = (p) => {
         variableButton.addEventListener("click", () =>{
             let userAnswer = document.getElementById('inputBox').value.trim(); 
         userAnswer = userAnswer.replace(/\s+/g, '');
+        if (box) {
+            box.remove();
+            correctBox.innerHTML = "";
+        }
+
         if (userAnswer === 'letbox;') {
             box = new p.Sprite(100,270,100,100);
             box.img = boximg;
@@ -154,11 +159,11 @@ const s2 = (p) => {
             box.width = 100;
             box.height = 20;
             box.collider = 'static';
+            box.layer = 1;
             correctBox.innerHTML = "Variable 'box' is created!"
             correctBox.classList.add("correctReminder");
         } else{
             correctBox.classList.remove("correctReminder");
-
         }
         })
 
@@ -178,6 +183,7 @@ const s2 = (p) => {
             currentSprite.img = woodbimg;
             brownValue.innerHTML = "Value 'wood_brown' is added!<br>Value of the Box is wood_brown!";
             brownValue.classList.add("correctReminder");
+            currentSprite.layer = 2;
         } else if (answer === "box='wood_white';" || answer === 'box="wood_white";') {
             currentSprite = new p.Sprite(100, 70, 100, 100);
             currentSprite.img = woodwimg;
@@ -266,7 +272,6 @@ const s3 = (p) => {
                 ufo.width = 100;
                 ufo.height = 20;
                 ufo.collider = 'static';
-                ufo.debug = true;
 
                 shipYellow = new p.Sprite(100, 70);
                 shipYellow.img = validAnswers[userAnswer];
@@ -274,7 +279,6 @@ const s3 = (p) => {
                 shipYellow.width = 100;
                 shipYellow.height = 140;
                 shipYellow.collider = 'dynamic';
-                shipYellow.debug = true;
 
                 let alienType = userAnswer.includes("alien_Biege") ? "alien_Biege" : 
                                 userAnswer.includes("alien_Yellow") ? "alien_Yellow" : 
@@ -288,7 +292,7 @@ const s3 = (p) => {
                     shipYellow.image.scale = 1.5;  // Ensure the scale remains the same
                 }
                 correctUFO.innerHTML = "Invalid input! Try again.";
-                correctUFO.classList.remove("correctReminder");
+                correctUFO.classList.add("correctReminder");
             }
         });
     };
@@ -333,8 +337,7 @@ const s4 = (p) => {
     
         alienButton.disabled = true;
     
-        let currentSprite; 
-        let currentAlienSprite;
+        let currentSprite = null; 
     
         UFOButton.addEventListener("click", () => {
             userAnswer = document.getElementById('inputUFO3').value.trim();
@@ -342,75 +345,85 @@ const s4 = (p) => {
     
             if (currentSprite) {
                 currentSprite.remove();
+                currentSprite = null; 
                 correctUFO.innerHTML = "";
-                alienValue.innerHTML = "";
-                alienValue.classList.remove("correctReminder");
+                correctUFO.classList.remove("correctReminder");
             }
     
             if (userAnswer === 'varufo;') {
                 currentSprite = new p.Sprite(100, 270);
                 currentSprite.img = shipYellowimg;
                 currentSprite.image.scale = 2.5;
+                currentSprite.layer = 1;
                 currentSprite.width = 100;
                 currentSprite.height = 20;
                 currentSprite.collider = 'static';
-                currentSprite.debug = true;
                 correctUFO.innerHTML = "Variable 'ufo' is created!";
                 correctUFO.classList.add("correctReminder");
     
                 alienButton.disabled = false; 
             } else {
-                correctUFO.classList.remove("correctReminder");
+                correctUFO.classList.add("correctReminder");
                 alienButton.disabled = true;
-                correctUFO.innerHTML = "";
-                alienValue.innerHTML = "Opps! Something went wrong. Try again!";
-                alienValue.classList.add("correctReminder");
+                correctUFO.innerHTML = "Opps! Something went wrong. Try again!";
             }
         });
     
         let alienValue = document.getElementById('callAlien3');
+        let currentAlienSprite = null;
         
         alienButton.addEventListener("click", () => {
             let answer = document.getElementById('inputAlien3').value.trim();
             answer = answer.replace(/\s+/g, '');
+            if (currentAlienSprite) {
+                currentAlienSprite.remove();
+                alienValue.innerHTML = "";
+                alienValue.classList.remove("correctReminder");
+            }
     
             if (userAnswer === 'varufo;') {
-                if (currentAlienSprite) {
-                    currentAlienSprite.remove(); // Remove the previous sprite if it exists
-                    alienValue.innerHTML = "";
-                    alienValue.classList.remove("correctReminder");
-                }
     
-                // Check if the answer is valid, otherwise do nothing and return early
                 if (answer === "ufo='alien_Biege';" || answer === 'ufo="alien_Biege";') {
                     currentAlienSprite = new p.Sprite(100, 70);
+                    currentAlienSprite.width = 100;
+                    currentAlienSprite.height = 140;
                     currentAlienSprite.img = alienBiegeimg;
+                    currentAlienSprite.layer = 2;
+                    currentAlienSprite.image.scale = 1.5;
+                    currentAlienSprite.debug = true;
                     alienValue.innerHTML = "Value 'alien_Biege' is added! <br> Value of the ufo is alien_Biege!";
                     alienValue.classList.add("correctReminder");
                 } else if (answer === "ufo='alien_Yellow';" || answer === 'ufo="alien_Yellow";') {
                     currentAlienSprite = new p.Sprite(100, 70);
+                    currentAlienSprite.width = 100;
+                    currentAlienSprite.height = 140;
                     currentAlienSprite.img = alienYellowimg;
+                    currentAlienSprite.image.scale = 1.5;
+                    currentAlienSprite.layer = 2;
                     alienValue.innerHTML = "Value 'alien_Yellow' is added! <br> Value of the ufo is alien_Yellow!";
                     alienValue.classList.add("correctReminder");
                 } else if (answer === "ufo='alien_Green';" || answer === 'ufo="alien_Green";') {
                     currentAlienSprite = new p.Sprite(100, 70);
+                    currentAlienSprite.width = 100;
+                    currentAlienSprite.height = 140;
                     currentAlienSprite.img = alienGreenimg;
+                    currentAlienSprite.image.scale = 1.5;
+                    currentAlienSprite.layer = 2;
                     alienValue.innerHTML = "Value 'alien_Green' is added! <br> Value of the ufo is alien_Green!";
                     alienValue.classList.add("correctReminder");
                 } else {
-                    // If the answer is incorrect, do not create currentAlienSprite+remove all words
                     alienValue.classList.add("correctReminder");
                     alienValue.innerHTML = "Opps! Something went wrong. Try again!";
                     correctUFO.innerHTML = "";
                     correctUFO.classList.remove("correctReminder");
-                    return; // Stop the execution
+                    currentAlienSprite.remove();
+                };
+                if (currentAlienSprite) {
+                    currentAlienSprite.image.scale = 1.5;
+                    currentAlienSprite.width = 100;
+                    currentAlienSprite.height = 140;
+                    currentAlienSprite.collider = 'dynamic';
                 }
-    
-                // If the answer is correct, update the alien sprite properties
-                currentAlienSprite.image.scale = 1.5;
-                currentAlienSprite.width = 100;
-                currentAlienSprite.height = 140;
-                currentAlienSprite.collider = 'dynamic';
             }
         });
     };

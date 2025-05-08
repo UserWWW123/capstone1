@@ -582,7 +582,7 @@ code {
     background: #f4eddfff;
     padding: 10px 20px;
     text-align: left;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .active-button, .lessonPageButton:hover{
@@ -791,16 +791,16 @@ iframe body .buttons{
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(161, 94, 33, 0.5);
 }
-#callBox{
-    position: absolute;
-    top: 2%;
-    left: 13.5%;
-}
-
-#callValue{
-    position: absolute;
-    top: 10%;
-    left: 13.5%;
+.response{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 45%;
 }
 
 #varBox{
