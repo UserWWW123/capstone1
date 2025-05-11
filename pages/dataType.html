@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Type</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="/js/q5.js"></script>
     <script src="/js/planck.min.js"></script>
@@ -242,17 +241,17 @@
         <p>An <code>object</code> is a collection of properties, written inside curly braces <code>{}</code>.</p>
     
         <p>Object properties are written as name:value pairs, separated by commas.</p>
-    
-        <p><code>const passcode = {</code></p>
-        <p><code>"object orientation": "1,3,5,7,8",</code></p>
-        <p><code>"active pressure plate": "red",</code></p>
-        <p><code>gravity: 2 // name needs to be inside " " if the name has a space or special character, but it is optional if there is not.</code></p>
-        <p><code>};</code></p>
-    
-        <p><code>//The object passcode contains 3 properties: (object orientation, active pressure plate, gravity)</code></p>
-    
-        <p><code>console.log(passcode);</code></p>
-        <p><code>console.log(passcode["object orientation"]);</code></p>
+<pre><code>const passcode = {
+    "object orientation": "1,3,5,7,8",
+    "active pressure plate": "red",
+    gravity: 2 // The name needs to be inside " " or '' if it has a space or special character, but quotes are optional if it does not.
+};
+
+    // The object passcode contains 3 properties: (object orientation, active pressure plate, gravity)
+
+console.log(passcode);
+console.log(passcode["object orientation"]);
+</code></pre>
 
     
         <div class="consoleOutput">
@@ -352,21 +351,29 @@
         <ul>
             <li>To add an image, you need to provide the URL path to an image file.</li>
             <li>When developing a game, you can create an <code>assets</code> folder to store all images (in PNG or other formats).</li>
-            <li>Then, use the path as a URL. For example: <code>'assets/openedDoor.png'</code></li>
+            <li>Then, use the path as a URL. For example: <code>'/assets/openedDoor.png'</code></li>
         </ul>
     
-        <p><code>let door;</code></p>
-        <p><code>function setup(){</code></p>
-        <p><code>&nbsp;&nbsp;door = createSprite(50, 100, 50, 50);</code></p>
-        <p><code>&nbsp;&nbsp;door.img = '/assets/openedDoor.png';</code></p>
-        <p><code>}</code></p>
-        <p>Try it! Replace the image of door into closedDoor.png</p>
+<pre><code>let door;
+
+function setup() {
+    new Canvas(300, 300);
+    door = new Sprite(150, 150, 200, 150);
+    door.img = '/assets/openedDoor.png';
+}
+</code></pre>
+        <p>Try it! Replace the image of door with closedDoor.png</p>
 
         <div class="lessonGamesContainer_p5play">
             <div class="BoxText">
             <div class="buttonSubmitContainer">
                 <input class ='inputBoxes' type="text" id="input13.i" placeholder="Enter code">
                 <button class ='submitBoxes' id = 'submit13.i'>Submit</button>
+                </div>
+                <br>
+                <button type="button" class="collapsible"><i class="fa-solid fa-lightbulb"></i> Need a hint? Click here </button>                    
+                <div class='collapsibleContent'>
+                    <code>door.img = '/assets/closedDoor.png';</code>
                 </div>
         </div>
             <div id = "p5image"></div>
@@ -379,23 +386,28 @@
         <p>You can make the image higher, lower, or more to the right or left.</p>
         <p>It's especially useful when making a sprite collidable with other sprites.</p>
 
-        <p><code>function setup() {</code></p>
-        <p><code>&nbsp;&nbsp;door = newSprite(50, 100, 50, 50);</code></p>
-        <p><code>&nbsp;&nbsp;door.img = 'assets/openedDoor.png';</code></p>
-        <p><code>&nbsp;&nbsp;door.img.offset.y = 10;</code></p>
-        <p><code>&nbsp;&nbsp;door.img.offset.x = -10;</code></p>
-        <p><code>}</code></p>
+<pre><code>function setup() {
+    new Canvas(300, 300);
+    door = new Sprite(150, 150, 200, 150);
+    door.img = '/assets/openedDoor.png';
+    door.img.offset.y = 10;
+    door.img.offset.x = -10;
+}
+</code></pre>
+            
         <p>Try it! Change the door image offset to other values!</p>
 
         <div class="lessonGamesContainer_p5play">
             <div class="BoxText">
             <div class="buttonSubmitContainer">
-                <input class ='inputBoxes' type="number" id="input13.x" placeholder="Enter number">
+                <p>door.img.offset.x=</p>
+                <input class ='inputBoxes' type="number" id="input13.x" placeholder="Enter a number">
                 <button class ='submitBoxes' id = 'submit13.x'>Submit</button>
                 </div>
                 <br>
             <div class="buttonSubmitContainer">
-                <input class ='inputBoxes' type="number" id="input13.y" placeholder="Enter number">
+                <p>door.img.offset.y=</p>
+                <input class ='inputBoxes' type="number" id="input13.y" placeholder="Enter a number">
                 <button class ='submitBoxes' id = 'submit13.y'>Submit</button>
                 </div>
         </div>
@@ -406,13 +418,14 @@
         <p>Set <code>sprite.debug = true</code> to see the sprite's physics body collider.</p>
         <p>This is helpful, especially when you want to use <code>sprite.image.offset</code> because you can see the shape and center of the sprite.</p>
 
-        <p><code>function update(){</code></p>
-        <p><code>&nbsp;&nbsp;clear();</code></p>
-        <p><code>&nbsp;&nbsp;door.debug = true;</code></p>
-        <p><code>&nbsp;&nbsp;// debug is in update because the collider needs to continue to show even when the sprite moves.</code></p>
-        <p><code>}</code></p>
-        <p><code>door.debug = false;</code></p>
-        <p>Try it! Change door.debug to true!</p>
+<pre><code>function update(){
+    clear();
+    door.debug = true;
+    // The debug is in the update because the collider needs to continue to show even when the sprite moves.
+}
+</code></pre>
+            
+        <p>The debug for the sprite on the canvas is false. Turn it on!</p>
         <div class="lessonGamesContainer_p5play">
             <div class="BoxText">
             <div class="buttonSubmitContainer">
@@ -420,6 +433,10 @@
                 <button class ='submitBoxes' id = 'submit13.d'>Submit</button>
                 </div>
                 <br>
+                <button type="button" class="collapsible"><i class="fa-solid fa-lightbulb"></i> Need a hint? Click here </button>                    
+                <div class='collapsibleContent'>
+                    <code>door.debug = true;</code>
+                </div>
         </div>
             <div id = 'p5debug'></div>
             <div id = 'response13.d'></div>
@@ -428,24 +445,6 @@
 
     </div>
     
-    
-
-            <script>
-                function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
-                    const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
-                    if (response) {
-                        if (answer === correctAnswer) {
-                            response.innerHTML = "Correct!";
-                            response.classList.remove("wrongAnswer");
-                            response.classList.add("rightAnswer");
-                        } else {
-                            response.innerHTML = "Try Again!";
-                            response.classList.remove("rightAnswer");
-                            response.classList.add("wrongAnswer");
-                        }
-                    }
-                }
-            </script>
 
     <div class="lessonButton">
     <button class= "lessonPageButton lessonPageButton1 active-button" onclick="changePage(1)">1</button>
@@ -465,6 +464,7 @@
     </div>
     
     <script src = '/js/dataType.js'></script>
+    <script src="/js/lesson1.js"></script>
 
 </body>
 </html>

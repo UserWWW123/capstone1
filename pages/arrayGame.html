@@ -6,10 +6,8 @@
     <title>arrayGame</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/arrayGame.js"></script>
-    <script src="/js/lesson1.js"></script>
-
-    <script src="https://q5js.org/q5.js"></script>
-    <script src="https://p5play.org/v3/planck.min.js"></script>
+    <script src="/js/q5.js"></script>
+    <script src="/js/planck.min.js"></script>
     <script src="/js/p5play (1).js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
 
@@ -110,7 +108,39 @@
                 
                 <p>7. Set each sprite’s collider to <code>"dynamic"</code> using its index in the array (from index 0 to 5).</p>
                 <p>8. Set each sprite’s image to <code>"/assets/crate.png"</code> in the same sequence as above.</p>
-                
+                <button type="button" class="collapsible"><i class="fa-solid fa-lightbulb"></i> Need a hint? Click here </button>                    
+                <div class='collapsibleContent'>
+<pre><code>
+let ball = new Sprite();
+ball.collider = "dynamic";
+ball.mass = 20;
+ball.direction = -20;
+ball.speed = 10;
+
+let sprites = [
+    new Sprite(151, 321),
+    new Sprite(375, 210),
+    new Sprite(500, 275),
+    new Sprite(280, 385),
+    new Sprite(80, 500),
+    new Sprite(580, 400)
+];
+
+sprites[0].collider = "dynamic";
+sprites[1].collider = "dynamic";
+sprites[2].collider = "dynamic";
+sprites[3].collider = "dynamic";
+sprites[4].collider = "dynamic";
+sprites[5].collider = "dynamic";
+
+sprites[0].img = "/assets/crate.png";
+sprites[1].img = "/assets/crate.png";
+sprites[2].img = "/assets/crate.png";
+sprites[3].img = "/assets/crate.png";
+sprites[4].img = "/assets/crate.png";
+sprites[5].img = "/assets/crate.png";    
+</code></pre>                
+                </div>
             </div>
             
         </div>
@@ -120,7 +150,7 @@
         </div>
     </div>
 </div>
-    
+    <script src="/js/lesson1.js"></script>
     <script src="/js/arrayblocks.js"></script>
 </body>
 </html>

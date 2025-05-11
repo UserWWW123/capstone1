@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Oprators</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="/js/q5.js"></script>
     <script src="/js/planck.min.js"></script>
@@ -49,35 +48,34 @@
     </div>
     <div class = "lessonMiddle lessonpage1">
         <h2>JavaScript Operators</h2>
-        <p>We can use operators to do math and create logic for the computer to function.</p>
+        <p>We can use operators to do math and create logic for the computer to follow.</p>
     
         <h3>For example:</h3>
         <p>Assignment operator (=): <code>let x = 100;</code></p>
-        <p>Multiplication operator (*): <code>let gravity = 10;</code></p>
+        <p>Multiplication operator (*): <code>let gravity = 10*2;</code></p>
     
         <h3>Types of Operators:</h3>
-        <p>In this lesson, you will learn about 5 types of operators: arithmetic operators, assignment operators, comparison operators, string operators, and logical operators. These are all operators that are commonly used in programming for beginners.</p>
-    
+        <p>In this lesson, you will learn about five types of operators: arithmetic operators, assignment operators, comparison operators, string operators, and logical operators. These are commonly used in beginner programming.
+        </p>
         <ul>
-            <li>Arithmetic operators: Used for mathematical calculations (e.g. addition, subtraction).</li>
-            <li>Assignment operators: Used to assign values to variables (e.g. =, +=, -=).</li>
-            <li>Comparison operators: Used to compare two values (e.g. ==, ===, <, >).</li>
-            <li>String operators: Used to manipulate strings (e.g. + for concatenation).</li>
-            <li>Logical operators: Used for logical operations (e.g. &&, ||, !).</li>
+            <li>Arithmetic operators: Used for mathematical calculations (e.g., addition, subtraction).</li>
+            <li>Assignment operators: Used to assign values to variables (e.g., =, +=, -=).</li>
+            <li>Comparison operators: Used to compare two values (e.g., ==, ===, <, >).</li>
+            <li>String operators: Used to manipulate strings (e.g., + for concatenation).</li>
+            <li>Logical operators: Used for logical operations (e.g., &&, ||, !).</li>
         </ul>
     </div>
     <div class = "lessonMiddle lessonpage2">
         <h2>First, let's talk about arithmetic operators:</h2>
         <h3>Arithmetic Operators:</h3>
-        <p>The arithmetic operators are often used in math calculations.</p>
-        <p>Here are the common arithmetic operators:</p>
+        <p>Arithmetic operators are used for mathematical calculations.</p>
+        <p>Here are some common arithmetic operators:</p>
         <ul>
-            <li>= (Assignment)</li>
             <li>+ (Addition)</li>
             <li>- (Subtraction)</li>
             <li>* (Multiplication)</li>
             <li>/ (Division)</li>
-            <li>^ (Exponentiation)</li>
+            <li>** (Exponentiation)</li>
         </ul>
         <h3>For example:</h3>
         <p><code>let x = 10;</code></p>
@@ -142,28 +140,9 @@
                     <p>Choose a number from 1 to 6 to clone <code>alien_Beige</code></p>
                     <input class ='inputBoxes' type="text" id="input1" placeholder="Enter code">
                 <button class ='submitBoxes' id = 'submit1'>Submit</button>
-
-                <p id = response></p>
-                <br>
-                <div>
-                    <button type="button" class="collapsible">Click Here To See the Code!</button>                    
-                    <div class='collapsibleContent'>
-                                            <!--code for collapsible section-->
-                    <script>
-                        var coll = document.getElementsByClassName("collapsible");
-                        var i;
-                        for (i = 0; i < coll.length; i++) {
-                            coll[i].addEventListener('click', function() {
-                                this.classList.toggle("active");
-                                var collapsibleContent = this.nextElementSibling;
-                                if (collapsibleContent.style.display === "block") {
-                                    collapsibleContent.style.display = 'none';
-                                } else {
-                                    collapsibleContent.style.display = 'block';
-                                }
-                            });
-                        }
-                    </script>
+                <br><br>
+                <button type="button" class="collapsible">Click Here To See the Code!</button>                    
+                <div class='collapsibleContent'>
 <pre><code>
 // This section includes content you can explore in more detail later!
 
@@ -209,8 +188,8 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
 }
 });
 </code></pre>                        
-</div>
-                </div>              
+                        </div>
+                <br>
             </div>
         </div>
         </div>
@@ -218,31 +197,32 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
 
     <div class="lessonMiddle lessonpage5">
         <h2>Remainder, Increment, and Decrement Operators</h2>
-        <p>You may not know remainder, increment, and decrement. What are they?</p>        
+        <p>You may not be familiar with the remainder, increment, and decrement operators. What are they?</p>        
         <p>Remainder:</p>
-        <p>The modulus operator <code>%</code> returns the division remainder.</p>
+        <p>The modulus operator <code>%</code> returns the remainder of a division.</p>
         
         <p>Increment:</p>
-        <p>The increment operator <code>++</code> increases the variable's value by 1.</p>
+        <p>The increment operator <code>++</code> increases a variable's value by 1.</p>
         
         <p>Decrement:</p>
-        <p>The decrement operator <code>--</code> decreases the variable's value by 1.</p>
+        <p>The decrement operator <code>--</code> decreases a variable's value by 1.</p>
         
         <h3>Examples:</h3>
         <p><code>// initialize a and b </code></p>
         <p><code>let a = 10;</code></p>
         <p><code>let b = 30;</code></p>
+        <br>
         <p><code>console.log(a % b); // 10 (10 divided by 30 gives a quotient of 0 and a remainder of 10.)</code></p>
         
         <br>
 
         <p><code>a++; // a becomes 11</code></p>
-        <p><code>console.log(a); // 11</code></p>
+        <p><code>console.log(a);</code></p>
         
         <br>
 
         <p><code>b--; // b becomes 29</code></p>
-        <p><code>console.log(b); // 29</code></p>
+        <p><code>console.log(b);</code></p>
         
     
         <div class="consoleOutput">
@@ -256,12 +236,12 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
     </div>
     
     <div class="lessonMiddle lessonpage6">
-        <h2>Assignment Operators</h2>
-        <p>Assignment operators assign value to variables.</p>
+        <h2>Assignment Operators:</h2>
+        <p>Assignment operators are used to assign values to variables.</p>
     
         <h3>Example:</h3>
         <p><code>let energy = 50;</code></p>
-        <p><code>energy += 30; // The addition assignment operator (+=) adds a value to variable (50+30)</code></p>
+        <p><code>energy += 30; // The addition assignment operator (+=) adds 30 to the energy (50+30)</code></p>
         <p><code>console.log("Current Energy:", energy);</code></p>
         
         <div class="consoleOutput">
@@ -360,15 +340,15 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
     </div>
 
     <div class = "lessonMiddle lessonpage9">
-        <p>Comparison operators:</p>
-        <p>The comparison operators are used to compare 2 variables and return a Boolean result (true or false) based on whether the comparison is true or false.</p>
+        <h2>Comparison operators:</h2>
+        <p>Comparison operators are used to compare 2 values and return a Boolean result (true or false) based on whether the comparison is true or false.</p>
 
         <p>Example:</p>
         <p><code>let decodeTime = 10;</code></p>
         <p><code>let timeLimit = 10;</code></p>
-        <p><code>let result = decodeTime &lt; timeLimit; // the less than operator</code></p>
+        <p><code>let result = decodeTime < timeLimit; // the 'less than' operator</code></p>
 
-        <p><code>console.log(result); // (10 is not less than 10, so it is false, and it returns false.)</code></p>
+        <p><code>console.log(result); // (10 is not less than 10, so the result is false)</code></p>
 
         <div class="consoleOutput">
             <div class="consoleTitle"><p>Console</p></div>
@@ -472,9 +452,9 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
     </div>
 
     <div class = "lessonMiddle lessonpage11">
-        <h2>String comparison</h2>
-        <p>String comparison uses a string to connect or compare.</p>
-        <p>A string is text within quotation marks. It is a way to store text in JavaScript.</p>
+        <h2>String comparison:</h2>
+        <p>String comparison can be used to connect or compare strings.</p>
+        <p>A string is text enclosed with quotation marks. It is a way to store text in JS.</p>
         <p>Example: <code>"Laser Beams"</code></p>
         <p>Example:</p>
         <p><code>let alienMessagePart1 = "Pull the String";</code></p>
@@ -492,7 +472,7 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
 
     <div class = "lessonMiddle lessonpage12">
         <h2>Logical Operators</h2>
-        <p>Logical operators combine multiple conditions, judge, and return “false” or “true”.</p>
+        <p>Logical operators combine multiple conditions, evaluate them, and return <code>true</code> or <code>false</code>.</p>
 
         <p>They can be used with comparison operators.</p>
 
@@ -523,19 +503,19 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
             <tr>
               <td>&&</td>
               <td>and</td>
-              <td><code>console.log(passcode1 == 4321 && passcode2 == 1234)</code></td>
+              <td><code>passcode1 === 4321 && passcode2 === 1234</code></td>
               <td>true</td>
             </tr>
             <tr>
               <td>||</td>
               <td>or</td>
-              <td><code>console.log(passcode1 == 2345 || passcode2 == 9876)</code></td>
+              <td><code>passcode1 === 2345 || passcode2 === 9876</code></td>
               <td>false</td>
             </tr>
             <tr>
               <td>!</td>
               <td>not</td>
-              <td><code>console.log(!(passcode1 == passcode2))</code></td>
+              <td><code>!(passcode1 === passcode2)</code></td>
               <td>true</td>
             </tr>
           </table>
@@ -547,48 +527,70 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
         <h2>p5play time! Let's learn more about p5play!</h2>
         
         <p><code>let sprite;<br>
-        sprite = new Sprite(100, 100, 50, 50);</code></p>
+        sprite = new Sprite(100, 100, 50, 50); // Creates a new sprite at (x-position, y-position, width, height)</code></p>
 
         <div class="lessonGamesContainer_p5play">
+        <div class="lessonGamesContainer_content">
         <div class="BoxText">
         <h2>Rotation:</h2>
         
-        <p><code>sprite.rotation = 45;</code></p>
+        <p><code>sprite.rotation = 45; //Rotates the sprite by 45 degrees</code></p>
         
-        <p>Try it! Add other values to <code>sprite.rotation</code>!</p>
+        <p>Try it! Add other numbers to <code>sprite.rotation</code>!</p>
+        <p>Example: Type '180' into the input box.</p>
 
         <div class="buttonSubmitContainer">
-            <input class ='inputBoxes' type="text" id="input13.r" placeholder="Enter number">
+            <input class ='inputBoxes' type="text" id="input13.r" placeholder="Enter a number">
             <button class ='submitBoxes' id = 'submit13.r'>Submit</button>
             </div>
     </div>
         <div id = "rotation"></div>
+        </div>
     </div>
     <br>
     <br>
     
         <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
             <div class="BoxText">
                 <h2>Color:</h2>
                 
-                <p><code>sprite.color = 'red';</code></p>
+                <p><code>sprite.color = 'red'; //You can use a color name</code></p>
                 
-                <p><code>sprite.stroke = 'orange';</code></p>
+                <p><code>sprite.stroke = '#FFD5C2'; //or Hex, and more!</code></p>
+
+                <p><code>sprite.strokeWeight = 10; //You can also control stroke thickness!</code></p>
+
                 
                 <p>Try it! Add other values to <code>sprite.color</code> and <code>sprite.stroke</code>!</p>
+                <p>Example: Type 'red' or '#C8553D' for color . Type 5 for stroke weight.</p>
         
                 <div class="buttonSubmitContainer">
-                    <input class ='inputBoxes' type="text" id="input13.c" placeholder="Enter color">
+                    <p>Fill Color:</p>
+                    <input class ='inputBoxes' type="text" id="input13.c" placeholder="Enter a sprite's fill color">
                     <button class ='submitBoxes' id = 'submit13.c'>Submit</button>
+                </div>
+                    <p>Stroke Color:</p>
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="text" id="input13.s" placeholder="Enter a sprite's stroke color">
+                    <button class ='submitBoxes' id = 'submit13.s'>Submit</button>
+                </div>
+
+                <p>Stroke Weight:</p>
+                <div class="buttonSubmitContainer">
+                    <input class ='inputBoxes' type="text" id="input13.w" placeholder="Enter a number">
+                    <button class ='submitBoxes' id = 'submit13.w'>Submit</button>
                 </div>
             </div>
             <div id="color"></div>
+            </div>
         </div>
 
         <br>
         <br>
 
         <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
             <div class="BoxText">
                 <h2>Diameter: Make a circle!</h2>
                 
@@ -602,12 +604,14 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
                 </div>
             </div>
             <div id="diameter"></div>
+            </div>
         </div>
         
         <br>
         <br>
         
         <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
             <div class="BoxText">
                 <h2>Text: Add text to sprite!</h2>
                 
@@ -628,6 +632,7 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
                 </div>
             </div>
             <div id="text"></div>
+            </div>
         </div>
         
         <br>
@@ -640,7 +645,7 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
         <p class="questionTitle"><code>let messagePart1 = "The password is ";</code></p>
         <p class="questionTitle"><code>let messagePart2 = secret;</code></p>
         <p class="questionTitle"><code>messagePart1 + messagePart2</code></p>
-        <p class="questionTitle">What will this expression evaluate to?</p>
+        <p class="questionTitle">What will the result of this expression be?</p>
         <p class="questionTitle">How would you fix this code?</p>
     
         <div class="choices">
@@ -741,24 +746,6 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
         </div>
     </div>
     
-
-            <script>
-                function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
-                    const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
-                    if (response) {
-                        if (answer === correctAnswer) {
-                            response.innerHTML = "Correct!";
-                            response.classList.remove("wrongAnswer");
-                            response.classList.add("rightAnswer");
-                        } else {
-                            response.innerHTML = "Try Again!";
-                            response.classList.remove("rightAnswer");
-                            response.classList.add("wrongAnswer");
-                        }
-                    }
-                }
-            </script>
-
     <div class="lessonButton">
     <button class= "lessonPageButton lessonPageButton1 active-button" onclick="changePage(1)">1</button>
     <button class="lessonPageButton lessonPageButton2" onclick="changePage(2)">2</button>
@@ -788,5 +775,6 @@ if (!isNaN(numSprites) && numSprites > 0 && numSprites <= 6) {
     </div>
     
     <script src = '/js/lesson3.js'></script>
+    <script src="/js/lesson1.js"></script>
 </body>
 </html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Type</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="/js/q5.js"></script>
     <script src="/js/planck.min.js"></script>
@@ -224,11 +223,20 @@
             <li>Sort the array in alphabetical order.</li>
             <li>Count the number of items in the array.</li>
         </ol>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <button type="button" class="collapsible"><i class="fa-solid fa-lightbulb"></i> Need a hint? Click here </button>                    
+        <div class='collapsibleContent'>
+<pre><code>
+1. const tool = ['crate','stairs','doors','window','doorway'];
+2. tool.pop();
+3. tool.push('switch');
+4. tool.shift();
+5. tool.unshift('crate');
+6. tool.pop();
+7. tool.push('doorway');
+8. tool.sort();
+9. tool.length;
+</code></pre>                
+        </div>
         <br>
         <div class="lessonGamesContainer_p5play">
             <div class="BoxText">
@@ -343,13 +351,13 @@
             <p class="questionTitle">How do you add an item to the start of an array?</p>
         
             <div class="choices">
-                <button class="choicesButton" onclick="checkAnswer('answer1', 'answer3', 'lessonPage11')">
+                <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage11')">
                     <code>Use push();</code>
                 </button>
-                <button class="choicesButton" onclick="checkAnswer('answer2', 'answer3', 'lessonPage11')">
+                <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage11')">
                     <code>Use unshift();</code>
                 </button>
-                <button class="choicesButton" onclick="checkAnswer('answer3', 'answer3', 'lessonPage11')">
+                <button class="choicesButton" onclick="checkAnswer('answer3', 'answer2', 'lessonPage11')">
                     <code>Use shift();</code>
                 </button>
                 <p class="answer"></p>
@@ -429,13 +437,15 @@
                         <p>Try it! Type in the index box to set the <br>world gravity to any level you want!</p>
                         <br>
                         <div class="buttonSubmitContainer">
-                            <input class='inputBoxes' type="text" id="input_1" placeholder="Enter code">
+                            <p>world.gravity.y = </p>
+                            <input class='inputBoxes' type="text" id="input_1" placeholder="Enter a number">
                             <button class='submitBoxes' id="submit_1">Submit</button>
                             <br>
                         </div>
                         <br>
                         <div class="buttonSubmitContainer">
-                            <input class='inputBoxes' type="text" id="input_1_2" placeholder="Enter code">
+                            <p>world.gravity.x = </p>
+                            <input class='inputBoxes' type="text" id="input_1_2" placeholder="Enter a number">
                             <button class='submitBoxes' id="submit_1_2">Submit</button>
                             <br>
                         </div>
@@ -465,9 +475,11 @@
                 <div class="lessonGamesContainer_content">
                     <div class="BoxText">
                         <p>Try it! Type in the index box to set <br>a different collider to the sprite!</p>
+                        <p>Example: Type: dynamic</p>
                         <br>
                         <div class="buttonSubmitContainer">
-                            <input class='inputBoxes' type="text" id="input_2" placeholder="Enter code">
+                            <p>crate.collider = '</p>
+                            <input class='inputBoxes' type="text" id="input_2" placeholder="Enter code"> <p>'</p>
                             <button class='submitBoxes' id="submit_2">Submit</button>
                             <br>
                         </div>
@@ -541,10 +553,11 @@
                         <h3>sprite.rotationLock:</h3>
                         <p>Set the rotationLock of the sprite to false or true. <br>If true, the sprite is locked from rotation. <br>If false, it can rotate (default).</p>
                         <code>sprite.rotationLock = true;</code>
+                        <p>Type: sprite.rotationLock = true; or sprite.rotationLock = false;</p>
                         <br>
                         <br>
                         <div class="buttonSubmitContainer">
-                            <input class='inputBoxes' type="text" id="input_6" placeholder="Enter code">
+                            <input class='inputBoxes' type="text" id="input_6" placeholder="Enter a number">
                             <button class='submitBoxes' id='submit_6'>Submit</button>
                         </div>
                         <p id = 'response_6'></p>
@@ -612,7 +625,7 @@
 
 </div>
     </div>
-    
+    <script src="/js/lesson1.js"></script>
     <script src = '/js/array.js'></script>
 
 </body>

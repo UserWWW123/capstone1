@@ -104,9 +104,9 @@ function update(){
         alien3.moveTo(350,400,2);
 
         if (alien3.position.x === 350 && alien3.position.y === 400){
-            const winmessage = document.getElementById('win').innerHTML = "Mission Accomplished! <br> Go to next level";
-                document.getElementById('winNote').style.backgroundColor = "rgba(244, 237, 223, 0.835)";
-                const nextButton = document.getElementById('nextButton').innerHTML = '<i class="fa-solid fa-caret-right"></i>';
+            document.getElementById('win').innerHTML = "Mission Accomplished! <br> Go to next level";
+            document.getElementById('winNote').style.backgroundColor = "rgba(244, 237, 223, 0.835)";
+            document.getElementById('nextButton').innerHTML = '<i class="fa-solid fa-caret-right"></i>';
         }
     }    
 
@@ -148,9 +148,19 @@ function checkOrder() {
 let password;
 
 
-async function gameFreeze(){
+function gameFreeze(){
+    //reset aliens position + img
+    alien3.img = alien3img;
     alien2.x = 300;
     alien2.y = 445; 
+    alien3.x = 550;
+    alien3.y = 250;
+
+    //reset winmessage:
+    document.getElementById('win').innerHTML = "";
+    document.getElementById('winNote').style.backgroundColor = "transparent";
+    document.getElementById('nextButton').innerHTML = '';
+
     password = new Sprite();
     password.collider = 'none';
     password.w = 100;
@@ -163,6 +173,8 @@ async function gameFreeze(){
     password.stroke = color(247, 247, 247);
     password.strokeWeight = 2;
     password.textColor = color(20, 49, 9);
+
+    doorClosed.img = doorClosedimg;
 
     response = new Sprite();
     response.collider = 'none';
@@ -190,8 +202,11 @@ async function gameFreeze(){
 
 }
 
-async function gameStart(){
-    alien2.moveTo (435,300,1);
+function gameStart(){
+    if (password){
+        password.remove();
+    };
+    alien2.moveTo(435,300,1);
     password = new Sprite();
     password.collider = 'none';
     password.w = 100;
@@ -209,10 +224,6 @@ async function gameStart(){
     }
     if (response1){
         response1.remove();
-        alien.vel.x = 0;
-        alien.vel.y = 0;
     }
-    if (password){
-        password.remove();
-    }
+
 }

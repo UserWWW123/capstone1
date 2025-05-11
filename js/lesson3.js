@@ -288,13 +288,29 @@ const s4 = (p) => {
         sprite = new p.Sprite(150,150, 150,150);
         sprite.collider = "kinetic";
         sprite.color = "white";
-        sprite.stroke = 'blue';
+        sprite.stroke = '#FFD5C2';
+        sprite.strokeWeight = 10;
 
         // Set up the submit button event listener
         let submit1 = document.getElementById('submit13.c');
         submit1.addEventListener('click', () => {
             userAnswer = document.getElementById('input13.c').value.trim();
+            userAnswer = userAnswer.replace(/^['"]|['"]$/g, "");
             sprite.color = userAnswer;
+        });
+
+        let submit2 = document.getElementById('submit13.s');
+        submit2.addEventListener('click', () => {
+            userAnswer = document.getElementById('input13.s').value.trim();
+            userAnswer = userAnswer.replace(/^['"]|['"]$/g, "");
+            sprite.stroke = userAnswer;
+        });
+
+        let submit3 = document.getElementById('submit13.w');
+        submit3.addEventListener('click', () => {
+            userAnswer = document.getElementById('input13.w').value.trim();
+            userAnswer = userAnswer.replace(/^['"]|['"]$/g, "");
+            sprite.strokeWeight = userAnswer;
         });
     };
 

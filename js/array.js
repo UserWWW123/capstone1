@@ -297,7 +297,7 @@ const s1 = (p) => {
                 if (text1) text1.remove();
                 if (switch_) switch_.remove();
             if (
-                userAnswer4 === 'tool.shift()'
+                userAnswer4 === 'tool.shift();'
             ) {
                 text1 = new p.Sprite(370,60,150,150);
                 text1.collider = 'none';
@@ -379,31 +379,31 @@ const s1 = (p) => {
                 crate.img.scale = 2;
                 crate.collider = "dynamic";
         
-                stairs = new p.Sprite(220, 0, 130, 75);
+                stairs = new p.Sprite(250, 0, 130, 75);
                 stairs.img = stairsimg;
                 stairs.layer = 3;
                 stairs.img.scale = 1.5;
                 stairs.collider = "dynamic";
         
-                doors = new p.Sprite(370, 0, 110, 100);
+                doors = new p.Sprite(410, 0, 110, 100);
                 doors.img = doorsimg;
                 doors.layer = 3;
                 doors.img.scale = 1.5;
                 doors.collider = "dynamic";
         
-                windows = new p.Sprite(500, 0, 110, 100);
+                windows = new p.Sprite(540, 0, 110, 100);
                 windows.img = windowimg;
                 windows.layer = 3;
                 windows.img.scale = 1.5;
                 windows.collider = "dynamic";
         
-                switch_ = new p.Sprite(635, 20, 110, 1);
+                switch_ = new p.Sprite(675, 20, 110, 1);
                 switch_.img = switchimg;
                 switch_.layer = 3;
                 switch_.img.scale = 2;
                 switch_.collider = "dynamic";
         
-                response.innerHTML = "Success!";
+                response.innerHTML = '';
                 submit6.disabled = false;
                 
             } else {
@@ -423,7 +423,7 @@ const s1 = (p) => {
                 if (text1) text1.remove();
                 if (switch_) switch_.remove();
             if (
-                userAnswer6 === 'tool.pop()'
+                userAnswer6 === 'tool.pop();'
             ) {
                 text1 = new p.Sprite(370,60,150,150);
                 text1.collider = 'none';
@@ -477,7 +477,7 @@ const s1 = (p) => {
 
         submit7.addEventListener('click', () => {
             let userAnswer7 = document.getElementById('input13.7').value.trim();
-            userAnswer7 = userAnswer6.replace(/\s+/g, '');
+            userAnswer7 = userAnswer7.replace(/\s+/g, '');
                 if (crate) crate.remove();
                 if (stairs) stairs.remove();
                 if (doors) doors.remove();
@@ -624,11 +624,11 @@ const s1 = (p) => {
                 if (text1) text1.remove();
                 if (switch_) switch_.remove();
             if (
-                userAnswer9 === 'tool.length'
+                userAnswer9 === 'tool.length;'
             ) {
                 text1 = new p.Sprite(370,150,1,1);
                 text1.collider = 'none';
-                text1.text = "Tool";
+                text1.text = "5";
                 text1.textColor = p.color("black");
                 text1.color = 'transparent';
                 text1.stroke = 'transparent';
