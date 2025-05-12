@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
+    <script src="/js/q5.js"></script>
+    <script src="/js/planck.min.js"></script>
+    <script src="/js/p5play (1).js"></script>
+
+</head>
+<body class="lessonPage">
+    <div class="lesson">
+    <div class= "lessonTop">
+        <p class="lessonTitle">Level 8: Function</p>
+        <div class="toolButton">
+        <button class="takeNote" onclick="toggleNoteIframe()">
+            <i class="fa-solid fa-note-sticky"></i>
+            Take Note</button>
+            <a href="functionGame.html"> <!--need to change it-->
+                <button class="nextLesson">
+                <i class="fa-solid fa-caret-right"></i>
+                Next: Function Game
+            </button>
+            </a>
+            <div class = "main-nav" id="main-nav">
+                <i class="fa-solid fa-bars" id = "menu-icon"></i>
+                <div class = "nav-dropdown" id = "nav-menu">
+                    <a href = "/index.html" >Home</a>
+                    <a class = "active"href = "note.html">Note</a>
+                    <a href = "levelsPage.html">Learn</a>
+            </div>
+    </div>
+    </div>
+    <iframe id="noteIframe" src="note.html"></iframe>
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function(){
+            document.getElementById("nav-menu").classList.toggle("show");
+        });
+        window.addEventListener("click", function(){
+            if (!event.target.matches("#menu-icon")){
+                document.getElementById("nav-menu").classList.remove("show");
+            }
+        });
+    </script>
+    </div>
+    <div class="lessonMiddle lessonpage1">
+        <h2>Function:</h2>
+      
+        <p>A JavaScript function is a block of code that can be used repeatedly. It is defined by the function keyword and a user-assigned name. A function is different from writing code line by line not only because it is reusable but also because it doesn't run until you call it.</p>
+      
+        <br>
+      
+        <p>Different kinds of loops:</p>
+      
+        <h3>->for loop</h3>
+        <p>A block of code runs until a specific condition becomes false.</p>
+      
+        <h3>->while loop</h3>
+        <p>Loop through a block of code while a condition is true.</p>
+      </div>
+      
+    <div class="lessonMiddle lessonpage2">    
+    <h2>Step 1. Write a function.</h2>
+    
+    <p>Here is how to write a function:</p>
+    <p><strong>Syntax:</strong></p>
+    <p><code>function name(parameter1, parameter2, parameter3) {<br>
+    &nbsp;&nbsp;//Code<br>
+    };</code></p>
+    
+    <p>Function names follow the same rule as variables. (e.g. they can contain letters, digits, and underscores)</p>
+    
+    <p>Parameters are placeholders for values that the function can receive later. When the function is called, the values passed into the function are called arguments. Inside the function, the arguments behave as local variables, which means they exist only inside the function.</p>
+    
+    <p>You can assign a name to a parameter. For example: <code>'area1'</code>:</p>
+    
+    <p><code>function arrowNumberCalculation(area1, area2) {<br>
+    &nbsp;&nbsp;return area1 + area2;<br>
+    };</code></p>
+    </div>
+      
+    <div class="lessonMiddle lessonpage3">
+        <h2>Step2. Call the function:</h2>
+    
+        <p>There are different ways to call a function. You can:</p>
+        <ul>
+            <li>Directly call it in the code</li>
+            <li>Use an event (e.g., click a button)</li>
+            <li>Invoke it automatically when the page loads</li>
+        </ul>
+    
+        <h3>1) Directly call it in the code:</h3>
+        <p>You can call a function at a specific point in your program. For example, as a condition is fulfilled (<code>x + y === 2</code>), the function is called. This method is usually used when the function has a parameter to pass a specific value in it.</p>
+    
+        <p><code>let result = arrowNumberCalculation(12, 26);</code></p>
+        <p><code>console.log(result);</code></p>
+        <div class="consoleOutput">
+            <div class="consoleTitle">
+                <p>Console</p>
+            </div>
+            <div class="consoleContent">
+                <div class="consoleContentItems">
+                    <p><code>38</code></p>
+                </div>
+            </div>
+        </div>
+    
+        <h3>2) Use an event (input):</h3>
+        <p>You can also call a function based on user input. For example, when the user submits the block’s position value, the block's position on the canvas is updated. In this case, you can use DOM.</p>
+    
+        <div class="additionInformation">
+        <h3>Important:</h3>
+        <p><strong>DOM (Document Object Model):</strong></p>
+        <p>When a web page is loaded, the browser creates a DOM of the page. Using the HTML DOM, JavaScript can access and modify all the elements of an HTML document, including HTML structure and CSS styles.</p>
+        <p>For example, with the DOM, you can:</p>
+        <ul>
+            <li>Find an input box and the submit button in the HTML by their Ids.</li>
+            <li>Detect if the submit button is clicked. If clicked, get the values from the input box.</li>
+            <li>Remove the existing block (if any) before creating a new block.</li>
+            <li>Create a block with the position that the user submitted.</li>
+        </ul>
+        <p>Example:</p>
+        <h3>HTML:</h3> 
+        <p>This is how to make a comment in HTML! <code>&lt;!--Comment--&gt;</code></p>
+        <button type="button" class="collapsible">Click here to see the HTML code</button>                          
+        <div class='collapsibleContent'>
+    <pre><code>
+    &lt;div class="lessonGamesContainer_content"&gt; &lt;!-- Main Container for the whole section --&gt;
+        &lt;div class="BoxText"&gt; &lt;!-- Container for input boxes and submit buttons --&gt;
+            
+            &lt;div class="buttonSubmitContainer"&gt; &lt;!-- Container for text and input box for sprite's x-position --&gt;
+                &lt;p&gt;sprite.x = &lt;/p&gt;
+                &lt;input id="xInput" type="number" placeholder="Type x-position!"&gt;
+                &lt;p&gt;;&lt;/p&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="buttonSubmitContainer"&gt; &lt;!-- Container for text and input box for sprite's y-position --&gt;
+                &lt;p&gt;sprite.y = &lt;/p&gt;
+                &lt;input id="yInput" type="number" placeholder="Type y-position!"&gt;
+                &lt;p&gt;;&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class="buttonSubmitContainer"&gt; &lt;!-- Container for submit button --&gt;
+                &lt;button id="Submit"&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- Container for wrong text --&gt;
+            &lt;p id="response"&gt;&lt;/p&gt;
+            
+        &lt;/div&gt;
+
+        &lt;!-- Container for p5play canvas --&gt;
+        &lt;div id="DOMexample"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>          
+    </div>  
+
+        <h3>CSS:</h3>
+        <button type="button" class="collapsible">Click here to see the CSS code</button>                          
+        <div class='collapsibleContent'>
+    <pre><code>
+    .lessonGamesContainer_content{ //Make Content appear in column
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 80%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .buttonSubmitContainer{ //Make content appear in row
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+    </code></pre>
+    </div>
+
+        <h3>JS:</h3>
+        <button type="button" class="collapsible">Click here to see the JS code</button>                          
+        <div class='collapsibleContent'>
+    <pre><code>
+    const s1 = (p) => {
+        let crateimg, crate;
+        let floorimg, floorCollider, floor;
+
+        p.preload = () => {
+            crateimg = p.loadImage('/assets/crate_E.png');
+            floorimg = p.loadImage('/assets/floor.png');
+        };
+
+        p.setup = () => {
+            p.createCanvas(740, 300);
+            p.world.gravity.y = 10;
+
+            floorCollider = new p.Sprite(740/2, 250, 740, 20, 'static');
+            floorCollider.layer = 3;
+            floorCollider.color = 'transparent';
+            floorCollider.stroke = 'transparent';
+
+            floor = new p.Sprite(740/2,250,350,50);
+            floor.collider = "none";
+            floor.img = floorimg;
+            floor.img.scale = 2;
+            floor.layer = 2;
+        };
+
+        p.draw = () => {
+            p.background('#2D3142');
+
+            let submit = document.getElementById('Submit');
+            submit.addEventListener('click', () => {
+                let valueX = parseFloat(document.getElementById('xInput').value); //Get Input (allow decimal numbers)
+                let valueY = parseFloat(document.getElementById('yInput').value);
+
+                let response = document.getElementById('response');
+            
+                if (!isNaN(valueX) && !isNaN(valueY)) {
+                    if (crate) {
+                        crate.remove();
+                    }
+                    response.innerHTML = ''
+            
+                    crate = new p.Sprite();
+                    crate.scale = 2;
+                    crate.img = crateimg;
+                    crate.x = valueX;
+                    crate.y = valueY;
+                } else {
+                    response.innerHTML = 'Enter numbers!'
+                }
+            });
+                
+        };
+    };
+
+    new p5(s1, 'DOMexample');
+    </code></pre>
+    </div>
+
+<div class="lessonGamesContainer_p5play">
+    <div class="lessonGamesContainer_content">
+        <div class="BoxText">
+            <div class="buttonSubmitContainer">
+                <p>sprite.x = </p>
+                    <input id="xInput" type = 'number' placeholder="Type x-position!">
+                <p>;</p>
+            </div>
+            
+            <div class="buttonSubmitContainer">
+                <p>sprite.y = </p>
+                    <input id="yInput" type = 'number' placeholder="Type y-position!">
+                <p>;</p>
+            </div>
+
+            <div class="buttonSubmitContainer">
+                <button id="Submit">Submit</button>
+            </div>
+            <p id = 'response'></p>
+        </div>
+        <div id="DOMexample"></div>
+    </div>
+</div>
+    </div>
+
+        <h3>3) Invoke it automatically when the page loads:</h3>
+        <p>You can call a function as the page loads.</p>
+        <p><code>window.onload = function(){</code></p>
+        <p><code>doorClosed();</code></p>
+        <p><code>}</code></p>
+
+    </div>
+    
+    <div class="lessonMiddle lessonpage4">
+        <h2>Default parameter in JS:</h2>
+        <p>If a function with a parameter is called without arguments (no value added), the missing values are set to <code>undefined</code>.</p>
+        <p>Sometimes this is okay, but it is better to assign a default value to the parameter to prevent errors.</p>
+        <p>JS will use these default values when the function is called without arguments. This prevents <code>undefined</code> situations and ensures the function still works.</p>
+    
+        <p>Syntax:</p>
+        
+        <h4>With default parameters:</h4>
+    <pre><code>function callCharacter(name = 'friend') {
+    console.log('Hello,' + name);
+}
+callCharacter(); // Hello, friend
+callCharacter('Leo'); // Hello, Leo
+    </code></pre>
+        
+        <h4>Without default parameters:</h4>
+    <pre><code>function callCharacter(name) {
+    console.log('Hello,' + name);
+}
+callCharacter(); // Hello, undefined
+callCharacter('Leo'); // Hello, Leo
+    </code></pre>
+    
+        <h3>A function doesn't always need a parameter.</h3>
+        <p>If you don't need to input anything but just want the function to act like a code block that can be reused in different places repeatedly, it works!</p>
+    </div>
+      
+    <div class="lessonMiddle lessonpage5">
+        <h2>Return:</h2>
+        <p>When JS reaches a return statement, it will stop executing. If the function is invoked with arguments, JavaScript will 'return' the result of the code inside the function. Any code after 'return' will be ignored. Functions are often designed to compute a value. The argument will pass to the function. The result will then 'return' back to where the function was invoked.</p>
+    
+        <h3>Example with return:</h3>
+<pre><code>
+function ballWeight(amount) {
+return 10 * amount; // one ball weighs 10. 10 * amount = total weight.
+console.log('Code after return'); // This will not run.
+}
+
+console.log(ballWeight(2)); // Result of the calculation returns to its argument.
+// Code after return will not run because it is after a return statement.
+
+</code></pre>
+
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+            <div class="consoleContentItems"><p><code>20</code></p></div>
+            </div>
+        </div>
+
+        <h3>Another Example with return:</h3>
+<pre><code>
+function ballFall(status) { // The parameter 'status' is declared
+return status + '! Ball Fell'; // The argument is processed. The result is then returned
+}
+
+let ballstatus = ballFall('True'); // The function is called with the argument 'True'. The return result returns here.
+console.log(ballstatus);
+// The returned value ('True! Ball Fell') is assigned to the variable ballstatus.
+
+</code></pre>
+
+<div class="consoleOutput">
+    <div class="consoleTitle"><p>Console</p></div>
+    <div class="consoleContent">
+    <div class="consoleContentItems"><p><code>True! Ball Fell</code></p></div>
+    </div>
+</div>
+    </div>
+    
+    <div class="lessonMiddle lessonpage6">
+        <h2>Accessing a Function Without ()</h2>
+        <p>When you access a function without using parentheses <code>()</code>, you get the function itself and not the result of the function. This is because JavaScript treats the function reference as an object and not as an invocation.</p>
+    
+        <h3>Example:</h3>
+    <pre><code>
+function convertToCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit - 32);
+};
+convertToCelsius;
+console.log(convertToCelsius()); 
+console.log(convertToCelsius(50));
+    </code></pre>
+    
+        <div class="consoleOutput">
+            <div class="consoleTitle"><p>Console</p></div>
+            <div class="consoleContent">
+                <div class="consoleContentItems"><p><code>function convertToCelsius(fahrenheit) { return (5/9) * (fahrenheit - 32); }</code></p></div>
+                <div class="consoleContentItems"><p><code>10</code></p></div>
+            </div>
+        </div>
+
+        <h2>Process:</h2>
+            <ol>
+                <li>The function convertToCelsius(50) is called, passing 50 as an argument.</li>
+                <li>Inside the function, the calculation is performed, and the value 10 is returned.</li>
+                <li>The value 10 is returned to the place where the function was called, which is console.log(convertToCelsius(50)).</li>
+                <li>The result prints to the console.</li>
+            </ol>
+    </div>
+    
+    
+    <div class="lessonMiddle lessonpage7" id="lessonPage7">
+        <br>
+        <div class="lessonGamesContainer_p5play">
+            <div class="lessonGamesContainer_content">
+                <div class="BoxText">
+                    <div class="buttonSubmitContainer">
+                        <p>sprite.x = </p>
+                            <input id="xInput7" type = 'number' placeholder="Type x-position!">
+                        <p>;</p>
+                    </div>
+                    
+                    <div class="buttonSubmitContainer">
+                        <p>sprite.y = </p>
+                            <input id="yInput7" type = 'number' placeholder="Type y-position!">
+                        <p>;</p>
+                    </div>
+        
+                    <div class="buttonSubmitContainer">
+                        <button id="Submit7">Submit</button>
+                    </div>
+                    <p id = 'response7'></p>
+                </div>
+                <div id="function"></div>
+            </div>
+        </div>
+
+        <button type="button" class="collapsible">Click here to see the HTML code</button>                          
+        <div class='collapsibleContent'>
+    <pre><code>
+    const s2 = (p) => {
+        let crate, crateimg;
+        let crates = new p.Group();
+        let base, scale, j;
+        let floorimg, floorimg2, floor, floor2, floor3, floor4, floor5, floor6, floor7, floor8;
+        let position;
+        let resetButton;
+
+        p.preload = () => {
+            crateimg = p.loadImage('/assets/crate_E.png');
+            floorimg = p.loadImage('/assets/floor_E.png');
+            scaleimg = p.loadImage('/assets/slabAngle_N.png');
+            floorimg2 = p.loadImage('/assets/floor_E_half.png');
+            
+        };
+
+        p.setup = () => {
+            p.createCanvas(740, 300);
+            p.world.gravity.y = 10;
+            p.canvas.style.border = '3px solid rgb(21, 97, 109)'
+
+            position = new p.Sprite(100,20, 150, 30, 'none');
+            position.text = 'Crate Position: (0,0);';
+            position.color = '#F0DCCA';
+            position.stroke = '#696D7D';
+            position.textColor = '#696D7D';
+
+            resetButton = new p.Sprite(680,20, 80, 30, 'static');
+            resetButton.text = 'Reset!';
+            resetButton.color = '#696D7D';
+            resetButton.stroke = '#F0DCCA';
+            resetButton.textColor = '#F0DCCA';
+
+            base = new p.Sprite(740/2, 300, 700, 20, 'static');
+            base.img = floorimg2;
+            base.img.scale = 3;
+            base.layer = 3;
+
+            scale = new p.Sprite(740/2, 50, 100, 10);
+            scale.img = scaleimg;
+            scale.img.scale = 2;
+            scale.layer = 3;
+            scale.addCollider(90, -20, [100, -28]);
+            scale.addCollider(-90, -20, [100, 28]);
+            scale.friction= 10;
+
+            j = new p.SliderJoint(base, scale);
+            j.range = 320;
+            j.angle = 90;
+            j.layer = 3;
+
+            floor = new p.Sprite(150,250,350,50);
+            floor.collider = "none";
+            floor.img = floorimg;
+            floor.img.offset.x = 0;
+            floor.img.offset.y = -10;
+            floor.img.scale = 3;
+            floor.layer = 2;
+
+            floor2 = new p.Sprite(530,250,350,50);
+            floor2.collider = "none";
+            floor2.img = floorimg;
+            floor2.layer = 2;
+
+            floor6 = new p.Sprite(340,345,350,50);
+            floor6.collider = "none";
+            floor6.img = floorimg;
+            floor6.layer = 1;
+
+            floor7 = new p.Sprite(-40,345,350,50);
+            floor7.collider = "none";
+            floor7.img = floorimg;
+            floor7.layer = 1;
+
+            floor3 = new p.Sprite(339,172,350,50);
+            floor3.collider = "none";
+            floor3.img = floorimg2;
+            floor3.img.scale = 3;
+            floor3.layer = 1;
+
+            floor4 = new p.Sprite(-40,172,350,50);
+            floor4.collider = "none";
+            floor4.img = floorimg2;
+            floor4.layer = 1;
+
+            floor5 = new p.Sprite(718,172,350,50);
+            floor5.collider = "none";
+            floor5.img = floorimg2;
+            floor5.layer = 1;
+
+            floor8 = new p.Sprite(700,300,350,50);
+            floor8.collider = "none";
+            floor8.img = floorimg;
+            floor8.layer = 1;
+
+            let submit = document.getElementById('Submit7');
+            submit.addEventListener('click', () => {
+                createSprite();
+            });
+
+        };
+
+        p.draw = () => {
+            p.background('#8D9F87');
+            // p.allSprites.debug = true;
+        
+            if (resetButton.mouse.pressed() && resetButton.mouse.hovering()) {
+                position.text = 'Crate Position: (0,0);';
+                scale.y = 50;
+                crates.removeAll();
+            }
+        };
+        
+
+        function createSprite() {
+                let valueX = parseFloat(document.getElementById('xInput7').value);
+                let valueY = parseFloat(document.getElementById('yInput7').value);
+                let response = document.getElementById('response7');
+        
+                if (!isNaN(valueX) && !isNaN(valueY)) {
+                    response.innerHTML = '';
+        
+                    crate = new p.Sprite(50,50);
+                    crate.scale = 0.5;
+                    crate.img = crateimg;
+                    crate.x = valueX;
+                    crate.y = valueY;
+                    crates.add(crate);
+                    positionFunction(crate.x, crate.y);
+                } else {
+                    response.innerHTML = 'Enter numbers!';
+                }
+        }
+
+        function positionFunction(x, y){
+            position.text = 'Crate Position: (' + x +',' +y +');';
+        }
+    };
+
+    new p5(s2, 'function');
+    </code></pre>      
+    </div>  
+      </div>
+      
+      <div class="lessonMiddle lessonpage8" id="lessonPage8">
+        <p class="questionTitle">
+          What is the keyword to define a function?
+        </p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer1', 'lessonPage8')">
+            <code>
+              function
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer1', 'lessonPage8')">
+            <code>
+              var
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer3', 'answer1', 'lessonPage8')">
+            <code>
+              let
+            </code>
+          </button>
+      
+          <p class="answer" id="answer1"></p>
+        </div>
+      </div>
+
+      <div class="lessonMiddle lessonpage9" id="lessonPage9">
+        <p class="questionTitle">
+          Is the function below called?<br><br>
+          <code>
+            function timeZone() {<br>
+            &nbsp;&nbsp;const time = 10;<br>
+            &nbsp;&nbsp;console.log(time + ' times faster');<br>
+            }
+          </code>
+        </p>
+        <p class="questionTitle">Choose the correct answer:</p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage9')">
+            <code>
+              Yes
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage9')">
+            <code>
+              No
+            </code>
+          </button>
+      
+          <p class="answer" id="answer2"></p>
+        </div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage10" id="lessonPage10">
+        <p class="questionTitle">
+          How can a function be called?
+        </p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer5', 'lessonPage10')">
+            <code>
+              Call the function by writing its name followed by parentheses.
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer5', 'lessonPage10')">
+            <code>
+              It is called when an event linked to it occurs.
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer3', 'answer5', 'lessonPage10')">
+            <code>
+              It is called automatically.
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer4', 'answer5', 'lessonPage10')">
+            <code>
+              It is called when an argument is sent back to the function and the result then returns to the caller.
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer5', 'answer5', 'lessonPage10')">
+            <code>
+              All of the above are correct.
+            </code>
+          </button>
+      
+        </div>
+        <div class="answerContainer"><p class="answer"></p></div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage11" id="lessonPage11">
+        <p class="questionTitle">
+          Is the below a function?<br>
+          <code>
+            function (name, age) {<br>
+              &nbsp;&nbsp;return 'Data recorded' + name + ':' + age;<br>
+            };
+          </code>
+        </p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage11')">
+            <code>
+              Yes.
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage11')">
+            <code>
+              No.
+            </code>
+          </button>
+      
+          <div class="answerContainer">
+            <p class="answer"></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage12" id="lessonPage12">
+        <p class="questionTitle">
+          What is the underlined item called?<br>
+          <code>
+            function mathCalculation(<u>a</u>, b);
+          </code>
+        </p>
+      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage12')">
+            <code>
+              a argument
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage12')">
+            <code>
+              a parameter
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer3', 'answer2', 'lessonPage12')">
+            <code>
+              a result
+            </code>
+          </button>
+      
+          <div class="answerContainer">
+            <p class="answer"></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage13" id="lessonPage13">
+        <p class="questionTitle">When the function runs and encounters a return statement, what will it do?</p>      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer5', 'lessonPage13')">
+            <code>
+              Ignore it<br>
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer5', 'lessonPage13')">
+            <code>
+              Continue<br>
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer3', 'answer5', 'lessonPage13')">
+            <code>
+              Only stop execution<br>
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer4', 'answer5', 'lessonPage13')">
+            <code>
+              Only return the value to the caller<br>
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer5', 'answer5', 'lessonPage13')">
+            <code>
+              C and D<br>
+            </code>
+          </button>
+      
+        </div>
+        <div class="answerContainer"><p class="answer"></p></div>
+
+      </div>
+      
+      <div class="lessonMiddle lessonpage14" id="lessonPage14">
+        <p class="questionTitle">Does a function always need a parameter?</p>      
+        <div class="choices">
+          <button class="choicesButton" onclick="checkAnswer('answer1', 'answer2', 'lessonPage14')">
+            <code>
+              Yes<br>
+            </code>
+          </button>
+      
+          <button class="choicesButton" onclick="checkAnswer('answer2', 'answer2', 'lessonPage14')">
+            <code>
+              No<br>
+            </code>
+          </button>
+      
+          <div class="answerContainer"><p class="answer"></p></div>
+        </div>
+      </div>
+      
+      <div class="lessonMiddle lessonpage15" id="lessonPage15">
+        <h2>p5play Time! Let's Learn More About p5play!</h2>
+
+        <p>Use <code>loadAnimation()</code> (or <code>loadAni()</code>) to load animations!</p>
+        
+        <p>There are different ways to add images to an animation:</p>
+        
+        <ul>
+          <li>You can use separate image files.</li>
+          <li>Or you can use a sprite sheet.</li>
+        </ul>
+        
+        <p>If the animation only includes a few images, you can use list mode:</p>
+        
+    <pre><code>
+    // Load animation with separate image files
+    alienAni = loadAnimation(
+        'assets/walk1.png',
+        'assets/walk2.png'
+    );
+    </code></pre>
+        
+        <h2>What is a Sprite Sheet?</h2>
+
+        <p>A sprite sheet is a single image file that contains many smaller images that are arranged in grids. In animation, these smaller images are images for each frame.</p>
+
+        <p>Here is an example of a sprite sheet:</p>
+
+        <img src = '/assets/spritesheet_aliens.png' width="300">
+
+        <h2>How to Use Them:</h2>
+
+        <h3>Sequence Mode:</h3>
+        <p>Upload a sprite sheet and specify how many frames you want to play. p5play will play the images horizontally from the start. (As shown on the canvas to the left)</p>
+        <p><code>alien = loadAnimation('/assets/spritesheet_aliens.png', {width: 128, height: 256, frames: 8}); //width and height of each frame + frames amount</code></p>
+        <p>Frames will play in the order: 1, 2, 3...</p>
+        <div class="animationContainer">
+            <style>
+                .animationContainer{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: center;
+                }
+            </style>
+        <div id = 'sequence1'></div>
+        <div id = 'sequence2'></div>
+        </div>
+        <p>You can also specify which frames you want to play. (As shown on the canvas to the right)</p>
+        <p><code>alien = loadAnimation('/assets/spritesheet_aliens.png', {width: 128, height: 256, frames: [1, 8, 16, 24, 32, 40, 48, 56]});  // List the frames you want to play. Counting starts at 0 and goes from left to right, top to bottom.</code></p>
+        
+        <h3>frameDelay:</h3>
+            <p>Use frameDelay to control the speed of changing frames for animation! 
+            </p>
+        <p>Format:</p>
+        <pre><code>
+    let alien;
+    function setup(){
+        new Canvas(300,300);
+        alien = loadAnimation('/assets/spritesheet_aliens.png', {width: 128, height: 256, frames: 8});
+        alien.scale = 2;
+        alien.frameDelay = 10; // Play the animation at a slower speed
+    }
+    function update(){
+        background('#8D9F87');
+        animation(alien, 300/2, 300/2); // Place the animation on the canvas and set the position
+    }
+        </code></pre>
+        <h3>List Mode:</h3>
+        <p>In list mode, upload separate image files. p5play will play the images in the order you list them. (frameDelay = 30)</p>
+<pre><code>
+alien = loadAni(
+    '/assets/alienGreen_walk1.png',
+    '/assets/alienGreen_walk2.png'
+)
+</code></pre>
+        <div class = 'animationContainer'>
+            <div id = 'list'></div>
+            <p>alienGreen_walk1:</p>
+            <img src = '/assets/alienGreen_walk1.png' width = 134 height = 190>
+            <p>alienGreen_walk2:</p>
+            <img src = '/assets/alienGreen_walk2.png' width = 140 height = 195>
+        </div>
+
+        <h3>Add Animation to a Sprite:</h3>
+
+        <h3>addAni</h3>
+        <p>Use <code>addAni()</code> with the name of the animation (like <code>'walk'</code> or <code>'jump'</code>), along with the frame files and number of frames, using one of the methods described above:</p>
+
+        <pre><code>
+    alien.addAni('walk', ['/assets/alienYellow_walk1.png', '/assets/alienYellow_walk2.png'], 2);
+    alien.addAni('stand', ['/assets/alienYellow_front.png'], 1);
+        </code></pre>
+
+        <p>You can use the keyboard (<code>kb</code>) to control which animation plays!</p>
+
+        <p>To flip the sprite image horizontally (e.g., to face left), use <code>sprite.scale.x = -1</code>.</p>
+
+<pre><code>
+if (kb.pressing('left')) {
+    alien.changeAni('walk');
+    alien.vel.x = -5;
+    alien.scale.x = -2;
+} else if (kb.pressing('right')) {
+    alien.changeAni('walk');
+    alien.vel.x = 5;
+    alien.scale.x = 2;
+} else {
+    alien.changeAni('stand');
+    alien.vel.x = 0;
+}
+if (kb.presses('up')){
+    alien.vel.y = -5;
+}
+</code></pre>
+        <div id = 'sprite'></div>
+
+        <button type="button" class="collapsible">Click here to see the whole code (in instance mode)</button>                          
+        <div class='collapsibleContent'>
+<pre><code>
+    const s6 = (p) => {
+        let alien;
+        let ground, backgroundimg;
+        p.preload = ()=>{
+            backgroundimg = p.loadImage('/assets/uncolored_piramids.png');
+        }
+    
+        p.setup = () => {
+            p.createCanvas(1000, 600);
+            p.world.gravity.y = 10;
+            p.canvas.style.border = '3px solid rgb(21, 97, 109)';
+    
+            // Create the sprite first
+            alien = new p.Sprite(p.width / 2, p.height / 2, 50,83);
+    
+            // Add animations to the sprite
+            alien.addAni('walk', '/assets/alienYellow_walk1.png', '/assets/alienYellow_walk2.png');
+            alien.addAni('stand', '/assets/alienYellow_front.png');
+    
+            alien.scale = 2;
+            alien.frameDelay = 15;
+            alien.rotationLock = true;
+    
+            ground = new p.Sprite(500,550,1000,100,'static');
+            ground.color = '#A0D2DB';
+            ground.stroke = 'transparent';
+        };
+    
+        p.draw = () => {
+            p.image(backgroundimg, 0,0,p.width, p.height);
+    
+            if (p.kb.pressing('left')) {
+                alien.changeAni('walk');
+                alien.vel.x = -5;
+                alien.scale.x = -2;
+            } else if (p.kb.pressing('right')) {
+                alien.changeAni('walk');
+                alien.vel.x = 5;
+                alien.scale.x = 2;
+            } else {
+                alien.changeAni('stand');
+                alien.vel.x = 0;
+            }
+            if (p.kb.presses('up')){
+                alien.vel.y = -5;
+            }
+        };
+    };
+    
+    new p5(s6, 'sprite');
+    
+</code></pre>
+            </div>
+        </div>
+
+        <script>
+            let answers = ['a', 'c', 'd', 'e', 'f'];
+            let total = answers.length;
+        
+            function checkMulti(checkboxName) {
+                let selected = [];
+                var checkboxes = document.getElementsByName(checkboxName);
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        selected.push(checkboxes[i].value);
+                    }
+                }
+                return selected;
+            }
+        
+            function getResult() {
+                let selectedAnswers = checkMulti('question1');
+                selectedAnswers.sort(); 
+                answers.sort();
+        
+                if (selectedAnswers.length !== answers.length) {
+                    return false;
+                }
+                for (let i = 0; i < answers.length; i++) {
+                    if (selectedAnswers[i] !== answers[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        
+            function returnScore() {
+                let result = getResult();
+                let answer = document.getElementById('answer');
+                if (result) {
+                    answer.innerHTML = "Correct!";
+                    answer.classList.remove("wrongAnswer");
+                    answer.classList.add("rightAnswer");
+                } else {
+                    answer.innerHTML = "Try Again!";
+                    answer.classList.remove("rightAnswer");
+                    answer.classList.add("wrongAnswer");
+                }
+            }
+        </script>      
+
+    <div class="lessonButton">
+    <button class= "lessonPageButton lessonPageButton1 active-button" onclick="changePage(1)">1</button>
+    <button class="lessonPageButton lessonPageButton2" onclick="changePage(2)">2</button>
+    <button class="lessonPageButton lessonPageButton3" onclick="changePage(3)">3</button>
+    <button class="lessonPageButton lessonPageButton4" onclick="changePage(4)">4</button>
+    <button class="lessonPageButton lessonPageButton5" onclick="changePage(5)">5</button>
+    <button class="lessonPageButton lessonPageButton6" onclick="changePage(6)">6</button>
+    <button class="lessonPageButton lessonPageButton7" onclick="changePage(7)">7</button>
+    <button class="lessonPageButton lessonPageButton8" onclick="changePage(8)">8</button>
+    <button class="lessonPageButton lessonPageButton9" onclick="changePage(9)">9</button>
+    <button class="lessonPageButton lessonPageButton10" onclick="changePage(10)">10</button>
+    <button class="lessonPageButton lessonPageButton11" onclick="changePage(11)">11</button>
+    <button class="lessonPageButton lessonPageButton12" onclick="changePage(12)">12</button>
+    <button class="lessonPageButton lessonPageButton13" onclick="changePage(13)">13</button>
+    <button class="lessonPageButton lessonPageButton14" onclick="changePage(14)">14</button>
+    <button class="lessonPageButton lessonPageButton15" onclick="changePage(15)">15</button>
+
+
+
+
+</div>
+    </div>
+    <script src="/js/lesson1.js"></script>
+    <script src = '/js/function.js'></script>
+</body>
+</html>

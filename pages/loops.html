@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Type</title>
+    <title>Loops</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/lesson1.js"></script>
     <script src="https://kit.fontawesome.com/44ae50a47e.js" crossorigin="anonymous"></script>
     <script src="/js/q5.js"></script>
     <script src="/js/planck.min.js"></script>
@@ -71,7 +70,7 @@
         <p><code>//create an array to store the trap items.</code></p>
         <p><code>let trapItems = ['doorway', 'window', 'staircase', 'tile', 'door'];</code></p>
       
-        <p><code>//create a loop to go through each item and print it to the console. The loop break after going through the array once.</code></p>
+        <p><code>//create a loop to go through each item and print it to the console. The loop breaks after going through the array once.</code></p>
         <p><code>for (let i = 0; i &lt; trapItems.length; i++){</code></p>
         <p><code>&nbsp;&nbsp;console.log(trapItems[i]);</code></p>
         <p><code>}</code></p>
@@ -171,7 +170,7 @@
     </div>
       
     <div class="lessonMiddle lessonpage4" id="lessonPage4">
-        <h2>For Statement</h2>
+        <h2>For Statement:</h2>
 
         <h3>Syntax:</h3>
         <pre><code>for (expression 1; expression 2; expression 3) {
@@ -643,40 +642,6 @@ for (let i = 0; i < 10; i++) {
       </div>
     
         <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener('click', function() {
-                    this.classList.toggle("active");
-                    var collapsibleContent = this.nextElementSibling;
-                    if (collapsibleContent.style.display === "block") {
-                        collapsibleContent.style.display = 'none';
-                    } else {
-                        collapsibleContent.style.display = 'block';
-                    }
-                });
-            }
-        </script>
-        
-
-        <script>
-            function checkAnswer(answer, correctAnswer, lessonId) { //click buttons to check answer. change p content 
-                const response = document.querySelector(`#${lessonId} .answer`); //get answer p in the lessonpage(id)
-                if (response) {
-                    if (answer === correctAnswer) {
-                        response.innerHTML = "Correct!";
-                        response.classList.remove("wrongAnswer");
-                        response.classList.add("rightAnswer");
-                    } else {
-                        response.innerHTML = "Try Again!";
-                        response.classList.remove("rightAnswer");
-                        response.classList.add("wrongAnswer");
-                    }
-                }
-            }
-        </script>
-        
-        <script>
             let answers = ['a', 'c', 'd', 'e', 'f'];
             let total = answers.length;
         
@@ -744,7 +709,7 @@ for (let i = 0; i < 10; i++) {
 
 </div>
     </div>
-    
+    <script src="/js/lesson1.js"></script>
     <script src = '/js/loop.js'></script>
 </body>
 </html>

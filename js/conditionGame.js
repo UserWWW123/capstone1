@@ -41,9 +41,10 @@ function setup(){
     ground2 = new Sprite(1000, 650, 200, 10);
     ground2.collider = 'static';
     ground2.friction = 1;
-    ground2.color = 'white';
+    ground2.color = 'transparent';
     ground2.stroke = '#dbb691ff';
     ground2.rotation = -20;
+    ground2.stroke = 'transparent';
 
     wall1 = new Sprite(-50,300,50,50, 'none');
     wall1.img = wallimg;
@@ -65,18 +66,21 @@ function setup(){
     wall4.scale = 5;
     wall4.layer = 1;
     wall4.friction = 0;
+    wall4.color = 'transparent';
+    wall4.stroke = 'transparent';
 
     wall5 = new Sprite(-200,600,10, 250, 'static');
     wall5.scale = 5;
     wall5.layer = 1;
     wall5.friction = 0;
+    wall5.color = 'transparent';
+    wall5.stroke = 'transparent';
 
-    door = new Sprite(1035,545,1,100); //1035
+    door = new Sprite(); 
     door.collider = 'static';
     door.img = doorimg1;
     door.scale = 2;
     door.layer = 1;
-    door.debug = true;
     door.removeColliders();
     door.addCollider(20,30,50,100);
     door.friction = 0;
@@ -85,6 +89,8 @@ function setup(){
     door2.collider = 'static';
     door2.rotation = 27;
     door2.friction = 2;
+    door2.color = 'transparent';
+    door2.stroke = 'transparent';
 
     alien = new Sprite(90, 150, 0,0, 'dynamic');
     alien.layer = 2;
@@ -187,7 +193,6 @@ function draw(){
 }
 function drawFrame(){
 
-
     camera.on();
     camera.x = alien.x +200;
     ground.x = camera.x;   
@@ -204,25 +209,26 @@ function drawFrame(){
 
 function update(){
 
-
     alienLifeS.text = 'Alien Life: '+ alienLife;
     monsterLifeS.text = 'Monster Life: '+ monsterLife;
 
     //Change door image after collision
-    if (alien.collide(door)){
+    if (alien.collided(door) && monsterLife <=0){
         door.img = doorimg2;
     };
 
     //Monster's movement
     //movingRight: remember the currect direction
     if (movingRight === true) { //Default movement: move right
-        monster.vel.x = 2;
+        monster.vel.x = 3;
         if (monster.x >= 800) { //Reached right boundary, switch direction
+            monster.vel.x = 0;
             movingRight = false;
         }
     } else { 
-        monster.vel.x = -2; //Move left
+        monster.vel.x = -3; //Move left
         if (monster.x <= -50) {
+            monster.vel.x = 0;
             movingRight = true; //Reached left boundary, switch direction
         }
     }    
@@ -262,8 +268,6 @@ function update(){
     else {
         monster.changeAni('walk');
     }
-
-    
     
     //Count monster's life
     if (monster.collide(blockA)) {

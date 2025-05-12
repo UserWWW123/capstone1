@@ -1,5 +1,6 @@
 const s1 = (p) => {
     let alien1img, alien2img, alien3img, alien, mouseX, mouseY, mouseSX, mouseSY;
+    let resetButton;
 
     p.preload = () => {
         alien1img = p.loadImage('/assets/alienBiege_front.png');
@@ -14,7 +15,7 @@ const s1 = (p) => {
         alien.scale = 1.5;
         alien.debug = true;
         alien.mouse.active = true;
-        alien.collider = 'kinetic';
+        alien.collider = 'static';
 
         mouseX = new p.Sprite(500,40,150,50, 'none');
         mouseY = new p.Sprite(500,110,150,50,'none');
@@ -24,6 +25,14 @@ const s1 = (p) => {
         mouseSY.color = 'white';
         mouseX.color = 'white';
         mouseY.color = 'white';
+
+        resetButton = new p.Sprite(350,30, 100,50,'static');
+        resetButton.color = '#B0D7FF';
+        resetButton.stroke = '#2D3142';
+        resetButton.strokeWeight = 5;
+        resetButton.text = 'Reset!';
+        resetButton.textSize = 25;
+        resetButton.textColor = '#2D3142';
 
     };
 
@@ -36,6 +45,14 @@ const s1 = (p) => {
         mouseSX.text = alien.mouse.x;
         mouseSY.text = alien.mouse.y;
 
+        if (resetButton.mouse.pressed()){
+            alien.x = 150;
+            alien.y = 150;
+            alien.collider = 'static';
+            alien.rotation = 0;
+        }
+
+        
         if (alien.mouse.dragging()) {
             alien.moveTowards(
                 p.mouseX + alien.mouse.x,
@@ -61,6 +78,7 @@ new p5(s1, 'spritemouse');
 const s2 = (p) => { //This is the instance mode format. It allows you to create multiple canvases on a single page.
     let alien1img, alien2img, alien3img, alien, mouseX, mouseY;
     let floorimg, crateimg, crates, crate;
+    let resetButton;
 
     p.preload = () => {
         alien1img = p.loadImage('/assets/alienBiege_front.png');
@@ -73,18 +91,25 @@ const s2 = (p) => { //This is the instance mode format. It allows you to create 
     p.setup = () => {
         p.createCanvas(600, 300);
         p.world.gravity.y = 10;
+
+        resetButton = new p.Sprite(540,30, 100,50,'static');
+        resetButton.color = '#B0D7FF';
+        resetButton.stroke = '#2D3142';
+        resetButton.strokeWeight = 5;
+        resetButton.text = 'Reset!';
+        resetButton.textSize = 25;
+        resetButton.textColor = '#2D3142';
+
         alien = new p.Sprite(150, 150, 50, 80);
         alien.img = alien1img;
         alien.scale = 1.5;
-        alien.debug = true;
         alien.mouse.active = true;
         alien.collider = 'dynamic';
         alien.layer = 2;
 
-        floor = new p.Sprite(200,250,300,10);
+        floor = new p.Sprite(200,250,360,10);
         floor.img = floorimg;
         floor.collider = 'static';
-        floor.debug = true;
         floor.img.scale = 3;
         floor.layer = 1;
 
@@ -94,7 +119,6 @@ const s2 = (p) => { //This is the instance mode format. It allows you to create 
             crate.img = crateimg;
             crate.friction = 0.5;
             crate.layer = 6-i;
-            crate.debug = true;
             crates.add(crate); // then add it into the 'crates' group
         }        
 
@@ -109,12 +133,33 @@ const s2 = (p) => { //This is the instance mode format. It allows you to create 
         p.background(57, 92, 107);
         p.world.gravity.y = 10;
 
+        for (let crate of crates) {
+        crate.text = crate.layer;
+        }
+
         mouseX.text = p.mouse.x;
         mouseY.text = p.mouse.y;
+
+        if (resetButton.mouse.pressed()) {
+            crates.removeAll();
+        
+            for (let i = 1; i < 6; i++) {
+                crate = new p.Sprite(250, -150 + 60 * i, 50, 39);
+                crate.img = crateimg;
+                crate.friction = 0.5;
+                crate.layer = 6 - i;
+                crates.add(crate);
+            }
+
+            alien.x = 150;
+            alien.y = 150;
+            alien.rotation = 0;
+        }        
 
         if (alien.mouse.pressing()) {
             alien.vel.y = -4;
         };
+
         for (let crate of crates) { //Find crate inside crates group and do the following to each
             if (crate.mouse.pressing()) {
                 crate.moveTowards(
@@ -127,7 +172,8 @@ const s2 = (p) => { //This is the instance mode format. It allows you to create 
         if (crate.mouse.released()) {
             crate.layer = i;
         }
-        crate.text = crate.layer;
+    
+        //crate.text = crate.layer;
     }
     
         if (crates.mouse.hovering()||alien.mouse.hovering()) {
@@ -143,6 +189,7 @@ new p5(s2, 'mouse'); //Create the s2 and put it in the div with id 'mouse'
 const s3 = (p) => { 
     let alien2, alien1;
     let backgroundimg, ground, grounds, groundS;
+    let resetButton;
 
     p.preload = () => {
         backgroundimg = p.loadImage('/assets/colored_desert.png');
@@ -156,7 +203,6 @@ const s3 = (p) => {
         alien2.addAni('walk', ['/assets/alienYellow_walk1.png', '/assets/alienYellow_walk2.png'], 2);
         alien2.addAni('stand', ['/assets/alienYellow_front.png'], 1);
         alien2.frameDelay = 20;
-        alien2.debug = true;
         alien2.rotationLock = true;
         alien2.bounciness = 0;
     
@@ -164,7 +210,6 @@ const s3 = (p) => {
         alien1.addAni('walk', ['/assets/alienGreen_walk1.png', '/assets/alienGreen_walk2.png'], 2);
         alien1.addAni('stand', ['/assets/alienGreen_front.png'], 1);
         alien1.frameDelay = 20;
-        alien1.debug = true;
         alien1.rotationLock = true;
         alien1.bounciness = 0;
     
@@ -172,6 +217,14 @@ const s3 = (p) => {
         ground.color = '#c7b898';
         ground.stroke = '#c7b898';
         ground.friction = 0.8;
+
+        resetButton = new p.Sprite(1140,40, 100,50,'static');
+        resetButton.color = '#B0D7FF';
+        resetButton.stroke = '#2D3142';
+        resetButton.strokeWeight = 5;
+        resetButton.text = 'Reset!';
+        resetButton.textSize = 25;
+        resetButton.textColor = '#2D3142';
     
         grounds = new p.Group();
         for (let i = 1; i < 30; i++) {
@@ -185,6 +238,14 @@ const s3 = (p) => {
     
     p.draw = () => {
         p.background(backgroundimg);
+
+        
+        if (resetButton.mouse.pressed()){
+            alien1.x = 150;
+            alien1.y =150;
+            alien2.x = 0;
+            alien2.y = 150;
+        }
     
         if (p.kb.presses('W') && p.kb.pressing('D')) {
             alien2.changeAni('walk');
@@ -279,9 +340,18 @@ const s3 = (p) => {
 
     };
     p.drawFrame = () =>{
+
+        p.camera.on();
         p.camera.x = alien1.x;
         p.camera.y = alien2.y-100;
         ground.x = p.camera.x;
+        alien1.draw();
+        alien2.draw();
+        grounds.draw();
+
+        p.camera.off();
+        resetButton.draw();
+        
     }
     
 };
@@ -294,6 +364,7 @@ const s4 = (p) => {
     let gameStarted = false; // To track whether the game has started
     let hit = 0; // To track the hit
     let isPaused = false;
+    let resetButton;
     
     p.preload = () => {
         alienimg = p.loadImage('/assets/shipYellow.png');
@@ -303,6 +374,11 @@ const s4 = (p) => {
     p.setup = () => {
         p.createCanvas(1200, 500);
         p.world.gravity.y = 10;
+
+        resetButton = new p.Sprite(180,30, 100,30,'static');
+        resetButton.color = 'white';
+        resetButton.stroke = 'white';
+        resetButton.text = 'Reset';
     
         alien = new p.Sprite(-300, 100, 60, 20, 'none'); 
         alien.addCollider(0,-20, 33); //(x-offset, y-offset, diameter)
@@ -353,31 +429,48 @@ const s4 = (p) => {
     
     p.draw = () => {
         p.background(backgroundimg);
+
+        if (hit >=10){
+            resetGame();
+        };
+
+        if (alien.y>600){
+            resetGame();
+        };
+
+        if (resetButton.mouse.pressed()){
+            resetGame();
+        }
+        
         if (startButton.mouse.presses()) {
             startButton.remove();
             gameStarted = true; // Game has started
         };
 
-        if (gameStarted && !isPaused) {
+        if (gameStarted === false){
+            alien.vel.x = 0;
+        }
+
+        if (gameStarted) {
             alien.vel.x = 3; // Set vel.x to 3 only after the game has started and game is not paused by using space
+            if (p.kb.presses('space')) {
+                if (!isPaused) { //When it's not paused, pause the game
+                    alien.vel.x = 0;
+                    alien.vel.y = 0;
+                    alien.collider = 'static';
+                    isPaused = true;
+                } else { //When it's paused, unpause the game.
+                    alien.collider = 'dynamic';
+                    alien.vel.x = 3;
+                    isPaused = false;
+                };
+            };
         };
 
         if (p.mouse.presses()) {
             alien.vel.y = -3;  
         };
 
-        if (p.kb.presses('space')) {
-            if (!isPaused) { //When it's not paused, pause the game
-                alien.vel.x = 0;
-                alien.vel.y = 0;
-                alien.collider = 'static';
-                isPaused = true;
-            } else { //When it's paused, unpause the game.
-                alien.collider = 'dynamic';
-                alien.vel.x = 3;
-                isPaused = false;
-            };
-        };
 
 
         blocks.forEach(block => { // Check collisions with each block individually
@@ -385,19 +478,25 @@ const s4 = (p) => {
                 hit += 1;  // Increment hit for each collision with a block
             };
         });
-        if (hit >=10){
-            alien.x = -300;
-            hit = 0;
-        };
-
-        if (alien.y>600){
-            alien.y = 100;
-            alien.x = -300;
-            hit = 0;
-            alien.vel.y = 0;
-        };
     };
     
+    function resetGame(){
+        if (startButton){
+            startButton.remove();
+            }
+            hit = 0;
+            alien.x = -300;
+            alien.y = 100;
+            alien.collider = 'dynamic';
+            startButton = new p.Sprite(alien.x, 250, 200, 100, 'static');
+            startButton.color = 'white';
+            startButton.stroke = 'white';
+            startButton.opacity = 0.5;
+            startButton.text = 'Click to start';
+            startButton.textSize = 20;
+            gameStarted = false;
+            isPaused = false;
+    }
     p.drawFrame = () => {
         p.camera.on();
         p.camera.x = alien.x;  
@@ -407,6 +506,7 @@ const s4 = (p) => {
         p.camera.off();
         hitT.text = `Hits: ${hit}`; // Update hit display
         hitT.draw();        
+        resetButton.draw();
     };
 };
 

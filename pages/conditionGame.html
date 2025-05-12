@@ -93,7 +93,7 @@
             <p>An alien is trapped in a room!</p>
             <p>The room is designed so that the door will not open until the monster is defeated.</p>
 
-            <p>Create and play a game following the instructions below.</p>
+            <p>Code a section of the game and play the game following the instructions below.</p>
 
             <h2>How to play?</h2>
             <p>Control the alien to collect a block and use it to hit the monster to unlock the door!</p>
@@ -107,16 +107,41 @@
             <h2>Instruction:</h2>
             <div>
                 <ol>
-                    <li>Create a setup function
+                  <li>Declare variables in the following sequence:
+                    <ul>
+                      <li><code>alien, monster, door, blockA, alienLifeS, monsterLifeS</code></li>
+                      <li><code>movingRight</code>(set to true)</li>
+                      <li><code>alienLife</code> (set to 10)</li>
+                      <li><code>monsterLife</code> (set to 10)</li>
+                      <li><code>collectBlock</code> (set to false)</li>
+                    </ul>
+                  </li>
+
+                    <li>Create a setup function:
                       <ol type="a">
-                        <li>Create a canvas using the container’s width and height</li>
+                        <li>Create a canvas with width of 865 and height of 750</li>
                         <li>Set the background color as #dbb691ff</li>
                         <li>Set world.gravity.y = 15</li>
+                      </ol>
+                    </li>
+
+                    <li>Create door sprite, set its properties in the following sequence:
+                      <ol type="a">
+                        <li>door.img = '/assets/closedDoor.png';</li>
                       </ol>
                     </li>
                   
                     <li>Create alien sprite, set its properties in the following sequence:
                       <ol type="a">
+                        <li>image</li>
+                        <li>layer = 2</li>
+                        <li>rotationLock = true</li>
+                      </ol>
+                    </li>
+
+                    <li>Create monster sprite, set its properties in the following sequence:
+                      <ol type="a">
+                        <li>image</li>
                         <li>layer = 2</li>
                         <li>rotationLock = true</li>
                       </ol>
@@ -144,25 +169,40 @@
                         <li>opacity = 0.7</li>
                       </ol>
                     </li>
+
+                    <li>Create monsterLifeS sprite, set its properties in the following sequence:
+                      <ol type="a">
+                        <li>Position and size: (100, 70, 170, 30)</li>
+                        <li>textSize = 20</li>
+                        <li>collider = 'none'</li>
+                        <li>color = '#F5EE9E'</li>
+                        <li>stroke = 'white'</li>
+                        <li>textColor = '#AB3428'</li>
+                        <li>strokeWeight = 2</li>
+                        <li>opacity = 0.7</li>
+                      </ol>
+                    </li>
                   
-                    <li>Create a draw function
+                    <li>Create a draw function:
                       <ol type="a">
                         <li>Clear background with color #dbb691ff</li>
                       </ol>
                     </li>
                   
-                    <li>Create a drawFrame function
+                    <li>Create a drawFrame function:
                       <ol type="a">
                         <li>Turn on camera</li>
                         <li>Set the camera to follow the alien horizontally, keeping it slightly ahead by 200 pixels</li>
                         <li>Turn off camera</li>
                         <li>Draw alienLifeS</li>
+                        <li>Draw monsterLifeS</li>
                       </ol>
                     </li>
                   
-                    <li>Create an update function
+                    <li>Create an update function:
                       <ol type="a">
                         <li>Make alienLifeS show text with Alien Life and the current life count of the alien</li>
+                        <li>Make monsterLifeS show text with Monster Life and the current life count of the monster</li> 
                         <li>Use conditional statement and keys input to create the following functions:
                           <ol type="i">
                             <li>If up key is pressed:
@@ -214,7 +254,38 @@
                               </li>
                             </ul>
                           </li>
-                        <li>Make the door image change when the alien collides with it — the door opens!</li>
+                          <li>Monster's movement:
+                            <ul>
+                              <li>Use movingRight to track the direction of movement.</li>
+                              <li>If movingRight is true:
+                                <ul>
+                                  <li>Set monster's velocity to move right (monster.vel.x = 2).</li>
+                                  <li>If the monster reaches the right boundary (monster.x >= 800), monster's velocity = 0, change movingRight to false.</li>
+                                </ul>
+                              </li>
+                              <li>If movingRight is false:
+                                <ul>
+                                  <li>Set monster's velocity to move left (monster.vel.x = -2).</li>
+                                  <li>If the monster reaches the left boundary (monster.x <= -50), monster's velocity = 0, change movingRight to true.</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>Attacks or being attacked:
+                            <ul>
+                              <li>If the alien collides with the monster:
+                                <ul>
+                                  <li>Decrease the alienLife by 1 (alienLife -= 1).</li>
+                                </ul>
+                              </li>
+                              <li>If the monster collides with the blockA:
+                                <ul>
+                                  <li>Decrease the monsterLife by 1 (monsterLife -= 1).</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        <li>Make the door image change when the alien collides with it and defeated monster — the door opens!</li>
                       </ol>
                     </li>
                   </ol>
@@ -224,83 +295,143 @@
 <button type="button" class="collapsible">Need some clue? Click here!</button>                          
 <div class='collapsibleContent'>
 <pre><code>
-function setup(){
-    new Canvas(865, 750);
-    background('#dbb691ff');
-
-    world.gravity.y = 15;
-
-    alien = new Sprite(90, 150, 0, 0, 'dynamic');
-    alien.layer = 2;
-    alien.rotationLock = true;
-
-    blockA = new Sprite(200, 80, 50, 45);
-    blockA.layer = 1;
-    blockA.img = 'assets/block.png';
-    blockA.img.scale = 0.4;
-    blockA.img.offset.y = -20;
-    blockA.collider = 'dynamic';
-
-    alienLifeS = new Sprite(100, 30, 170, 30);
-    alienLifeS.textSize = 20;
-    alienLifeS.collider = 'none';
-    alienLifeS.color = '#F5EE9E';
-    alienLifeS.stroke = 'white';
-    alienLifeS.textColor = '#AB3428';
-    alienLifeS.strokeWeight = 2;
-    alienLifeS.opacity = 0.7;
-};
-
-function draw(){
-    background('#dbb691ff');
-};
-
-function drawFrame(){
-    camera.on();
-    camera.x = alien.x + 200;
-
-    camera.off();
-    alienLifeS.draw();
-};
-
-function update(){
-
-    alienLifeS.text = 'Alien Life: ' + alienLife;
-
-    if (kb.presses('up')){
-        alien.vel.y = -5;
-    };
-
-    if(kb.pressing('right')){
-        alien.vel.x = 2.5;
-    } else if(kb.pressing('left')){
-        alien.vel.x = -2.5;
-    };
-
-    if (kb.pressing('down') && alien.collides(blockA)) {
-        alien.vel.x = 0;
-        collectBlock = true;
-    } else if (kb.presses('space')) {
-        if (collectBlock === true){
-            blockA.collider = 'dynamic';
-            blockA.vel.x = 5;
-            blockA.vel.y = -5;
-            blockA.rotationLock = false;
-            collectBlock = false;
-        };
-    };
-
-    if (collectBlock === true) {
-        blockA.collider = 'none';
-        blockA.x = alien.x + 50;
-        blockA.y = alien.y + 10;
-        blockA.rotationLock = true;
-        blockA.rotation = 0;
-    };
-    if (alien.collide(door)){
-        door.img = doorimg2;
-    };
-};
+  let alien, monster, door, blockA, alienLifeS, monsterLifeS;
+  let movingRight = true;
+  let alienLife = 10;
+  let monsterLife = 10;
+  let collectBlock = false;
+  
+  function setup(){
+      new Canvas(865, 750);  // Correct canvas creation method
+      background('#dbb691ff');
+      world.gravity.y = 15;  // Ensure world.gravity exists in your environment
+  
+      // Door sprite
+      door = new Sprite(1035,545,1,100, 'static');
+      door.img = '/assets/closedDoor.png';
+  
+      // Alien sprite
+      alien = new Sprite(90, 150, 0, 0, 'dynamic');
+      alien.img = '/assets/alien.png';
+      alien.layer = 2;
+      alien.rotationLock = true;
+  
+      // Monster sprite
+      monster = new Sprite(-50, 550, 30, 50, 'dynamic');
+      monster.img = '/assets/monster.png';
+      monster.layer = 2;
+      monster.rotationLock = true;
+  
+      // Block sprite
+      blockA = new Sprite(200, 80, 50, 45);
+      blockA.layer = 1;
+      blockA.img = 'assets/block.png';
+      blockA.img.scale = 0.4;
+      blockA.img.offset.y = -20;
+      blockA.collider = 'dynamic';
+  
+      // Alien Life Sprite
+      alienLifeS = new Sprite(100, 30, 170, 30);
+      alienLifeS.textSize = 20;
+      alienLifeS.collider = 'none';
+      alienLifeS.color = '#F5EE9E';
+      alienLifeS.stroke = 'white';
+      alienLifeS.textColor = '#AB3428';
+      alienLifeS.strokeWeight = 2;
+      alienLifeS.opacity = 0.7;
+  
+      // Monster Life Sprite
+      monsterLifeS = new Sprite(100, 70, 170, 30);
+      monsterLifeS.textSize = 20;
+      monsterLifeS.collider = 'none';
+      monsterLifeS.color = '#F5EE9E';
+      monsterLifeS.stroke = 'white';
+      monsterLifeS.textColor = '#AB3428';
+      monsterLifeS.strokeWeight = 2;
+      monsterLifeS.opacity = 0.7;
+  }
+  
+  function draw(){
+      background('#dbb691ff');
+  }
+  
+  function drawFrame(){
+      camera.on();
+      camera.x = alien.x + 200; // Camera follows the alien
+  
+      camera.off();
+      alienLifeS.draw();
+      monsterLifeS.draw();
+  }
+  
+  function update(){
+      // Update alien and monster life display
+      alienLifeS.text = 'Alien Life: ' + alienLife;
+      monsterLifeS.text = 'Monster Life: ' + monsterLife;
+  
+      // Player movement control
+      if (kb.presses('up')){
+          alien.vel.y = -5;
+      }
+  
+      if(kb.pressing('right')){
+          alien.vel.x = 2.5;
+      } else if(kb.pressing('left')){
+          alien.vel.x = -2.5;
+      }
+  
+      // Collect or release block
+      if (kb.pressing('down') && alien.collides(blockA)) {
+          alien.vel.x = 0;
+          collectBlock = true;
+      } else if (kb.presses('space')) {
+          if (collectBlock === true){
+              blockA.collider = 'dynamic';
+              blockA.vel.x = 5;
+              blockA.vel.y = -5;
+              blockA.rotationLock = false;
+              collectBlock = false;
+          }
+      }
+  
+      // Collect block
+      if (collectBlock === true) {
+          blockA.collider = 'none';
+          blockA.x = alien.x + 50;
+          blockA.y = alien.y + 10;
+          blockA.rotationLock = true;
+          blockA.rotation = 0;
+      }
+  
+      // Monster's movement
+      if (movingRight === true) {
+          monster.vel.x = 2;
+          if (monster.x >= 800) {
+              monster.vel.x = 0; // Stop the monster when reaching right boundary
+              movingRight = false;
+          }
+      } else {
+          monster.vel.x = -2;
+          if (monster.x <= -50) {
+              monster.vel.x = 0; // Stop the monster when reaching left boundary
+              movingRight = true;
+          }
+      }
+  
+      // Attacks or being attacked
+      if (alien.collide(monster)) {
+          alienLife -= 1;
+      }
+  
+      if (monster.collide(blockA)) {
+          monsterLife -= 1;
+      }
+  
+      // Win condition: door opens when monster is defeated and alien reaches door
+      if (alien.collides(door) && monsterLife <= 0){
+          door.img = '/assets/openedDoor.png';  // Door opens
+      }
+  }  
 </code></pre>
     </div>         
 

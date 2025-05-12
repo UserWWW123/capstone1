@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoopsGame</title>
+    <title>FunctionGame</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/loopGame.js"></script>
-    <script src="/js/lesson1.js"></script>
+    <script src="/js/functionGame.js"></script>
 
     <script src="/js/q5.js"></script>
     <script src="/js/planck.min.js"></script>
@@ -74,12 +73,12 @@
                 });
             </script>
     </div>
-            <a href="loops.html">
+            <a href="function.html">
             <button class = "rightLeftButton"id="previousLevel">
                 <i class="fa-solid fa-caret-left"></i></button>
             </a>
-            <h1 id="rightPanelTitle">Loops</h1>
-            <a href="function.html"> <!--change the link to next lesson-->
+            <h1 id="rightPanelTitle">Function</h1>
+            <a href="/index.html"> <!--change the link to next lesson-->
             <button class = "rightLeftButton" id="nextLevel">
                 <i class="fa-solid fa-caret-right"></i></button>
             </a>
@@ -395,21 +394,7 @@
     </div>
 </div>
     
-    <script src="/js/loopBlock.js"></script>
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener('click', function() {
-                this.classList.toggle("active");
-                var collapsibleContent = this.nextElementSibling;
-                if (collapsibleContent.style.display === "block") {
-                    collapsibleContent.style.display = 'none';
-                } else {
-                    collapsibleContent.style.display = 'block';
-                }
-            });
-        }
-    </script>
+    <script src="/js/functionBlock.js"></script>
+    <script src="/js/lesson1.js"></script>
 </body>
 </html>
