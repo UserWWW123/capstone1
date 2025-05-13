@@ -40,7 +40,7 @@
         <div class="empty" id="gameContainer">
         <div id="winNote">
             <p id = "win"></p>
-            <a href = "function.html"> <!--change the link to next lesson-->
+            <a href = "/index.html"> <!--change the link to next lesson-->
             <button id="nextButton"></button>
         </a>
         </div>
@@ -89,301 +89,271 @@
         </div>
 
         <div class="rightPanelInstruction">
-            <p>An alien is trapped in a maze!</p>
-            <p>An alien is trapped in a maze where he needs to select 5 correct doors and obtain 5 keys from them. But he only has 5 lives—selecting a wrong door can trigger a trap (⚠️an arrow shoots out!⚠️). After every hit, the correct door changes. Choose one door each round. Collect 5 keys and escape from the room!</p>
+            <p>An alien is trapped in a room where the door only opens after all platforms have been triggered and the alien collides with it.</p>
             <p>Create and play a game following the instructions below.</p>
 
             <h2>How to play?</h2>
-            <p>Control the alien to collect a block and use it to hit the monster to unlock the door!</p>
-            <p>If the alien's life reaches 0, hit the restart Button.</p>
+            <p>Use the arrow keys to control the alien and make it jump onto each platform. Each time the alien lands on a platform, a new one appears! Keep going until the alien reaches the door!</p>
             <h2>Instruction:</h2>
-            <div>
-                <ol>
-                    <li>Create a setup function
-                        <ol type="a">
-                            <li>Create a canvas</li>
-                            <li>Set gravity</li>
-                        </ol>
-                    </li>
+            <ol>
+                <li>
+                    Declear variables: let alien, crateimg, slabimg, doorimg, doorimg2
+                </li>
+                <li>
+                    Declear variables: floor1, floor2, crate1, crate2, crate3
+                </li>
+                <li>
+                    Declear variable: door
+                </li>
+                <li>
+                    Create and declear the following variable to false in the following sequence:
+                    <ol type="a">
+                        <li>platform1Created</li>
+                        <li>platform2Created</li>
+                        <li>platform3Created</li>
+                        <li>platform4Created</li>
+                        <li>platform5Created</li>
+                    </ol>
+                </li>
+                <li>Create a preload function
+                    <ol type="a">
+                        <li>Set image '/assets/crate_E.png' to crateimg</li>
+                        <li>Set image '/assets/slabAngle_N.png' to slabimg</li>
+                        <li>Set image '/assets/doorCLosed_S.png' to doorimg</li>
+                        <li>Set image '/assets/doorOpen_S.png' to doorimg2</li>
+                    </ol>
+                </li>
+                <li>Create a setup function
+                    <ol type="a">
+                        <li>Create a canvas</li>
+                        <li>Set gravity</li>
+                    </ol>
+                </li>
             
-                    <li>Create a group for doors and store it in a variable</li>
+                <li>Create a floor1 sprite
+                    <ol type="a">
+                        <li>Position it at (200, 650)</li>
+                        <li>Set it 50px width and 50px height</li>
+                        <li>Set it to static</li>
+                        <li>Set its scale to 2</li>
+                        <li>Add the slab image to it</li>
+                    </ol>
+                </li>
             
-                    <li>Create a goal door sprite
-                        <ol type="a">
-                            <li>Position it at (500, 200)</li>
-                            <li>Size it to (50, 50)</li>
-                            <li>Set it to static type</li>
-                            <li>Assign the closed door image</li>
-                        </ol>
-                    </li>
+                <li>Create a door sprite
+                    <ol type="a">
+                        <li>Position it at (150, 115)</li>
+                        <li>Size it to 25px width and 60px height</li>
+                        <li>Set it to static</li>
+                        <li>Set its scale x to -1.5 and scale y to 1.5</li>
+                        <li>Add the closed door image to it</li>
+                    </ol>
+                </li>
             
-                    <li>Create an alien sprite
-                        <ol type="a">
-                            <li>Position it at (200, 500)</li>
-                            <li>Size it to (50, 50)</li>
-                            <li>Set it to kin type</li>
-                            <li>Assign the alien image</li>
-                            <li>Set its layer to 2</li>
-                        </ol>
-                    </li>
+                <li>Create an alien sprite
+                    <ol type="a">
+                        <li>Position it at (200, 600)</li>
+                        <li>Size it to 50 x 80</li>
+                        <li>Set it to dynamic</li>
+                        <li>Add walk animation with 2 frames: 'alienYellow_walk1.png' and 'alienYellow_walk2.png'</li>
+                        <li>Add stand animation with 1 frame: 'alienYellow_front.png'</li>
+                        <li>Set its scale to 1</li>
+                        <li>Set its layer to 10</li>
+                        <li>Set its frame delay to 20</li>
+                        <li>Lock its rotation</li>
+                    </ol>
+                </li>
             
-                    <li>Create sprites for lives and keys
-                        <ol type="a">
-                            <li>Lives: positioned at (70, 30), size (100, 30)</li>
-                            <li>Keys: positioned at (200, 30), size (100, 30)</li>
-                            <li>Set both to type none, size 20, white color and stroke, opacity 0.8</li>
-                        </ol>
-                    </li>
+                <li>Create a draw function
+                    <ol type="a">
+                        <li>Set the background color to '#dbb691ff'</li>
+                        <li>Check if alien collides with floor1 and create the first slab platform if not already created</li>
+                        <li>Check if alien collides with floor1 and create the first crate platform if not already created</li>
+                        <li>Check if alien collides with crate1 and create the second crate platform if not already created</li>
+                        <li>Check if alien collides with crate2 and create the third crate platform if not already created</li>
+                        <li>Check if alien collides with crate3 and create the second slab platform if not already created</li>
+                        <li>Check if alien collides with the door and change the door image to open</li>
+                    </ol>
+                </li>
             
-                    <li>Create a sprite for showing the target door index
-                        <ol type="a">
-                            <li>Position it at (400, 30)</li>
-                            <li>Set to type none with text size 20</li>
-                            <li>Set its layer to 2</li>
-                        </ol>
-                    </li>
+                <li>Create an update function
+                    <ol type="a">
+                        <li>Call the alienMovement function</li>
+                    </ol>
+                </li>
             
-                    <li>Set gameReset to true</li>
-                    <li>In the draw function, set the background color to #dbb691ff
-                      <ol type="a">
-                        <li>Set the live text to "Lives:" followed by the value of lives</li>
-                        <li>Set the keys text to "Keys:" followed by the value of key</li>
-                      </ol>
-                    </li>                    
+                <li>Create an alienMovement function
+                    <ol type="a">
+                        <li>Check if left arrow key is pressed
+                            <ol type="i">
+                                <li>Move the alien to the left by setting velocity to -2</li>
+                                <li>Change alien's animation to walk</li>
+                                <li>Set alien's scale to -1</li>
+                            </ol>
+                        </li>
+                        <li>Check if right arrow key is pressed
+                            <ol type="i">
+                                <li>Move the alien to the right by setting velocity to 2</li>
+                                <li>Change alien's animation to walk</li>
+                                <li>Set alien's scale to 1</li>
+                            </ol>
+                        </li>
+                        <li>If no arrow key is pressed
+                            <ol type="i">
+                                <li>Stop the alien's horizontal movement by setting velocity to 0</li>
+                                <li>Change alien's animation to stand</li>
+                            </ol>
+                        </li>
+                        <li>Check if the up arrow key is pressed
+                            <ol type="i">
+                                <li>Make the alien jump by setting vertical velocity to -5</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
             
-                    <li>In the update function, if the reset variable is true:
-                        <ol type="a">
-                            <li>Remove all existing doors</li>
-                            <li>Set door image and scale</li>
-                            <li>Reset alien image</li>
-                            <li>Randomly select a target door index</li>
-                            <li>Create 4 door sprites in a vertical column using loop</li>
-                            <li>Set the target door</li>
-                            <li>Create a key box sprite below the target door, initially hidden</li>
-                            <li>Set the reset variable to false</li>
-                        </ol>
-                    </li>
+                <li>Create a createSlab function
+                    <ol type="a">
+                        <li>Receive x, y coordinates as parameters</li>
+                        <li>Create a platform sprite at the given x, y position</li>
+                        <li>Set its scale to 2</li>
+                        <li>Set its layer to 2</li>
+                        <li>Assign the slab image to it</li>
+                        <li>Return the created platform sprite</li>
+                    </ol>
+                </li>
             
-                    <li>When mouse is pressed and over a door:
-                        <ol type="a">
-                            <li>If it's the target door:
-                                <ol type="i">
-                                    <li>Move alien to door</li>
-                                    <li>Reveal key box and open door</li>
-                                    <li>Increase key count</li>
-                                    <li>Trigger door reset after 2 seconds</li>
-                                </ol>
-                            </li>
-                            <li>Else:
-                                <ol type="i">
-                                    <li>Move alien to door</li>
-                                    <li>Open wrong door, show arrow and hit animation</li>
-                                    <li>Decrease lives</li>
-                                    <li>Trigger door reset after 2 seconds</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </li>
-            
-                    <li>Display game over screen when lives are depleted
-                        <ol type="a">
-                            <li>Show text and a restart button</li>
-                            <li>On restart: reset lives and keys, remove text and button, and trigger door reset</li>
-                        </ol>
-                    </li>
-            
-                    <li>When enough keys are collected:
-                        <ol type="a">
-                            <li>Move alien to goal door</li>
-                            <li>Open the goal door</li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-            
-            
+                <li>Create a createCrate function
+                    <ol type="a">
+                        <li>Receive x, y coordinates as parameters</li>
+                        <li>Create a platform sprite at the given x, y position</li>
+                        <li>Remove any existing colliders from the platform</li>
+                        <li>Add a new collider with offset (0, -15) and size (60, 1)</li>
+                        <li>Assign the crate image to it</li>
+                        <li>Set its scale to 2</li>
+                        <li>Set its layer to 2</li>
+                        <li>Return the created crate platform sprite</li>
+                    </ol>
+                </li>
+            </ol>
 
 <button type="button" class="collapsible">Need some clue? Click here!</button>                          
 <div class='collapsibleContent'>
 <pre><code>
-  let targetDoorX;
-  let lives = 5, key = 0;
-  let targetDoor;
-  let alien;
-  let doorimg2, alienimg, doorimg1;
-  let gameOverS;
-  let doors;
-  let live, keys;
-  let targetDoorS;
-  let keyBoximg, keyBox;
-  let arrow, arrowimg;
-  let hitimg;
-  let goalDoor;
-  let restartButton;
-  let gameStart = false;
-  let gameReset = false; 
-  
-  function preload() {
-    doorimg2 = loadImage('/assets/doorOpen_S.png');
-    doorimg1 = loadImage('/assets/doorClosed_S.png');
-    alienimg = loadImage('/assets/alienGreen_walk1.png');
-    keyBoximg = loadImage('/assets/keyBox.png');
-    arrowimg = loadImage('/assets/arrow_N.png');
-    hitimg = loadImage('/assets/alienGreen_hit.png');
-  }
-  
-  function setup() {
-    new Canvas(865, 750);
-    world.gravity.y = 10;
-  
-    doors = new Group();
-  
-    goalDoor = new Sprite(500, 200, 50, 50, 'static');
-    goalDoor.img = doorimg1;
-  
-    alien = new Sprite(200, 500, 50, 50, 'kin');
-    alien.img = alienimg;
-    alien.layer = 2;
-  
-    live = new Sprite(70, 30, 100, 30, 'none');
-    live.textSize = 20;
-    live.color = 'white';
-    live.opacity = 0.8;
-    live.stroke = 'white';
-  
-    keys = new Sprite(200, 30, 100, 30, 'none');
-    keys.textSize = 20;
-    keys.color = 'white';
-    keys.opacity = 0.8;
-    keys.stroke = 'white';
-  
-    targetDoorS = new Sprite(400, 30, 0, 0, 'none');
-    targetDoorS.textSize = 20;
-    targetDoorS.layer = 2;
-  
-    gameReset = true; //create Doors
-  }
-  
-  function draw() {
-    background('#dbb691ff');
-  
-    live.text = "Lives: " + lives;
-    keys.text = "Keys: " + key;
-  }
-  
-  function update() {
-  //gameReset
-    if (gameReset) {
-      //Remove and create new doors + target door
-      doors.removeAll();
-      doors.layer = 1;
-      doors.img = doorimg1;
-      doors.img.scale = 1.8;
-      alien.img = alienimg;
-  
-      targetDoorX = floor(random(0, 4));
-  
-      for (let i = 0; i < 4; i++) {
-        let door = new doors.Sprite(160 * i + 90, i * 100 + 200, 140, 100, 'kin');
-        door.doorIndex = i;
-        door.text = i;
+    let alien, crateimg, slabimg, doorimg, doorimg2;
+    let floor1, floor2, crate1, crate2, crate3;
+    let door;
+    let platform1Created = false;
+    let platform2Created = false;
+    let platform3Created = false;
+    let platform4Created = false;
+    let platform5Created = false;
+    
+    function preload(){
+      crateimg = loadImage('/assets/crate_E.png');
+      slabimg = loadImage('/assets/slabAngle_N.png');
+      doorimg = loadImage('/assets/doorCLosed_S.png');
+      doorimg2 = loadImage('/assets/doorOpen_S.png');
+    }
+    
+    function setup(){
+      new Canvas(865, 750);
+      world.gravity.y = 10;
+    
+      floor1 = new Sprite(200, 650, 50, 1, 'static');
+      floor1.scale = 2;
+      floor1.img = slabimg;
+    
+      door = new Sprite(150, 115, 25, 60, 'static');
+      door.img = doorimg;
+      door.layer = 3;
+      door.scale.x = -1.5;
+      door.scale.y = 1.5;
+    
+      alien = new Sprite(200, 600, 50, 80, 'dynamic');
+      alien.addAni('walk', [
+        '/assets/alienYellow_walk1.png',
+        '/assets/alienYellow_walk2.png'
+      ], 2);
+      alien.addAni('stand', ['/assets/alienYellow_front.png'], 1);
+      alien.scale = 1;
+      alien.layer = 10;
+      alien.frameDelay = 20;
+      alien.rotationLock = true;
+    }
+    
+    function draw(){
+      background('#dbb691ff');
+      if (alien.collides(floor1) && !platform1Created) {
+        floor1 = createSlab(450, 620);
+        platform1Created = true;
       }
-  
-      targetDoor = doors[targetDoorX];
-      keyBox = new Sprite(targetDoor.x - 15, targetDoor.y + 60, 50, 50, 'none');
-      keyBox.layer = 2;
-      keyBox.img = keyBoximg;
-      keyBox.visible = false;
-  
-      gameReset = false; //Set reset to false for next reset toggle
-    }
-  
-    // Mouse cursor change
-    if (gameStart && doors.mouse.hovering()) {
-      mouse.cursor = 'pointer';
-    } else {
-      mouse.cursor = 'default';
-    }
-  
-    // Game Over
-    if (lives <= 0) {
-      if (!gameOverS) {
-        alien.x = 200;
-        alien.y = 500;
-        gameOverS = new Sprite(865 / 2, 760 / 2 - 50, 200, 100, 'none');
-        gameOverS.text = "Game Over!";
-        gameOverS.textSize = 32;
-        gameOverS.color = 'transparent';
-        gameOverS.stroke = 'transparent';
-  
-        restartButton = new Sprite(865 / 2, 760 / 2 + 50, 200, 100, 'static');
-        restartButton.text = "Restart";
-        restartButton.textSize = 32;
-        restartButton.color = '#2D3142';
-        restartButton.stroke = 'transparent';
-        restartButton.textColor = 'white';
+    
+      if (floor1 && alien.collides(floor1) && !platform2Created) {
+        crate1 = createCrate(650, 500);
+        platform2Created = true;
       }
-  
-      if (restartButton.mouse.presses()) {
-        // Game Restart + reset
-        gameReset = true; 
-        lives = 5;
-        key = 0;
-  
-        gameOverS.remove();
-        restartButton.remove();
-        gameOverS = null;
-        restartButton = null;
+    
+      if (crate1 && alien.collides(crate1) && !platform3Created) {
+        crate2 = createCrate(450, 400);
+        platform3Created = true;
       }
-      return;
-    }
-  
-    //Win
-    if (key >= 5) {
-      alien.moveTo(490, 200 + 30, 5);
-      goalDoor.img = doorimg2;
-    }
-  
-    // Doors pressed -> aien movement
-    if (gameStart && mouse.pressed()) {
-      for (let i = 0; i < doors.length; i++) {
-        if (doors[i].mouse.hovering()) {
-          if (doors[i] === targetDoor) {
-            alien.moveTo(doors[i].x - 50, doors[i].y + 10, 5);
-  
-            setTimeout(() => {
-              targetDoor.img = doorimg2;
-              targetDoor.img.scale = 1.8;
-              keyBox.visible = true;
-              keyBox.life = 100;
-              key++;
-            }, 1500);
-            setTimeout(() => gameReset = true, 2000);
-          } else {
-            alien.moveTo(doors[i].x - 50, doors[i].y + 10, 5);
-            setTimeout(() => {
-              doors[i].img = doorimg2;
-              doors[i].img.scale = 1.8;
-              doors[i].collider = 'none';
-              arrow = new Sprite(doors[i].x, doors[i].y + 50, 50, 50, 'dynamic');
-              arrow.img = arrowimg;
-              alien.img = hitimg;
-              alien.x -= 50;
-              alien.y += 10;
-              arrow.vel.x = -10;
-              arrow.vel.y = -1;
-              arrow.life = 100;
-              lives--;
-            }, 1500);
-            setTimeout(() => gameReset = true, 2000); //Game reset after selected door
-          }
-          break;
-        }
+    
+      if (crate2 && alien.collides(crate2) && !platform4Created) {
+        crate3 = createCrate(300, 300);
+        platform4Created = true;
+      }
+    
+      if (crate3 && alien.collides(crate3) && !platform5Created) {
+        floor2 = createSlab(200, 200);
+        platform5Created = true;
+      }
+    
+      if (floor2 && alien.collides(door)) {
+        door.img = doorimg2;
       }
     }
-  
-  }
-  
+    
+    function update(){
+      alienMovement();
+    }
+    
+    function alienMovement(){
+      if (kb.pressing('left')){
+        alien.vel.x = -2;
+        alien.changeAni('walk');
+        alien.scale.x = -1;
+      } else if(kb.pressing('right')){
+        alien.vel.x = 2;
+        alien.changeAni('walk');
+        alien.scale.x = 1;
+      } else {
+        alien.vel.x = 0;
+        alien.changeAni('stand');
+      }
+    
+      if (kb.presses('up')){
+        alien.vel.y = -5;
+      }
+    }
+    
+    function createSlab(x, y) {
+      let platform = new Sprite(x, y, 50, 1, 'static');
+      platform.scale = 2;
+      platform.layer = 2;
+      platform.img = slabimg;
+      return platform;
+    }
+    
+    function createCrate(x, y) {
+      let platform = new Sprite(x, y, 50, 1, 'static');
+      platform.removeColliders();
+      platform.addCollider(0, -15, 60, 1);
+      platform.img = crateimg;
+      platform.scale = 2;
+      platform.layer = 2;
+      return platform;
+    }    
 </code></pre>
     </div>         
         </div>
