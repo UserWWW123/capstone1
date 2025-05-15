@@ -729,7 +729,6 @@ const s2 = (p) => {
                 crate.y = 0;
                 crate.x = 150;
                 crate.collider = 'kinematic';
-                crate.moveTo(150, 150,2);
             } else if (input2 === 'none') {
                 ball.x = 0;
                 ball.y=0;
