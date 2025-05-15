@@ -11,7 +11,7 @@ let platform5Created = false;
 function preload(){
   crateimg = loadImage('/assets/crate_E.png');
   slabimg = loadImage('/assets/slabAngle_N.png');
-  doorimg = loadImage('/assets/doorCLosed_S.png');
+  doorimg = loadImage('/assets/doorClosed_S.png');
   doorimg2 = loadImage('/assets/doorOpen_S.png');
 }
 
