@@ -454,3 +454,49 @@ function keyPressed() {
   function keyReleased() {
     console.log('Key released');
   }
+
+  const s5 = (p) => {
+    p.setup = () => {
+        new p.Canvas(300,200);
+    }
+    p.draw = () => {
+        p.background('white');
+    }
+  }
+
+  new p5(s5, 'canvas'); 
+
+
+  const s6 = (p) => {
+    let square;
+    p.setup = () => {
+        new p.Canvas(300,200);
+        square  = new p.Sprite();
+        square.height = 100;
+        square.width = 100;
+        square.x = 100;
+        square.y = 100;
+    }
+    p.draw = () => {
+        p.background('white');
+    }
+  }
+
+  new p5(s6, 'sprite'); 
+
+  const s7 = (p) => {
+    let square;
+    p.setup = () => {
+        new p.Canvas(300,200);
+        square  = new p.Sprite();
+        square.height = 100;
+        square.width = 100;
+        square.x = 100;
+        square.y = 100;
+    }
+    p.draw = () => {
+        p.background('#594157');
+    }
+  }
+
+  new p5(s7, 'update'); 

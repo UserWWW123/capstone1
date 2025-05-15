@@ -7,12 +7,13 @@ const draggable_list = document.getElementById('draggable-list');
       'let',
       'block',
       ';',
-      'block',
-      '=',
-      '"',
-      'block_E.png',
-      '"',
-      ';',
+      'function setup() {',
+      'new Canvas(865,750);',
+      'block = new Sprite(100,270,50,50);',
+      '}',
+      'function update() {',
+      'background(\'#dbb691ff\');',
+      '}',
     ];
 
     // store listitems

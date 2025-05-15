@@ -360,6 +360,49 @@
                     <p class="answer"></p>
             </div>
         </div>
+
+            <div class="lessonMiddle lessonpage15" id="lessonPage15">
+                <h2>p5play Time! Let's Learn More About p5play!</h2>
+                <p>Now that you've learned some basic JavaScript, let's use p5play to create movable elements!</p>
+                <p>As you’ve learned, p5play is a JavaScript library for creating animations and interactive elements. It's simple to use and great for beginners to practice with!</p>
+                <p>In this exercise, you will learn about sprites (a way to call objects in a game) and how to position them using coordinates.</p>
+                <br>
+                <h2><code>setup()</code>: Runs when the program starts.</h2>
+                <h2>Create a canvas in <code>setup()</code> using <code>new Canvas()</code>:</h2>
+
+<pre><code>function setup() {
+  new Canvas(300, 200); // Creates a canvas 300px wide by 200px high
+}
+</code></pre>
+                <div id = 'canvas'></div>
+                <br>
+                <h2>Creates a sprite.</h2>
+                <p>A sprite is an object in a game. It represents anything on the canvas. For example, if you draw a circle, it is a sprite. If you insert an image of a UFO onto the canvas, that is also a sprite.</p>
+                <p>You can move sprites and make them collide with each other.</p>
+                <p>Use <code>new Sprite()</code> to create a sprite:</p>
+                <p><code>let square;</code></p>
+                <div class = "additionInformation">
+                    <p>Always declare variables outside of functions. This allows you to access those elements later in <code>update()</code> or <code>draw()</code>.</p>
+                    <p>For example, you might want to make a sprite jump when it reaches a certain x-range.</p>
+                </div>
+
+<pre><code>square = new Sprite(100,100,100,100); // Creates a sprite named 'square'. The variable name can be anything you choose
+            //new Sprite(x-position, y-position, width, height)
+</code></pre>
+                <div id = 'sprite'></div>
+                
+                <h2><code>update()</code>: Runs 60 times per second by default.</h2>
+
+                <p>Always use <code>clear()</code> or <code>background('color')</code> to remove anything from previous frames!</p>
+
+<pre><code>function update() {
+  background('#594157');
+}
+</code></pre>
+                <div id = 'update'></div>
+        </div>
+        
+
             <script>
                 document.getElementById("submitButton").addEventListener("click", function(){
                     let userAnswer = document.querySelector('#variableInput').value.trim();
@@ -384,6 +427,7 @@
         <button class="lessonPageButton lessonPageButton12" onclick="changePage(12)">12</button>
         <button class="lessonPageButton lessonPageButton13" onclick="changePage(13)">13</button>
         <button class="lessonPageButton lessonPageButton14" onclick="changePage(14)">14</button>
+        <button class="lessonPageButton lessonPageButton15" onclick="changePage(15)">15</button>
 
 
 </div>
