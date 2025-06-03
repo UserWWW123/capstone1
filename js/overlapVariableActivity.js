@@ -499,4 +499,4 @@ function keyPressed() {
     }
   }
 
-  new p5(s7, 'update'); 
+  new p5(s7, 'update1'); 
