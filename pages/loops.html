@@ -49,7 +49,7 @@
     <div class="lessonMiddle lessonpage1">
         <h2>Loops</h2>
       
-        <p>By using loops, the computer can execute a block of code multiple times.</p>
+        <p>By using loops, the computer can runs a block of code multiple times.</p>
 
         <br>
       
@@ -65,7 +65,7 @@
       <div class="lessonMiddle lessonpage2">
         <h2>For loop:</h2>
       
-        <p>A for loop repeats until a specific condition becomes false.</p>
+        <p>A for loop runs repeatedly until a specific condition becomes false.</p>
       
         <p><code>//create an array to store the trap items.</code></p>
         <p><code>let trapItems = ['doorway', 'window', 'staircase', 'tile', 'door'];</code></p>
@@ -216,7 +216,7 @@
         <br>
         
         <h3><code>var</code></h3>
-        <p>The value declared inside the loop affects the value outside the loop. This is because <code>var</code> is function-scoped, not block-scoped.</p>
+        <p>The value declared inside the loop affects the value outside the loop.</p>
         
         <pre><code>var i = 2;
         for (var i = 0; i &lt; 20; i++) {
@@ -228,7 +228,7 @@
         <br>
         
         <h3><code>let</code></h3>
-        <p>The value declared inside the loop is limited to the loop block. The outer value remains unchanged. This is because <code>let</code> is block-scoped.</p>
+        <p>The value declared inside the loop is only for the loop. The value will not appear outside of the loop.</p>
         
         <pre><code>let i = 2;
         for (let i = 0; i &lt; 20; i++) {
@@ -270,8 +270,7 @@
         
         <h3><code>continue</code></h3>
         <p>
-        The <code>continue</code> statement skips the current iteration and proceeds with the next loop cycle.
-        </p>
+          The <code>continue</code> statement skips the current iteration and goes to the next run.        </p>
         
         <pre><code>for (let i = 0; i &lt; 5 ; i++){
           if (i === 2) { continue; }
